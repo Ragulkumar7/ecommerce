@@ -38,6 +38,33 @@ try {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
     }
+
+    /* --- UPDATED THEME COLORS (#d16d08f2) --- */
+    #applyBtn, .btn-primary {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+    }
+
+    #applyBtn:hover, .btn-primary:hover {
+        background-color: #a35506 !important; /* Slightly darker hover */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+    }
+
+    /* Price Range Slider Thumb */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+
+    /* Price Text Color in Cards */
+    .text-primary {
+        color: #d16d08f2 !important;
+    }
   </style>
 </head>
 <body>
@@ -158,7 +185,7 @@ try {
             <label class="form-check-label" for="star4">4 stars &amp; above</label>
           </div>
         </section>
-        <div class="filter-buttons">
+        <div class="filter-buttons mt-3">
           <button id="applyBtn" type="button" class="btn btn-primary w-100 mb-2 rounded-pill">Apply Filters</button>
           <button id="resetBtn" type="button" class="btn btn-outline-secondary w-100 rounded-pill">Reset Filters</button>
         </div>
@@ -262,12 +289,12 @@ try {
   const products = [
     { id: 101, name: "Earl Grey Premium Tea", price: 850, category: "Tea", rating: 4.7, reviews: 120, image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
     { id: 102, name: "Ethiopian Yirgacheffe Coffee", price: 1200, category: "Coffee", rating: 4.8, reviews: 95, image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 103, name: "Ceramic Teapot Set", price: 1800, category: "Accessories", rating: 4.5, reviews: 65, image: "https://images.unsplash.com/photo-1594736797933-d0b1d0bf8d78?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 103, name: "Ceramic Teapot Set", price: 1800, category: "Accessories", rating: 4.5, reviews: 65, image: "./ASSEST/img/teapot.jpg" },
     { id: 104, name: "Japanese Matcha Green Tea", price: 950, category: "Tea", rating: 4.9, reviews: 150, image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
     { id: 105, name: "French Press Coffee Maker", price: 2200, category: "Accessories", rating: 4.6, reviews: 80, image: "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
     { id: 106, name: "Colombian Supremo Coffee", price: 1100, category: "Coffee", rating: 4.7, reviews: 110, image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 107, name: "Chamomile Herbal Tea", price: 650, category: "Tea", rating: 4.4, reviews: 75, image: "https://images.unsplash.com/photo-1597481499751-6d3c16b365b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 108, name: "Coffee Grinder", price: 1500, category: "Accessories", rating: 4.3, reviews: 60, image: "https://images.unsplash.com/photo-1572021335465-7a98d66bce65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 107, name: "Chamomile Herbal Tea", price: 650, category: "Tea", rating: 4.4, reviews: 75, image: "./ASSEST/img/herbal.jpg" },
+    { id: 108, name: "Coffee Grinder", price: 1500, category: "Accessories", rating: 4.3, reviews: 60, image: "./ASSEST/img/grinder.jpg" },
     { id: 109, name: "Assam Black Tea", price: 750, category: "Tea", rating: 4.6, reviews: 90, image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" }
   ];
 
@@ -278,7 +305,6 @@ try {
     minRating: 0
   };
 
-  // UPDATED FUNCTION: Clean card style, image/title linked to product-details.php
   function displayProducts(filteredProducts) {
     const container = document.getElementById("productContainer");
     container.innerHTML = "";
@@ -414,20 +440,6 @@ try {
       showCartModal();
     }
 
-    function addToFavorites(productId) {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      const product = products.find(p => p.id === productId);
-      
-      if (!favorites.find(f => f.id === productId)) {
-        favorites.push(product);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        updateFavoritesCount();
-        showToast(`${product.name} added to favorites!`);
-      } else {
-        showToast(`${product.name} is already in your favorites!`);
-      }
-    }
-
     function updateFavoritesCount() {
       const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
       document.getElementById('favCount').textContent = favorites.length;
@@ -438,7 +450,6 @@ try {
         alert('Your cart is empty!');
         return;
       }
-      
       alert('Proceeding to checkout...');
     }
 
@@ -498,6 +509,5 @@ try {
     updateFavoritesCount();
   };
 </script>
-
 </body>
 </html>

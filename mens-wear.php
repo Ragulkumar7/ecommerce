@@ -42,6 +42,7 @@ try {
 </head>
 <body>
 <header class="main-header">
+<header class="main-header">
     <div class="container py-3">
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
@@ -172,8 +173,7 @@ try {
       <div class="mb-3 d-flex justify-content-between align-items-center">
         <p id="resultCount" class="m-0 text-muted">Showing results</p>
         <div>
-          <label for="sortSelect" class="form-label visually-hidden">Sort products</label>
-          <select class="form-select d-inline w-auto" id="sortSelect" style="display:inline-block;" onchange="sortProducts(this.value)">
+          <select class="form-select w-auto" id="sortSelect" onchange="sortProducts(this.value)">
             <option value="best">Best Match</option>
             <option value="lowToHigh">Price: Low to High</option>
             <option value="highToLow">Price: High to Low</option>
@@ -237,9 +237,9 @@ try {
         </div>
         <div class="col-lg-4 col-md-4 footer-newsletter">
           <h5 class="mb-3">Newsletter</h5>
-          <p>Subscribe to get special offers, free giveaways, and new product alerts.</p>
           <form>
             <input type="email" class="form-control mb-3" placeholder="Your email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
             <button type="submit" class="btn btn-primary">Subscribe</button>
           </form>
         </div>
@@ -250,11 +250,8 @@ try {
           <p class="mb-0">&copy; 2023 StyleHub. All rights reserved.</p>
         </div>
         <div class="col-md-6 text-md-end">
-          <div class="d-flex justify-content-md-end">
-            <a href="#" class="text-light me-3">Privacy Policy</a>
-            <a href="#" class="text-light me-3">Terms of Service</a>
-            <a href="#" class="text-light">Cookie Policy</a>
-          </div>
+          <a href="#" class="text-light me-3">Privacy Policy</a>
+          <a href="#" class="text-light">Cookie Policy</a>
         </div>
       </div>
     </div>
@@ -307,7 +304,6 @@ try {
       const oldPrice = p.old_price > p.price ? `<span class="text-muted text-decoration-line-through small ms-2">₹${p.old_price.toFixed(2)}</span>` : '';
       const starsHTML = generateRatingStars(p.rating);
       const sizes = p.size.join(", ");
-
       container.innerHTML += `
         <article class="col-12 col-sm-6 col-md-4" role="listitem">
           <div class="clean-product-card shadow-sm position-relative d-flex flex-column h-100 p-3">

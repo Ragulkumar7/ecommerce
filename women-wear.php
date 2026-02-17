@@ -22,22 +22,51 @@ try {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StyleHub | Women's Fashion</title>
+  <title>StyleHub | Men's Fashion</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/women-wear.css">
   <style>
-    /* Clean Product Card Style matching your other pages */
-    .clean-product-card {
-        border: 1px solid #eee;
-        border-radius: 15px;
-        transition: transform 0.3s, box-shadow 0.3s;
-        background: #fff;
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    
+    /* Apply Filters, Add to Cart, and Buy Now Buttons */
+    #applyBtn, .btn-primary, .btn-buy {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 500;
     }
-    .clean-product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+
+    #applyBtn:hover, .btn-primary:hover, .btn-buy:hover {
+        background-color: #a35506 !important; /* Slightly darker shade for hover effect */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
     }
+
+    /* Range Slider Thumb Color */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+
+    /* Price Text Color in Cards */
+    .product-price {
+        color: #d16d08f2 !important;
+        font-weight: bold;
+    }
+
+    /* Star Rating Color */
+    .bi-star-fill, .bi-star-half {
+        color: #d16d08f2 !important;
+    }
+
+    /* Preserve Sidebar Structure */
+    .sidebar { border: 1px solid #e0e0e0; border-radius: 20px; background: white; overflow: hidden; }
   </style>
 </head>
 <body>
@@ -179,8 +208,8 @@ try {
               <input type="checkbox" class="form-check-input rating-filter" id="star5" value="5" />
               <label class="form-check-label" for="star5">
                 <span class="rating">
-                  <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i
-                    class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </span>
                 5 stars
               </label>
@@ -189,8 +218,8 @@ try {
               <input type="checkbox" class="form-check-input rating-filter" id="star4" value="4" />
               <label class="form-check-label" for="star4">
                 <span class="rating">
-                  <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i
-                    class="bi bi-star-fill text-warning"></i><i class="bi bi-star text-warning"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star"></i>
                 </span>
                 4 stars & above
               </label>
@@ -199,8 +228,8 @@ try {
               <input type="checkbox" class="form-check-input rating-filter" id="star3" value="3" />
               <label class="form-check-label" for="star3">
                 <span class="rating">
-                  <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i
-                    class="bi bi-star text-warning"></i><i class="bi bi-star text-warning"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star"></i><i class="bi bi-star"></i>
                 </span>
                 3 stars & above
               </label>
@@ -209,17 +238,17 @@ try {
               <input type="checkbox" class="form-check-input rating-filter" id="star2" value="2" />
               <label class="form-check-label" for="star2">
                 <span class="rating">
-                  <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star text-warning"></i><i
-                    class="bi bi-star text-warning"></i><i class="bi bi-star text-warning"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i
+                    class="bi bi-star"></i><i class="bi bi-star"></i>
                 </span>
                 2 stars & above
               </label>
             </div>
           </div>
 
-          <div class="filter-buttons">
-            <button id="applyBtn" type="button" class="btn btn-primary w-100 mb-2 rounded-pill">Apply Filters</button>
-            <button id="resetBtn" type="button" class="btn btn-outline-secondary w-100 rounded-pill">Reset Filters</button>
+          <div class="filter-buttons p-3">
+            <button id="applyBtn" type="button" class="w-100 mb-2">Apply Filters</button>
+            <button id="resetBtn" type="button" class="btn btn-outline-secondary w-100">Reset Filters</button>
           </div>
         </div>
       </aside>
@@ -248,9 +277,9 @@ try {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="cartItems"></div>
-        <h5 class="mt-3 px-3">Total: ₹<span id="modalCartTotal">0.00</span></h5>
+        <h5 class="mt-3 p-3">Total: ₹<span id="modalCartTotal">0.00</span></h5>
         <div class="modal-footer">
-          <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
+          <button class="btn btn-buy" onclick="buyNow()">Buy Now</button>
           <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
@@ -296,14 +325,14 @@ try {
           <p>Subscribe to get special offers, free giveaways, and new product alerts.</p>
           <form>
             <input type="email" class="form-control mb-3" placeholder="Your email address" />
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+            <button type="submit" class="btn">Subscribe</button>
           </form>
         </div>
       </div>
       <hr class="my-4 bg-light" />
       <div class="row">
         <div class="col-md-6 mb-3 mb-md-0">
-          <p class="mb-0">&copy; 2023 StyleHub. All rights reserved.</p>
+          <p class="mb-0">&copy; 2023 Electro. All rights reserved.</p>
         </div>
         <div class="col-md-6 text-md-end">
           <div class="d-flex justify-content-md-end">
@@ -319,18 +348,18 @@ try {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const products = [
-      { id: 201, name: "SilentParrot Ladies' Panties - Classic Collection", price: 299.99, old_price: 899.99, rating: 4.5, reviews: 142, tag: 'Sale', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/1.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
-      { id: 202, name: "SilentParrot Multi-Pack Ladies' Collection (3-Pack)", price: 179.99, old_price: 0, rating: 4, reviews: 87, tag: 'New', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/2.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
-      { id: 203, name: "SilentParrot Premium Cotton Panties - Blue Patterns", price: 349.99, old_price: 399.99, rating: 5, reviews: 215, tag: '', image: 'https://test.divasprik.in/Silentparrot/frontend/ASSETS/images/womenproduct2.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
-      { id: 204, name: "Premium Men's Dress Series 3", price: 399.99, old_price: 499.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/f5/a0/4c/f5a04c9dfbcfceb0eebc347d7ffa71b5.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 205, name: "Premium Men's Dress Series 8", price: 299.99, old_price: 369.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/49/67/15/496715d79127f5bf9b1864625400216b.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 206, name: "Premium Men's Dress Series 2", price: 399.99, old_price: 479.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/aa/07/19/aa0719404f01f341cbeb2771a489ef81.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 207, name: "Premium Men's Dress Series 5", price: 449.99, old_price: 599.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/b7/af/12/b7af1257268780a1f43495fefd2e6601.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 208, name: "Premium Men's Dress Series 8", price: 649.99, old_price: 799.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/19/3e/cf/193ecf4993db80e67e9d125adadfe9f3.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 209, name: "Premium Men's Dress Series 9", price: 649.99, old_price: 699.99, rating: 5, reviews: 215, tag: '', image:'https://i.pinimg.com/736x/5e/64/9b/5e649bad379266840a64a9699fd746d6.jpg', brand: 'Levis', size: ['L', 'XL'] }
+      { id: 1, name: "SilentParrot Ladies' Panties - Classic Collection", price: 299.99, old_price: 899.99, rating: 4.5, reviews: 142, tag: 'Sale', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/1.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
+      { id: 2, name: "SilentParrot Multi-Pack Ladies' Collection (3-Pack)", price: 179.99, old_price: 0, rating: 4, reviews: 87, tag: 'New', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/2.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
+      { id: 3, name: "SilentParrot Premium Cotton Panties - Blue Patterns", price: 349.99, old_price: 399.99, rating: 5, reviews: 215, tag: '', image: './ASSEST/img/parrot.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
+      { id: 4, name: "Premium Men's Dress Series 3", price: 399.99, old_price: 499.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/f5/a0/4c/f5a04c9dfbcfceb0eebc347d7ffa71b5.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 5, name: "Premium Men's Dress Series 8", price: 299.99, old_price: 369.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/49/67/15/496715d79127f5bf9b1864625400216b.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 6, name: "Premium Men's Dress Series 2", price: 399.99, old_price: 479.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/aa/07/19/aa0719404f01f341cbeb2771a489ef81.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 7, name: "Premium Men's Dress Series 5", price: 449.99, old_price: 599.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/b7/af/12/b7af1257268780a1f43495fefd2e6601.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 8, name: "Premium Men's Dress Series 8", price: 649.99, old_price: 799.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/19/3e/cf/193ecf4993db80e67e9d125adadfe9f3.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 9, name: "Premium Men's Dress Series 9", price: 649.99, old_price: 699.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/5e/64/9b/5e649bad379266840a64a9699fd746d6.jpg', brand: 'Levis', size: ['L', 'XL'] },
     ];
 
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cart = [];
 
     let filterState = {
       keyword: '',
@@ -339,7 +368,6 @@ try {
       minRating: 0
     };
 
-    // UPDATED FUNCTION: Clean card style, image/title linked to product-details.php
     function displayProducts(productList) {
       const container = document.getElementById('productContainer');
       container.innerHTML = '';
@@ -349,45 +377,38 @@ try {
         return;
       }
       productList.forEach(p => {
-        const badge = p.tag ? `<span class="badge bg-${p.tag === 'Sale' ? 'danger' : 'success'} position-absolute" style="top:10px; right:10px;">${p.tag}</span>` : '';
-        const oldPrice = p.old_price > p.price ? `<span class="text-muted text-decoration-line-through small ms-2">₹${p.old_price.toFixed(2)}</span>` : '';
-        
+        const badge = p.tag ? `<span class="badge bg-${p.tag === 'Sale' ? 'danger' : 'success'}">${p.tag}</span>` : '';
+        const oldPrice = p.old_price > p.price ? `<span class="product-old">₹${p.old_price.toFixed(2)}</span>` : '';
         let starsHTML = '';
         const fullStars = Math.floor(p.rating);
         const halfStar = (p.rating % 1) >= 0.5;
         for (let i = 1; i <= 5; i++) {
-          if (i <= fullStars) starsHTML += '<i class="bi bi-star-fill text-warning"></i>';
-          else if (i === fullStars + 1 && halfStar) starsHTML += '<i class="bi bi-star-half text-warning"></i>';
-          else starsHTML += '<i class="bi bi-star text-warning"></i>';
+          if (i <= fullStars) starsHTML += '<i class="bi bi-star-fill"></i>';
+          else if (i === fullStars + 1 && halfStar) starsHTML += '<i class="bi bi-star-half"></i>';
+          else starsHTML += '<i class="bi bi-star"></i>';
         }
-        
         let sizes = p.size.join(", ");
-        
         container.innerHTML += `
         <article class="col-12 col-sm-6 col-md-4" role="listitem">
-          <div class="clean-product-card p-3 h-100 d-flex flex-column shadow-sm position-relative">
+          <div class="product-card shadow-box position-relative">
             ${badge}
-            
-            <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
-                <img src="${p.image}" class="img-fluid rounded mb-3 w-100" alt="${p.name}" style="height:250px; object-fit:cover;">
-                <h3 class="h6 fw-bold mb-1">${p.name}</h3>
-            </a>
-
-            <div class="mb-2">
-              <span class="rating small">${starsHTML}</span>
-              <span class="text-secondary ms-1" style="font-size: 0.8rem;">(${p.reviews} reviews)</span>
+            <img src="${p.image}" class="product-img" alt="${p.name}" />
+            <div class="p-3">
+              <h3 class="product-title">${p.name}</h3>
+              <div>
+                <span class="rating">${starsHTML}</span>
+                <span class="text-secondary ms-2">(${p.reviews})</span>
+              </div>
+              <div class="mt-2">
+                <span class="product-price">₹${p.price.toFixed(2)}</span>
+                ${oldPrice}
+              </div>
+              <div class="mt-2 mb-2">Available Sizes: <strong>${sizes}</strong></div>
+              <div class="button-group">
+                <button class="btn btn-outline-primary btn-sm" onclick="quickView(${p.id})">View Details</button>
+                <button class="btn btn-primary btn-sm" onclick="addToCart(${p.id})">Add to Cart</button>
+              </div>
             </div>
-            
-            <div class="mb-2">
-              <span class="text-primary fw-bold fs-5">₹${p.price.toFixed(2)}</span>
-              ${oldPrice}
-            </div>
-            
-            <div class="mb-3 small text-muted">Available Sizes: <strong>${sizes}</strong></div>
-            
-            <button class="btn btn-primary btn-sm w-100 rounded-pill mt-auto" onclick="addToCart(${p.id})">
-              Add to Cart
-            </button>
           </div>
         </article>
         `;
@@ -413,8 +434,7 @@ try {
       
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartUI();
-      // Simple alert since we don't have the showToast function fully implemented in this script block
-      alert(`${product.name} added to cart!`); 
+      showToast(`${product.name} added to cart!`);
     }
 
     function updateCartUI() {
@@ -463,6 +483,11 @@ try {
       showCartModal();
     }
 
+    function quickView(productId) {
+        const product = products.find(p => p.id === productId);
+        alert('Details for: ' + product.name);
+    }
+
     function buyNow() {
       if (cart.length === 0) {
         alert('Your cart is empty!');
@@ -471,12 +496,33 @@ try {
       alert('Proceeding to checkout...');
     }
 
-    // Update price label dynamically when slider moves
+    function showToast(message) {
+      let toast = document.getElementById('toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.className = 'toast align-items-center text-white bg-primary border-0 position-fixed bottom-0 end-0 m-3';
+        toast.setAttribute('role', 'alert');
+        toast.setAttribute('aria-live', 'assertive');
+        toast.setAttribute('aria-atomic', 'true');
+        toast.innerHTML = `
+          <div class="d-flex">
+            <div class="toast-body">${message}</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        `;
+        document.body.appendChild(toast);
+      } else {
+        toast.querySelector('.toast-body').textContent = message;
+      }
+      const bsToast = new bootstrap.Toast(toast);
+      bsToast.show();
+    }
+
     document.getElementById('priceRange').addEventListener('input', function () {
       document.getElementById('priceValue').innerText = '₹' + this.value;
     });
 
-    // Add event listeners so filters apply on change
     document.querySelectorAll('.size-filter').forEach(el => el.addEventListener('change', applyFilters));
     document.querySelectorAll('.rating-filter').forEach(el => el.addEventListener('change', applyFilters));
     document.getElementById('priceRange').addEventListener('change', applyFilters);
@@ -504,7 +550,6 @@ try {
       filterState.keyword = document.getElementById('searchInput').value.trim().toLowerCase();
       filterState.priceLimit = parseFloat(document.getElementById('priceRange').value);
       filterState.sizes = Array.from(document.querySelectorAll('.size-filter:checked')).map(cb => cb.value);
-      
       const ratingChecks = Array.from(document.querySelectorAll('.rating-filter:checked')).map(cb => parseInt(cb.value));
       filterState.minRating = ratingChecks.length > 0 ? Math.min(...ratingChecks) : 0;
 
@@ -520,29 +565,15 @@ try {
     }
 
     function sortProducts(sortValue) {
-      const container = document.getElementById('productContainer');
-      let displayedIds = Array.from(container.children).map(article => {
-        return products.find(p => p.name === article.querySelector('.product-title').textContent).id;
-      });
-      let currentProducts = products.filter(p => displayedIds.includes(p.id));
-
-      if (sortValue === 'lowToHigh') {
-        currentProducts.sort((a, b) => a.price - b.price);
-      } else if (sortValue === 'highToLow') {
-        currentProducts.sort((a, b) => b.price - a.price);
-      } else {
-        currentProducts = [...products];
-      }
-      displayProducts(currentProducts);
+        if(sortValue === 'lowToHigh') products.sort((a,b) => a.price - b.price);
+        if(sortValue === 'highToLow') products.sort((a,b) => b.price - a.price);
+        displayProducts(products);
     }
 
     window.onload = () => {
       displayProducts(products);
       updateCartUI();
-
-      document.getElementById('searchInput').addEventListener('input', applyFilters);
     };
   </script>
 </body>
-
 </html>

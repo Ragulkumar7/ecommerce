@@ -32,12 +32,17 @@ try {
   <style>
     /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
     
-    /* Main Buttons (Apply Filters, Add to Cart) */
-    #applyBtn, .btn-primary {
+    /* Main Buttons (Apply Filters, Add to Cart, Quick View) */
+    #applyBtn, .btn-primary, .btn-outline-primary:hover {
         background-color: #d16d08f2 !important;
         border-color: #d16d08f2 !important;
         color: white !important;
         transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary {
+        color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
     }
 
     #applyBtn:hover, .btn-primary:hover {
@@ -66,17 +71,21 @@ try {
         color: #d16d08f2 !important;
     }
 
-    /* Clean Product Card Style matching other pages */
-    .clean-product-card {
+    .product-card {
         border: 1px solid #eee;
         border-radius: 15px;
-        transition: transform 0.3s, box-shadow 0.3s;
+        transition: transform 0.3s;
         background: #fff;
         overflow: hidden;
     }
-    .clean-product-card:hover {
+    .product-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .product-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
     }
   </style>
 </head>
@@ -86,14 +95,14 @@ try {
     <div class="row align-items-center">
       <div class="col-lg-3 col-md-4 col-6">
         <div class="d-flex align-items-center">
-          <span class="brand-icon" style="color: #d16d08f2;"><i class="bi bi-shop"></i></span>
+          <span class="brand-icon"><i class="bi bi-shop"></i></span>
           <span class="brand-logo">StyleHub</span>
         </div>
       </div>
       <div class="col-lg-6 col-md-5 d-none d-md-block">
         <form class="search-form">
           <input id="searchInput" class="form-control search-input" type="search" placeholder="Search for products..." aria-label="Search">
-          <button class="search-btn" type="submit" style="background-color: #d16d08f2; border-color: #d16d08f2;"><i class="bi bi-search text-white"></i></button>
+          <button class="search-btn" type="submit"><i class="bi bi-search"></i></button>
         </form>
       </div>
       <div class="col-lg-3 col-md-3 col-6">
@@ -101,11 +110,11 @@ try {
           <a href="#" class="action-icon me-3 position-relative"><i class="bi bi-arrow-repeat"></i></a>
           <a href="#" class="action-icon me-3 position-relative">
             <i class="bi bi-heart"></i>
-            <span class="cart-badge bg-dark" id="favCount">0</span>
+            <span class="cart-badge" id="favCount">0</span>
           </a>
           <a href="cart.php" class="action-icon position-relative">
             <i class="bi bi-cart3"></i>
-            <span class="cart-badge bg-dark" id="header-cart-count">0</span>
+            <span class="cart-badge" id="header-cart-count">0</span>
           </a>
           <span class="fs-5 ms-2 fw-bold d-none d-lg-block">₹<span id="header-total">0.00</span></span>
         </div>
@@ -114,15 +123,15 @@ try {
   </div>
 </header>
 
-<nav class="main-navbar" style="background-color: #d16d08f2 !important;">
+<nav class="main-navbar">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link active text-white" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
+          <a class="nav-link active" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-gem me-1"></i> Beauty & Jewelry
           </a>
           <ul class="dropdown-menu">
@@ -132,7 +141,7 @@ try {
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-heart me-1"></i> Stationery & Gifts
           </a>
           <ul class="dropdown-menu">
@@ -142,7 +151,7 @@ try {
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-pencil me-1"></i> Electronics
           </a>
           <ul class="dropdown-menu">
@@ -152,7 +161,7 @@ try {
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-person me-1"></i> Fashion
           </a>
           <ul class="dropdown-menu">
@@ -162,7 +171,7 @@ try {
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
+          <a class="nav-link" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
         </li>
       </ul>
     </div>
@@ -209,14 +218,14 @@ try {
           </div>
         </section>
         <div class="filter-buttons mt-3">
-          <button id="applyBtn" type="button" class="btn w-100 mb-2 rounded-pill">Apply Filters</button>
-          <button id="resetBtn" type="button" class="btn btn-light w-100 rounded-pill" style="border: 1px solid #ddd;">Reset Filters</button>
+          <button id="applyBtn" type="button" class="btn w-100 mb-2">Apply Filters</button>
+          <button id="resetBtn" type="button" class="btn btn-light w-100" style="border: 1px solid #ddd;">Reset Filters</button>
         </div>
       </div>
     </aside>
     <section class="col-md-9" aria-label="Products">
       <div class="mb-3 d-flex justify-content-between align-items-center">
-        <p id="resultCount" class="m-0 text-muted"></p>
+        <p id="resultCount" class="m-0"></p>
         <select class="form-select d-inline w-auto" id="sortSelect" aria-label="Sort products">
           <option value="default">Sort by</option>
           <option value="lowToHigh">Price - Low to High</option>
@@ -228,12 +237,12 @@ try {
   </section>
 </main>
 
-<footer class="footer-section bg-dark text-white pt-5 pb-3">
+<footer class="footer-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-4 mb-4 mb-lg-0">
-        <h2 class="footer-brand-text mb-3 text-white">StyleHub</h2>
-        <p class="mb-4 text-white-50">We offer the best products at competitive prices with fast shipping and excellent customer service.</p>
+        <h2 class="footer-brand-text mb-3">StyleHub</h2>
+        <p class="mb-4">We offer the best products at competitive prices with fast shipping and excellent customer service.</p>
         <div class="d-flex">
           <a href="#" class="text-light me-3"><i class="bi bi-facebook fs-4"></i></a>
           <a href="#" class="text-light me-3"><i class="bi bi-twitter fs-4"></i></a>
@@ -242,44 +251,44 @@ try {
         </div>
       </div>
       <div class="col-lg-2 col-md-4 mb-4 mb-md-0 footer-links">
-        <h5 class="text-white">Shop</h5>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-white-50 text-decoration-none">Beauty & Jewelry</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Homemade Gifts</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Stationery</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Men's Fashion</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Women's Fashion</a></li>
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#">Beauty & Jewelry</a></li>
+          <li><a href="#">Homemade Gifts</a></li>
+          <li><a href="#">Stationery</a></li>
+          <li><a href="#">Men's Fashion</a></li>
+          <li><a href="#">Women's Fashion</a></li>
         </ul>
       </div>
       <div class="col-lg-2 col-md-4 mb-4 mb-md-0 footer-links">
-        <h5 class="text-white">Customer Service</h5>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Returns & Exchanges</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Shipping & Delivery</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">Product Support</a></li>
-          <li><a href="#" class="text-white-50 text-decoration-none">FAQ</a></li>
+        <h5>Customer Service</h5>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">Shipping & Delivery</a></li>
+          <li><a href="#">Product Support</a></li>
+          <li><a href="#">FAQ</a></li>
         </ul>
       </div>
       <div class="col-lg-4 col-md-4 footer-newsletter">
-        <h5 class="mb-3 text-white">Newsletter</h5>
-        <p class="text-white-50">Subscribe to get special offers, free giveaways, and new product alerts.</p>
+        <h5 class="mb-3">Newsletter</h5>
+        <p>Subscribe to get special offers, free giveaways, and new product alerts.</p>
         <form>
           <input type="email" class="form-control mb-3" placeholder="Your email address">
-          <button type="submit" class="btn btn-primary rounded-pill w-100">Subscribe</button>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
         </form>
       </div>
     </div>
-    <hr class="my-4 border-secondary">
+    <hr class="my-4 bg-light">
     <div class="row">
       <div class="col-md-6 mb-3 mb-md-0">
-        <p class="mb-0 text-white-50">&copy; 2023 StyleHub. All rights reserved.</p>
+        <p class="mb-0">&copy; 2023 StyleHub. All rights reserved.</p>
       </div>
       <div class="col-md-6 text-md-end">
         <div class="d-flex justify-content-md-end">
-          <a href="#" class="text-white-50 me-3 text-decoration-none">Privacy Policy</a>
-          <a href="#" class="text-white-50 me-3 text-decoration-none">Terms of Service</a>
-          <a href="#" class="text-white-50 text-decoration-none">Cookie Policy</a>
+          <a href="#" class="text-light me-3">Privacy Policy</a>
+          <a href="#" class="text-light me-3">Terms of Service</a>
+          <a href="#" class="text-light">Cookie Policy</a>
         </div>
       </div>
     </div>
@@ -308,11 +317,11 @@ try {
 <script>
   // Use PHP products if available, otherwise use sample data
   const products = <?php echo !empty($products) ? json_encode($products) : '[
-    { id: 701, name: "Gel Pen Set", price: 150, rating: 4.5, reviews: 120, category: "Pen", image: "https://i.pinimg.com/1200x/18/dd/a7/18dda7156ace505cf245e0d58705a218.jpg" },
-    { id: 702, name: "Spiral Notebook", price: 80, rating: 4.2, reviews: 90, category: "Notebook", image: "https://i.pinimg.com/736x/ed/8d/16/ed8d1658bb2f25a9ef4688fd6413ab06.jpg" },
-    { id: 703, name: "White Eraser", price: 20, rating: 4.0, reviews: 40, category: "Eraser", image: "https://i.pinimg.com/736x/f2/d1/23/f2d123ab237f8577f87bb10967abfd6a.jpg" },
-    { id: 704, name: "Permanent Marker", price: 120, rating: 4.7, reviews: 140, category: "Marker", image: "https://i.pinimg.com/736x/19/0f/ab/190fabd11ddbcbc63dbe23c9478c1d86.jpg" },
-    { id: 705, name: "Ballpoint Pen", price: 100, rating: 4.3, reviews: 70, category: "Pen", image: "https://i.pinimg.com/1200x/a7/56/23/a75623f1ee5b4059967682858ed4e4cc.jpg" }
+    { id: 1, name: "Gel Pen Set", price: 150, rating: 4.5, reviews: 120, category: "Pen", image: "https://i.pinimg.com/1200x/18/dd/a7/18dda7156ace505cf245e0d58705a218.jpg" },
+    { id: 2, name: "Spiral Notebook", price: 80, rating: 4.2, reviews: 90, category: "Notebook", image: "https://i.pinimg.com/736x/ed/8d/16/ed8d1658bb2f25a9ef4688fd6413ab06.jpg" },
+    { id: 3, name: "White Eraser", price: 20, rating: 4.0, reviews: 40, category: "Eraser", image: "https://i.pinimg.com/736x/f2/d1/23/f2d123ab237f8577f87bb10967abfd6a.jpg" },
+    { id: 4, name: "Permanent Marker", price: 120, rating: 4.7, reviews: 140, category: "Marker", image: "https://i.pinimg.com/736x/19/0f/ab/190fabd11ddbcbc63dbe23c9478c1d86.jpg" },
+    { id: 5, name: "Ballpoint Pen", price: 100, rating: 4.3, reviews: 70, category: "Pen", image: "https://i.pinimg.com/1200x/a7/56/23/a75623f1ee5b4059967682858ed4e4cc.jpg" }
   ]' ?>;
 
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -324,7 +333,6 @@ try {
     minRating: 0
   };
 
-  // UPDATED DISPLAY FUNCTION: Clean card style, image/title linked to product-details.php
   function displayProducts(productsList) {
     const container = document.getElementById("productContainer");
     container.innerHTML = "";
@@ -347,25 +355,17 @@ try {
       
       container.innerHTML += `
         <article class="col-12 col-sm-6 col-md-4" role="listitem">
-          <div class="clean-product-card p-3 h-100 d-flex flex-column shadow-sm position-relative">
-            
-            <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
-              <img src="${p.image}" alt="${p.name}" class="img-fluid rounded mb-3 w-100" style="height:200px; object-fit:cover;" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
+          <div class="product-card shadow-sm">
+            <img src="${p.image}" alt="${p.name}" class="product-img" />
+            <div class="p-3">
               <h3 class="h6 fw-bold mb-1">${p.name}</h3>
-            </a>
-            
-            <div class="mb-2">
-              <span class="small" aria-label="${p.rating} stars">${starsHTML}</span> 
-              <span class="text-secondary ms-1" style="font-size:0.8rem;">(${p.reviews} reviews)</span>
+              <div class="mb-2"><span class="small" aria-label="${p.rating} stars">${starsHTML}</span> <span class="text-secondary ms-1" style="font-size:0.8rem;">(${p.reviews})</span></div>
+              <div class="mt-2 mb-3"><span class="product-price">₹${p.price}</span></div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm flex-grow-1" onclick="quickView(${p.id})">Quick View</button>
+                <button class="btn btn-primary btn-sm flex-grow-1" onclick="addToCart(${p.id})">Add to Cart</button>
+              </div>
             </div>
-            
-            <div class="mb-3">
-              <span class="product-price">₹${p.price}</span>
-            </div>
-            
-            <button type="button" class="btn btn-primary btn-sm w-100 rounded-pill mt-auto" onclick="addToCart(${p.id})">
-              Add to Cart
-            </button>
           </div>
         </article>
       `;
@@ -452,6 +452,11 @@ try {
     document.getElementById('favCount').textContent = favorites.length;
   }
 
+  function quickView(productId) {
+    const product = products.find(p => p.id === productId);
+    alert('Quick View for: ' + product.name);
+  }
+
   function buyNow() { alert('Proceeding to checkout...'); }
 
   function showToast(message) {
@@ -471,21 +476,10 @@ try {
     document.getElementById('priceValue').textContent = `₹${e.target.value}`;
     applyFilters();
   });
-  
   document.getElementById('searchInput').addEventListener('input', applyFilters);
   document.querySelectorAll('.size-filter, #star4').forEach(el => el.addEventListener('change', applyFilters));
   document.getElementById('applyBtn').addEventListener('click', applyFilters);
-  
-  document.getElementById('resetBtn').addEventListener('click', () => { 
-    document.getElementById('searchInput').value = '';
-    document.getElementById('priceRange').value = 150;
-    document.getElementById('priceValue').textContent = '₹150';
-    document.querySelectorAll('.size-filter, #star4').forEach(cb => cb.checked = false);
-    document.getElementById('sortSelect').value = 'default';
-    filterState = { keyword: '', priceLimit: 150, categories: [], minRating: 0 };
-    displayProducts(products); 
-  });
-  
+  document.getElementById('resetBtn').addEventListener('click', () => { location.reload(); });
   document.getElementById('sortSelect').addEventListener('change', function() { sortProducts(this.value); });
 
   window.onload = () => {

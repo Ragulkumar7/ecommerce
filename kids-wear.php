@@ -78,6 +78,7 @@ try {
 </head>
 <body>
 <header class="main-header">
+<header class="main-header">
     <div class="container py-3">
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
