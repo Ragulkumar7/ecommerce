@@ -19,7 +19,7 @@
     --bs-white: #fff;
     --bs-gray: #6c757d;
     --bs-gray-dark: #343a40;
-    --bs-primary: #d1847d;
+    --bs-primary: #d16d08f2;
     --bs-secondary: #F92400;
     --bs-success: #198754;
     --bs-info: #0dcaf0;
@@ -4453,7 +4453,7 @@ fieldset:disabled .btn {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #D19C97
+    background-color: #d16d08f2
 }
 
 .nav-fill>.nav-link,
@@ -8414,7 +8414,7 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-    background-color: #D19C97
+    background-color: #d16d08f2
 }
 
 .bg-secondary {

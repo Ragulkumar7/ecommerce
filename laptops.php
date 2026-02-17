@@ -29,26 +29,38 @@ try {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/electronics.css" />
   <style>
-    /* Exact Navbar Styling */
+    /* Updated terracotta/clay-red navbar styling based on screenshot */
     .main-navbar {
         background-color: #cd7d73 !important;
-        padding: 15px 0 0 0;
+        padding: 0;
     }
+
     .main-navbar .nav-link {
         color: white !important;
         font-size: 1.1rem;
         font-weight: 500;
-        padding-bottom: 12px;
-        margin-right: 20px;
-        border-bottom: 3px solid transparent;
+        padding: 15px 20px !important;
+        margin-right: 10px;
+        position: relative;
         transition: all 0.3s ease;
     }
+
+    /* The yellow underline for the active link from screenshot */
+    .main-navbar .nav-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: 8px;
+        left: 20%;
+        width: 60%;
+        height: 3px;
+        background-color: #ffcc66;
+    }
+
     .main-navbar .nav-link:hover {
         opacity: 0.9;
+        color: #f8f9fa !important;
     }
-    .main-navbar .nav-link.active {
-        border-bottom: 3px solid #ffcc66;
-    }
+
     .main-navbar .nav-link i {
         margin-right: 8px;
     }
@@ -273,9 +285,11 @@ try {
   }
 
   function updateCartUI() {
-    document.getElementById('header-cart-count').textContent = cart.length;
+    const cartCountElement = document.getElementById('header-cart-count');
+    const totalElement = document.getElementById('header-total');
+    if(cartCountElement) cartCountElement.textContent = cart.length;
     const total = cart.reduce((sum, p) => sum + p.price, 0);
-    document.getElementById('header-total').textContent = total.toLocaleString();
+    if(totalElement) totalElement.textContent = total.toLocaleString();
   }
 
   document.addEventListener('DOMContentLoaded', () => {
