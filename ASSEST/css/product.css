@@ -1,0 +1,295 @@
+/* --- E-COMMERCE THEME (INSPIRED BY FLIPKART) --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --fk-blue: #2874f0;
+    --fk-orange: #fb641b;
+    --fk-yellow: #ff9f00;
+    --fk-green: #388e3c;
+    --text-dark: #212121;
+    --text-light: #878787;
+    --border-color: #f0f0f0;
+}
+
+body {
+    background-color: #f1f3f6;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* --- Left Column: Gallery & Actions --- */
+.gallery-column {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 1rem;
+}
+.image-previews {
+    display: flex;
+    gap: 1rem;
+}
+.thumbnail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+.thumbnail {
+    width: 64px;
+    height: 64px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    object-fit: contain;
+    transition: border-color 0.2s ease;
+}
+.thumbnail:hover, .thumbnail.active {
+    border-color: var(--fk-blue);
+}
+.main-image-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1rem;
+    min-height: 400px;
+}
+.main-image {
+    max-width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+}
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.action-buttons .btn {
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 2px;
+    border: none;
+}
+.btn-add-to-cart {
+    background-color: var(--fk-yellow);
+    color: white;
+}
+.btn-add-to-cart:hover {
+    background-color: #f09500;
+    color: white;
+}
+.btn-buy-now {
+    background-color: var(--fk-orange);
+    color: white;
+}
+.btn-buy-now:hover {
+    background-color: #e95e14;
+    color: white;
+}
+
+/* --- Right Column: Product Info --- */
+.breadcrumb-nav { font-size: 0.8rem; color: var(--text-light); }
+.product-brand { color: var(--text-light); font-weight: 500; }
+.product-title { font-size: 1.25rem; color: var(--text-dark); }
+.special-price { font-size: 1.75rem; font-weight: 700; color: var(--text-dark); }
+.old-price { text-decoration: line-through; color: var(--text-light); margin: 0 0.5rem; }
+.discount { color: var(--fk-green); font-weight: 500; }
+
+.rating-section { display: flex; align-items: center; gap: 0.5rem; }
+.rating-box {
+    background-color: var(--fk-green);
+    color: white;
+    padding: 2px 7px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.rating-box .bi-star-fill { font-size: 0.7rem; }
+.assured-badge { height: 21px; }
+
+.offers-list h6 { font-weight: 500; }
+.offer-item { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.5rem; font-size: 0.9rem; }
+.offer-item i { color: var(--fk-green); font-size: 1rem; }
+.offer-item span { font-weight: 700; }
+.offer-item a { text-decoration: none; font-weight: 500; color: var(--fk-blue); }
+
+.delivery-section .pincode-wrapper { display: flex; border-bottom: 2px solid var(--fk-blue); padding-bottom: 4px; }
+.pincode-wrapper input { border: none; outline: none; font-weight: 500; }
+.pincode-wrapper a { text-decoration: none; font-weight: 500; color: var(--fk-blue); }
+.delivery-details { font-weight: 500; }
+
+.specs-table { font-size: 0.9rem; }
+.specs-table td { border-bottom: 1px solid var(--border-color); }
+.specs-table .spec-label { color: var(--text-light); }
+.footer-section {
+  background: #111; /* dark footer background */
+  color: rgba(255,255,255,0.8);
+  padding: 4rem 0 2rem;
+  margin-top: 4rem;
+}
+.footer-section {
+  background: #111; /* dark footer background */
+  color: rgba(255,255,255,0.8);
+  padding: 4rem 0 2rem;
+  margin-top: 4rem;
+}
+
+
+.footer-brand-text {
+  color: white;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -1px;
+}
+
+
+.footer-links h5 {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+
+.footer-links h5:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: #cf665c; /* matches header color */
+  border-radius: 3px;
+}
+
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.footer-links ul li {
+  margin-bottom: 0.75rem;
+}
+
+
+.footer-links ul li a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+
+.footer-links ul li a:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+
+.footer-newsletter input {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+
+.footer-newsletter button {
+  background: #cf665c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  width: 100%;
+  transition: 0.3s;
+}
+
+
+.footer-newsletter button:hover {
+  background: #b74f46;
+}
+
+
+/* Align bottom row */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+
+.footer-bottom p {
+  margin: 0;
+}
+
+
+.footer-bottom a {
+  color: rgba(255,255,255,0.8);
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+
+.footer-bottom a:hover {
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .footer-section {
+    text-align: center;
+  }
+  .footer-links h5:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+}
+ .filter-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .filter-buttons button {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border-radius: 0.6em;
+      border: none;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .filter-buttons button#applyBtn {
+      background-color: #28a745;
+      color: white;
+    }
+    .filter-buttons button#applyBtn:hover {
+      background-color: #218838;
+    }
+    .filter-buttons button#resetBtn {
+      background-color: #dc3545;
+      color: white;
+    }
+    .filter-buttons button#resetBtn:hover {
+      background-color: #b02a37;
+    }
