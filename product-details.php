@@ -135,21 +135,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   // Combine products from your various pages here
+  // Combine ALL products from your various pages here with UNIQUE IDs
   const allProducts = [
-    // --- MAKEUP PRODUCTS ---
+    // --- MAKEUP PRODUCTS (IDs under 100) ---
     { id: 4, name: "Matte Red Lipstick", price: 600, category: "Makeup", reviews: 130, rating: 4.8, image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&q=80", desc: "Long-lasting matte finish lipstick with intense color payoff." },
     { id: 6, name: "Liquid Foundation", price: 850, category: "Makeup", reviews: 210, rating: 4.6, image: "./assest/img/foundation.jpg", desc: "Full coverage lightweight foundation for a flawless look." },
     { id: 7, name: "Volume Mascara", price: 450, category: "Makeup", reviews: 95, rating: 4.3, image: "./assest/img/mascara.jpg", desc: "Volumizing mascara for thicker, longer looking lashes." },
     { id: 8, name: "Black Eyeliner", price: 300, category: "Makeup", reviews: 320, rating: 4.5, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80", desc: "Smudge-proof, waterproof liquid black eyeliner." },
 
-    // --- ACCESSORIES ---
-    { id: 301, name: "Wireless Gaming Mouse", price: 2500, category: "Accessories", reviews: 45, rating: 4.5, brand: "Logitech", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500", desc: "High-speed wireless mouse with customizable DPI and RGB lighting." },
-    { id: 302, name: "Fast Charging Type-C Cable", price: 499, category: "Accessories", reviews: 112, rating: 4.2, brand: "Samsung", image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500", desc: "Durable braided cable for ultra-fast charging and data sync." },
-    { id: 303, name: "Laptop Cooling Pad", price: 1800, category: "Accessories", reviews: 89, rating: 4.0, brand: "Zeb", image: "https://images.unsplash.com/photo-1587202395103-53d748273615?w=500", desc: "Dual fan system to keep your laptop cool during intensive gaming." },
-    { id: 304, name: "Bluetooth Selfie Stick", price: 850, category: "Accessories", reviews: 56, rating: 4.1, brand: "Generic", image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=500", desc: "Extendable selfie stick with integrated Bluetooth shutter and tripod base." },
-    { id: 305, name: "65W Laptop Power Adapter", price: 3200, category: "Accessories", reviews: 23, rating: 4.7, brand: "Dell", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=500", desc: "Compact and efficient 65W power brick compatible with most modern USB-C laptops." },
-
-    // --- GOLD & JEWELRY ---
+    // --- GOLD & JEWELRY (IDs under 100) ---
     { id: 10, name: "High Gold plated bangle with Ruby Stones", price: 24999, category: "Jewelry", reviews: 142, rating: 4.5, brand: 'GoldCraft', image: './assest/img/IMG_20250818_165443.png', desc: "Elegant high gold plated bangles adorned with premium ruby stones." },
     { id: 11, name: "High Gold plated bangle with AD Stones", price: 17999, category: "Jewelry", reviews: 87, rating: 4.0, brand: 'Heritage Gold', image: './assest/img/IMG_20250818_171359.png', desc: "Beautifully crafted gold plated bangles featuring sparkling AD stones." },
     { id: 12, name: "Premium Quality Meganthi Polish Jhumka", price: 34999, category: "Jewelry", reviews: 215, rating: 5.0, brand: 'DiamondLuxe', image: './ASSEST/img/IMG_20250829_123319.png', desc: "Traditional Meganthi polish jhumkas perfect for festive occasions." },
@@ -160,9 +154,60 @@
     { id: 17, name: "Three layer Necklace with Ear rings", price: 34999, category: "Jewelry", reviews: 215, rating: 5.0, brand: 'DiamondLuxe', image: './ASSEST/img/IMG-20250811-WA0153.png', desc: "Luxurious three-layer necklace set accompanied by matching earrings." },
     { id: 18, name: "High Gold plated White & Ruby Stones Haram set", price: 19999, category: "Jewelry", reviews: 163, rating: 4.5, brand: 'SilverEssence', image: './ASSEST/img/IMG-20250826-WA0026.jpg', desc: "Complete bridal Haram and necklace set with white and ruby stones." },
     { id: 19, name: "High Gold plated Peacock design Haram set", price: 12999, category: "Jewelry", reviews: 94, rating: 4.0, brand: 'DiamondLuxe', image: './ASSEST/img/IMG-20250903-WA0054.png', desc: "Traditional peacock motif necklace and Haram set." },
-    { id: 20, name: "High Gold plated Red, Green & Gold Necklace", price: 15999, category: "Jewelry", reviews: 201, rating: 5.0, brand: 'GoldCraft', image: './ASSEST/img/IMG-20250903-WA0060.png', desc: "Multi-colored stone studded gold plated necklace." }
-    
-    // NOTE: Simply copy and paste any products from your electronics, stationary, or clothing pages below following this exact same format.
+    { id: 20, name: "High Gold plated Red, Green & Gold Necklace", price: 15999, category: "Jewelry", reviews: 201, rating: 5.0, brand: 'GoldCraft', image: './ASSEST/img/IMG-20250903-WA0060.png', desc: "Multi-colored stone studded gold plated necklace." },
+
+    // --- TEA & COFFEE (100s) ---
+    { id: 101, name: "Earl Grey Premium Tea", price: 850, category: "Tea", rating: 4.7, reviews: 120, image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "Classic black tea infused with bergamot oil." },
+    { id: 102, name: "Ethiopian Yirgacheffe Coffee", price: 1200, category: "Coffee", rating: 4.8, reviews: 95, image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "Premium medium roast coffee beans with floral notes." },
+    { id: 103, name: "Ceramic Teapot Set", price: 1800, category: "Accessories", rating: 4.5, reviews: 65, image: "https://images.unsplash.com/photo-1594736797933-d0b1d0bf8d78?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "Beautifully glazed ceramic teapot with two matching cups." },
+    { id: 104, name: "Japanese Matcha Green Tea", price: 950, category: "Tea", rating: 4.9, reviews: 150, image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "Authentic premium matcha powder from Japan." },
+    { id: 105, name: "French Press Coffee Maker", price: 2200, category: "Accessories", rating: 4.6, reviews: 80, image: "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "High-quality glass french press for the perfect brew." },
+    { id: 106, name: "Colombian Supremo Coffee", price: 1100, category: "Coffee", rating: 4.7, reviews: 110, image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "Rich and smooth Colombian coffee beans." },
+    { id: 107, name: "Chamomile Herbal Tea", price: 650, category: "Tea", rating: 4.4, reviews: 75, image: "https://images.unsplash.com/photo-1597481499751-6d3c16b365b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "Calming chamomile tea for evening relaxation." },
+    { id: 108, name: "Coffee Grinder", price: 1500, category: "Accessories", rating: 4.3, reviews: 60, image: "https://images.unsplash.com/photo-1572021335465-7a98d66bce65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "Manual coffee grinder with adjustable settings." },
+    { id: 109, name: "Assam Black Tea", price: 750, category: "Tea", rating: 4.6, reviews: 90, image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80", desc: "Strong and malty black tea sourced directly from Assam." },
+
+    // --- WOMEN'S WEAR (200s) ---
+    { id: 201, name: "SilentParrot Ladies' Panties - Classic", price: 299.99, category: "Women's Fashion", rating: 4.5, reviews: 142, brand: 'Slient parrot', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/1.jpg', desc: "Comfortable and breathable classic fit." },
+    { id: 202, name: "SilentParrot Multi-Pack Collection", price: 179.99, category: "Women's Fashion", rating: 4.0, reviews: 87, brand: 'Slient parrot', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/2.jpg', desc: "Convenient 3-pack for everyday wear." },
+    { id: 203, name: "SilentParrot Premium Cotton Panties", price: 349.99, category: "Women's Fashion", rating: 5.0, reviews: 215, brand: 'Slient parrot', image: 'https://test.divasprik.in/Silentparrot/frontend/ASSETS/images/womenproduct2.jpg', desc: "High-quality premium cotton with blue patterns." },
+    { id: 204, name: "Premium Men's Dress Series 3", price: 399.99, category: "Women's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/736x/f5/a0/4c/f5a04c9dfbcfceb0eebc347d7ffa71b5.jpg', desc: "Premium designer apparel." },
+    { id: 205, name: "Premium Men's Dress Series 8", price: 299.99, category: "Women's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/1200x/49/67/15/496715d79127f5bf9b1864625400216b.jpg', desc: "Premium designer apparel." },
+    { id: 206, name: "Premium Men's Dress Series 2", price: 399.99, category: "Women's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/1200x/aa/07/19/aa0719404f01f341cbeb2771a489ef81.jpg', desc: "Premium designer apparel." },
+    { id: 207, name: "Premium Men's Dress Series 5", price: 449.99, category: "Women's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/736x/b7/af/12/b7af1257268780a1f43495fefd2e6601.jpg', desc: "Premium designer apparel." },
+    { id: 208, name: "Premium Men's Dress Series 8", price: 649.99, category: "Women's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/1200x/19/3e/cf/193ecf4993db80e67e9d125adadfe9f3.jpg', desc: "Premium designer apparel." },
+    { id: 209, name: "Premium Men's Dress Series 9", price: 649.99, category: "Women's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/736x/5e/64/9b/5e649bad379266840a64a9699fd746d6.jpg', desc: "Premium designer apparel." },
+
+    // --- ACCESSORIES (300s) ---
+    { id: 301, name: "Wireless Gaming Mouse", price: 2500, category: "Accessories", reviews: 45, rating: 4.5, brand: "Logitech", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500", desc: "High-speed wireless mouse with customizable DPI and RGB lighting." },
+    { id: 302, name: "Fast Charging Type-C Cable", price: 499, category: "Accessories", reviews: 112, rating: 4.2, brand: "Samsung", image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500", desc: "Durable braided cable for ultra-fast charging and data sync." },
+    { id: 303, name: "Laptop Cooling Pad", price: 1800, category: "Accessories", reviews: 89, rating: 4.0, brand: "Zeb", image: "https://images.unsplash.com/photo-1587202395103-53d748273615?w=500", desc: "Dual fan system to keep your laptop cool during intensive gaming." },
+    { id: 304, name: "Bluetooth Selfie Stick", price: 850, category: "Accessories", reviews: 56, rating: 4.1, brand: "Generic", image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=500", desc: "Extendable selfie stick with integrated Bluetooth shutter and tripod base." },
+    { id: 305, name: "65W Laptop Power Adapter", price: 3200, category: "Accessories", reviews: 23, rating: 4.7, brand: "Dell", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=500", desc: "Compact and efficient 65W power brick compatible with most modern USB-C laptops." },
+
+    // --- SKINCARE (400s) ---
+    { id: 401, name: "Hydrating Moisturizer", price: 1200, category: "Skincare", rating: 4.9, reviews: 450, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80", desc: "Deep hydration formula perfect for dry skin types." },
+    { id: 402, name: "Vitamin C Serum", price: 1500, category: "Skincare", rating: 4.7, reviews: 312, image: "./assest/img/serum.jpg", desc: "Brightening serum for a glowing and even complexion." },
+    { id: 403, name: "Gentle Cleanser", price: 800, category: "Skincare", rating: 4.5, reviews: 180, image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", desc: "Daily facial cleanser that doesn't strip skin of its natural oils." },
+
+    // --- MEN'S WEAR (500s) ---
+    { id: 501, name: "Premium Men's Dress Series 7", price: 249.99, category: "Men's Fashion", rating: 4.5, reviews: 142, brand: 'Levis', image: 'https://i.pinimg.com/736x/76/0f/aa/760faa8086afb8c9d2d5c93715db4ec0.jpg', desc: "Stylish and formal men's wear for office settings." },
+    { id: 502, name: "Premium Men's Dress Series 5", price: 179.99, category: "Men's Fashion", rating: 4.0, reviews: 87, brand: 'Peter England', image: 'https://i.pinimg.com/736x/83/20/77/8320778b243c6ba85310486acad071dc.jpg', desc: "Comfortable smart-casual attire." },
+    { id: 503, name: "Luxury shirt", price: 349.99, category: "Men's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/736x/c0/d8/28/c0d828a20dabf18765790f22fd2bd23b.jpg', desc: "High-end luxury shirt crafted from fine cotton." },
+    { id: 504, name: "Premium Men's Dress Series 3", price: 399.99, category: "Men's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/736x/77/10/52/7710525232ffc1e816ead33d6e42d774.jpg', desc: "Premium designer apparel." },
+    { id: 505, name: "Premium Men's Dress Series 8", price: 299.99, category: "Men's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/736x/0f/94/96/0f9496deadaff29c0fb556fbdced4a27.jpg', desc: "Premium designer apparel." },
+    { id: 506, name: "Premium Men's Dress Series 2", price: 399.99, category: "Men's Fashion", rating: 5.0, reviews: 215, brand: 'Levis', image: 'https://i.pinimg.com/736x/0c/7e/55/0c7e55546c747e433ee53455189dfcab.jpg', desc: "Premium designer apparel." },
+
+    // --- ELECTRONICS (600s) ---
+    { id: 601, name: "iPhone 14 Pro", price: 80000, category: "Mobile Phones", rating: 4.2, reviews: 70, brand: 'Apple', image: 'https://i.pinimg.com/736x/f5/c1/66/f5c16671a90ff6094847c3a765d26147.jpg', desc: "Features the dynamic island, 48MP camera, and A16 chip." },
+    { id: 602, name: "Samsung S23", price: 60000, category: "Mobile Phones", rating: 5.0, reviews: 40, brand: 'Samsung', image: 'https://i.pinimg.com/736x/66/c2/3f/66c23f9566266ec63f39b2dac1a56585.jpg', desc: "Compact flagship with powerful performance and excellent cameras." },
+
+    // --- STATIONERY (700s) ---
+    { id: 701, name: "Gel Pen Set", price: 150, category: "Stationery", rating: 4.5, reviews: 120, image: "https://i.pinimg.com/1200x/18/dd/a7/18dda7156ace505cf245e0d58705a218.jpg", desc: "Smooth writing multi-color gel pen set." },
+    { id: 702, name: "Spiral Notebook", price: 80, category: "Stationery", rating: 4.2, reviews: 90, image: "https://i.pinimg.com/736x/ed/8d/16/ed8d1658bb2f25a9ef4688fd6413ab06.jpg", desc: "150-page college-ruled spiral notebook." },
+    { id: 703, name: "White Eraser", price: 20, category: "Stationery", rating: 4.0, reviews: 40, image: "https://i.pinimg.com/736x/f2/d1/23/f2d123ab237f8577f87bb10967abfd6a.jpg", desc: "High-quality dust-free white eraser." },
+    { id: 704, name: "Permanent Marker", price: 120, category: "Stationery", rating: 4.7, reviews: 140, image: "https://i.pinimg.com/736x/19/0f/ab/190fabd11ddbcbc63dbe23c9478c1d86.jpg", desc: "Bold, long-lasting permanent marker." },
+    { id: 705, name: "Ballpoint Pen", price: 100, category: "Stationery", rating: 4.3, reviews: 70, image: "https://i.pinimg.com/1200x/a7/56/23/a75623f1ee5b4059967682858ed4e4cc.jpg", desc: "Comfortable grip ballpoint pen for everyday use." }
   ];
 
   function loadProduct() {
