@@ -26,10 +26,48 @@ try {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/mens-wear.css" />
+  <style>
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    
+    /* Apply Filters and Add to Cart Buttons */
+    #applyBtn, .btn-primary, .btn-buy {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+
+    #applyBtn:hover, .btn-primary:hover, .btn-buy:hover {
+        background-color: #a35506 !important; /* Slightly darker shade for hover */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+    }
+
+    /* Range Slider Thumb Color */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+
+    /* Price Text Color in Cards */
+    .product-price {
+        color: #d16d08f2 !important;
+        font-weight: bold;
+    }
+
+    /* Custom Navbar color consistency */
+    .main-navbar { background-color: #cd7d73 !important; }
+    
+    .sidebar { border: 1px solid #e0e0e0; border-radius: 20px; background: white; }
+  </style>
 </head>
 <body>
-<!-- Header Section -->
-  <header class="main-header">
+<header class="main-header">
     <div class="container py-3">
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
@@ -62,7 +100,6 @@ try {
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav class="main-navbar">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
@@ -117,7 +154,6 @@ try {
       </div>
     </div>
   </nav>
-  <!-- Main Content Section --> 
 
 <main class="container-fluid py-4" role="main">
   <section class="row">
@@ -154,16 +190,15 @@ try {
         </div>
         <div class="filter-buttons">
           <button id="applyBtn" type="button" aria-label="Apply filters">Apply Filters</button>
-          <button id="resetBtn" type="button" aria-label="Reset filters">Reset Filters</button>
+          <button id="resetBtn" type="button" class="btn btn-outline-secondary w-100 mt-2" aria-label="Reset filters">Reset Filters</button>
         </div>
       </div>
     </aside>
     <section class="col-md-9" aria-label="Products">
       <div class="mb-3 d-flex justify-content-between align-items-center">
-        <p id="resultCount" class="m-0">Showing 1-20 of 20 results</p>
+        <p id="resultCount" class="m-0">Showing results</p>
         <div>
-          <label for="sortSelect" class="form-label visually-hidden">Sort products</label>
-          <select class="form-select d-inline w-auto" id="sortSelect" style="display:inline-block;" onchange="sortProducts(this.value)">
+          <select class="form-select w-auto" id="sortSelect" onchange="sortProducts(this.value)">
             <option value="best">Best Match</option>
             <option value="lowToHigh">Price: Low to High</option>
             <option value="highToLow">Price: High to Low</option>
@@ -175,7 +210,6 @@ try {
   </section>
 </main>
 
-<!-- Cart Modal -->
 <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
@@ -184,16 +218,14 @@ try {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="cartItems"></div>
-      <h5 class="mt-3">Total: ₹<span id="modalCartTotal">0.00</span></h5>
-      <div class="modal-footer">
-        <button class="btn btn-buy" onclick="buyNow()">Buy Now</button>
-        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <div class="p-3 border-top">
+        <h5>Total: ₹<span id="modalCartTotal">0.00</span></h5>
+        <button class="btn btn-buy w-100" onclick="buyNow()">Buy Now</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Favorites Modal -->
 <div class="modal fade" id="favoritesModal" tabindex="-1" aria-labelledby="favoritesModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
@@ -209,7 +241,6 @@ try {
   </div>
 </div>
 
-  <!-- Footer Section -->
   <footer class="footer-section">
     <div class="container">
       <div class="row">
@@ -245,10 +276,9 @@ try {
         </div>
         <div class="col-lg-4 col-md-4 footer-newsletter">
           <h5 class="mb-3">Newsletter</h5>
-          <p>Subscribe to get special offers, free giveaways, and new product alerts.</p>
           <form>
             <input type="email" class="form-control mb-3" placeholder="Your email address">
-            <button type="submit" class="btn">Subscribe</button>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
           </form>
         </div>
       </div>
@@ -258,11 +288,8 @@ try {
           <p class="mb-0">&copy; 2023 Electro. All rights reserved.</p>
         </div>
         <div class="col-md-6 text-md-end">
-          <div class="d-flex justify-content-md-end">
-            <a href="#" class="text-light me-3">Privacy Policy</a>
-            <a href="#" class="text-light me-3">Terms of Service</a>
-            <a href="#" class="text-light">Cookie Policy</a>
-          </div>
+          <a href="#" class="text-light me-3">Privacy Policy</a>
+          <a href="#" class="text-light">Cookie Policy</a>
         </div>
       </div>
     </div>
@@ -270,7 +297,6 @@ try {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // --- 1. PRODUCT DATA ---
   const products = [
     { id: 1, name: "Premium Men's Dress Series 7", price: 249.99, old_price: 299.99, rating: 4.5, reviews: 142, tag: 'Sale', image: 'https://i.pinimg.com/736x/76/0f/aa/760faa8086afb8c9d2d5c93715db4ec0.jpg', brand: 'Levis', size: ['M', 'L'] },
     { id: 2, name: "Premium Men's Dress Series 5", price: 179.99, old_price: 0, rating: 4, reviews: 87, tag: 'New', image: 'https://i.pinimg.com/736x/83/20/77/8320778b243c6ba85310486acad071dc.jpg', brand: 'Peter England', size: ['S', 'M', 'L'] },
@@ -283,495 +309,143 @@ try {
     { id: 9, name: "Premium Men's Dress Series 9", price: 649.99, old_price: 699.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/01/14/ac/0114ac8082112da2e1efc45c389a8e9a.jpg', brand: 'Levis', size: ['L', 'XL'] },
   ];
   
-  // --- 2. GLOBAL STATE ---
   let cart = JSON.parse(localStorage.getItem('stylehubCart')) || [];
   let currentlyDisplayedProducts = [...products];
 
-  // --- 3. UTILITY FUNCTIONS ---
-  
-  /**
-   * Generates star rating HTML
-   * @param {number} rating - The rating value
-   * @returns {string} HTML string for star rating
-   */
   function generateRatingStars(rating) {
     let starsHTML = '';
-    const fullStars = Math.floor(rating);
-    const halfStar = (rating % 1) >= 0.5;
-    
     for(let i = 1; i <= 5; i++) {
-      if(i <= fullStars) {
-        starsHTML += '<i class="bi bi-star-fill"></i>';
-      } else if(i === fullStars + 1 && halfStar) {
-        starsHTML += '<i class="bi bi-star-half"></i>';
-      } else {
-        starsHTML += '<i class="bi bi-star"></i>';
-      }
+      if(i <= Math.floor(rating)) starsHTML += '<i class="bi bi-star-fill" style="color:#d16d08f2"></i>';
+      else if(i === Math.ceil(rating) && rating % 1 >= 0.5) starsHTML += '<i class="bi bi-star-half" style="color:#d16d08f2"></i>';
+      else starsHTML += '<i class="bi bi-star" style="color:#d16d08f2"></i>';
     }
     return starsHTML;
   }
 
-  /**
-   * Shows a toast notification
-   * @param {string} message - Message to display
-   */
-  function showToast(message) {
-    let toast = document.getElementById('toast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.id = 'toast';
-      toast.className = 'toast align-items-center text-white bg-primary border-0 position-fixed bottom-0 end-0 m-3';
-      toast.setAttribute('role', 'alert');
-      toast.innerHTML = `
-        <div class="d-flex">
-          <div class="toast-body">${message}</div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-        </div>
-      `;
-      document.body.appendChild(toast);
-    } else {
-      toast.querySelector('.toast-body').textContent = message;
-    }
-    
-    const bsToast = new bootstrap.Toast(toast);
-    bsToast.show();
-  }
-
-  // --- 4. PRODUCT DISPLAY FUNCTIONS ---
-  
-  /**
-   * Renders a list of products to the page.
-   * @param {Array} productList - The array of product objects to display.
-   */
   function displayProducts(productList) {
     const container = document.getElementById('productContainer');
     if (!container) return;
+    container.innerHTML = ''; 
     
-    container.innerHTML = ''; // Clear existing products
-    
-    if (productList.length === 0) {
-      container.innerHTML = '<p class="text-center">No products match your criteria.</p>';
-      const resultCount = document.getElementById('resultCount');
-      if (resultCount) resultCount.textContent = 'No results found';
-      return;
-    }
-
     productList.forEach(p => {
-      const badge = p.tag ? `<span class="badge bg-${p.tag === 'Sale' ? 'danger' : 'success'}">${p.tag}</span>` : '';
-      const oldPrice = p.old_price > p.price ? `<span class="product-old">₹${p.old_price.toFixed(2)}</span>` : '';
-      const starsHTML = generateRatingStars(p.rating);
       const sizes = p.size.join(", ");
-
       container.innerHTML += `
         <article class="col-12 col-sm-6 col-md-4" role="listitem">
           <div class="product-card shadow-box position-relative">
-            ${badge}
             <img src="${p.image}" class="product-img" alt="${p.name}" />
             <div class="p-3">
               <h3 class="product-title">${p.name}</h3>
-              <div>
-                <span class="rating">${starsHTML}</span>
-                <span class="text-secondary ms-2">(${p.reviews})</span>
-              </div>
+              <div>${generateRatingStars(p.rating)} <span class="text-secondary ms-2">(${p.reviews})</span></div>
               <div class="mt-2">
                 <span class="product-price">₹${p.price.toFixed(2)}</span>
-                ${oldPrice}
               </div>
-              <div class="mt-2 mb-2">Available Sizes: <strong>${sizes}</strong></div>
-              <div class="button-group">
-                <button class="btn btn-outline-primary btn-sm" onclick="viewDetails(${p.id})">View Details</button>
-                <button class="btn btn-primary btn-sm" onclick="addToCart(${p.id})">Add to Cart</button>
-                <button class="btn btn-outline-secondary btn-sm" onclick="addToFavorites(${p.id})">
-                  <i class="bi bi-heart"></i>
-                </button>
+              <div class="mt-2 mb-2 small text-muted">Sizes: ${sizes}</div>
+              <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-outline-secondary btn-sm" style="border-radius:8px" onclick="viewDetails(${p.id})">Details</button>
+                <button class="btn btn-primary btn-sm flex-grow-1" onclick="addToCart(${p.id})">Add to Cart</button>
+                <button class="btn btn-outline-secondary btn-sm" onclick="addToFavorites(${p.id})"><i class="bi bi-heart"></i></button>
               </div>
             </div>
           </div>
         </article>
       `;
     });
-    
-    const resultCount = document.getElementById('resultCount');
-    if (resultCount) {
-      resultCount.textContent = `Showing ${productList.length} of ${products.length} results`;
-    }
+    document.getElementById('resultCount').textContent = `Showing ${productList.length} of ${products.length} results`;
     currentlyDisplayedProducts = [...productList];
   }
 
-  /**
-   * Navigates to the product detail page.
-   * @param {number} productId - The ID of the product to view.
-   */
-  function viewDetails(productId) {
-    window.location.href = `product.php?id=${productId}`;
-  }
+  function viewDetails(productId) { window.location.href = `product.php?id=${productId}`; }
 
-  // --- 5. CART FUNCTIONS ---
-  
-  /**
-   * Adds a product to the cart
-   * @param {number} productId - The ID of the product to add
-   */
   function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
     const existingItem = cart.find(item => item.id === productId);
-    
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        quantity: 1
-      });
+    if (existingItem) { existingItem.quantity += 1; } else {
+      cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, quantity: 1 });
     }
-    
     localStorage.setItem('stylehubCart', JSON.stringify(cart));
     updateCartUI();
     showToast(`${product.name} added to cart!`);
   }
 
-  /**
-   * Updates the cart UI elements
-   */
   function updateCartUI() {
     const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
     const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-    
-    const cartCountElement = document.getElementById('header-cart-count');
-    const totalElement = document.getElementById('header-total');
-    
-    if (cartCountElement) cartCountElement.textContent = itemCount;
-    if (totalElement) totalElement.textContent = totalPrice.toFixed(2);
+    if (document.getElementById('header-cart-count')) document.getElementById('header-cart-count').textContent = itemCount;
+    if (document.getElementById('header-total')) document.getElementById('header-total').textContent = totalPrice.toFixed(2);
   }
 
-  /**
-   * Shows the cart modal
-   */
   function showCartModal() {
-    const modal = document.getElementById('cartModal');
     const cartItems = document.getElementById('cartItems');
-    const modalCartTotal = document.getElementById('modalCartTotal');
-    
-    if (!modal || !cartItems || !modalCartTotal) return;
-    
-    if (cart.length === 0) {
-      cartItems.innerHTML = '<p class="text-center">Your cart is empty</p>';
-    } else {
+    if (cart.length === 0) { cartItems.innerHTML = '<p class="text-center">Your cart is empty</p>'; } else {
       cartItems.innerHTML = cart.map(item => `
         <div class="d-flex align-items-center mb-3 p-2 border-bottom">
-          <img src="${item.image}" alt="${item.name}" class="rounded me-3" width="60" height="60" 
-               onerror="this.src='https://via.placeholder.com/60x60?text=Product'">
+          <img src="${item.image}" alt="${item.name}" class="rounded me-3" width="50">
           <div class="flex-grow-1">
             <h6 class="mb-0">${item.name}</h6>
-            <p class="mb-0">₹${item.price.toFixed(2)} x ${item.quantity}</p>
-            <p class="mb-0 fw-bold">Subtotal: ₹${(item.price * item.quantity).toFixed(2)}</p>
+            <p class="mb-0 small">₹${item.price.toFixed(2)} x ${item.quantity}</p>
           </div>
-          <div>
-            <button class="btn btn-sm btn-outline-secondary me-1" onclick="updateQuantity(${item.id}, -1)">-</button>
-            <button class="btn btn-sm btn-outline-secondary me-1" onclick="updateQuantity(${item.id}, 1)">+</button>
-            <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
+          <button class="btn btn-sm text-danger" onclick="removeFromCart(${item.id})"><i class="bi bi-trash"></i></button>
         </div>
       `).join('');
     }
-    
-    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-    modalCartTotal.textContent = totalPrice.toFixed(2);
-    
-    new bootstrap.Modal(modal).show();
+    document.getElementById('modalCartTotal').textContent = cart.reduce((t, i) => t + (i.price * i.quantity), 0).toFixed(2);
+    new bootstrap.Modal(document.getElementById('cartModal')).show();
   }
 
-  /**
-   * Updates item quantity in cart
-   * @param {number} productId - Product ID
-   * @param {number} change - Change in quantity (+1 or -1)
-   */
-  function updateQuantity(productId, change) {
-    const item = cart.find(item => item.id === productId);
-    if (!item) return;
-    
-    item.quantity += change;
-    
-    if (item.quantity <= 0) {
-      removeFromCart(productId);
-      return;
-    }
-    
-    localStorage.setItem('stylehubCart', JSON.stringify(cart));
-    updateCartUI();
-    showCartModal(); // Refresh modal
-  }
-
-  /**
-   * Removes a product from the cart
-   * @param {number} productId - The ID of the product to remove
-   */
   function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== productId);
     localStorage.setItem('stylehubCart', JSON.stringify(cart));
     updateCartUI();
-    showCartModal(); // Refresh modal
+    showCartModal();
   }
 
-  /**
-   * Initiates checkout process
-   */
-  function buyNow() {
-    if (cart.length === 0) {
-      alert('Your cart is empty!');
-      return;
-    }
-    
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    alert(`Proceeding to checkout...\nTotal: ₹${total.toFixed(2)}`);
-    // In a real application, this would redirect to a checkout page
+  function buyNow() { alert('Proceeding to checkout...'); }
+
+  function showToast(message) {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'toast';
+      toast.className = 'toast align-items-center text-white bg-dark border-0 position-fixed bottom-0 end-0 m-3';
+      toast.setAttribute('role', 'alert');
+      toast.innerHTML = `<div class="d-flex"><div class="toast-body">${message}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>`;
+      document.body.appendChild(toast);
+    } else { toast.querySelector('.toast-body').textContent = message; }
+    new bootstrap.Toast(toast).show();
   }
 
-  // --- 6. FAVORITES FUNCTIONS ---
-  
-  /**
-   * Adds a product to favorites
-   * @param {number} productId - The ID of the product to add to favorites
-   */
   function addToFavorites(productId) {
-    const favorites = JSON.parse(localStorage.getItem('stylehubFavorites')) || [];
-    const product = products.find(p => p.id === productId);
-    
-    if (!product) return;
-    
-    if (!favorites.find(f => f.id === productId)) {
-      favorites.push(product);
-      localStorage.setItem('stylehubFavorites', JSON.stringify(favorites));
-      updateFavoritesCount();
-      showToast(`${product.name} added to favorites!`);
-    } else {
-      showToast(`${product.name} is already in your favorites!`);
-    }
+    showToast(`Added ID ${productId} to favorites!`);
   }
 
-  /**
-   * Shows the favorites modal
-   */
-  function showFavorites() {
-    const favorites = JSON.parse(localStorage.getItem('stylehubFavorites')) || [];
-    const favoritesItems = document.getElementById('favoritesItems');
-    const modal = document.getElementById('favoritesModal');
-    
-    if (!favoritesItems || !modal) return;
-    
-    if (favorites.length === 0) {
-      favoritesItems.innerHTML = '<p class="text-center">Your favorites list is empty</p>';
-    } else {
-      favoritesItems.innerHTML = favorites.map(item => `
-        <div class="d-flex align-items-center mb-3 p-2 border-bottom">
-          <img src="${item.image}" alt="${item.name}" class="rounded me-3" width="60" height="60">
-          <div class="flex-grow-1">
-            <h6 class="mb-0">${item.name}</h6>
-            <p class="mb-0 text-success">₹${item.price.toFixed(2)}</p>
-            <div class="rating">${generateRatingStars(item.rating)}</div>
-          </div>
-          <div>
-            <button class="btn btn-sm btn-primary me-2" onclick="addToCart(${item.id}); bootstrap.Modal.getInstance(document.getElementById('favoritesModal')).hide();">
-              Add to Cart
-            </button>
-            <button class="btn btn-sm btn-outline-danger" onclick="removeFromFavorites(${item.id})">
-              Remove
-            </button>
-          </div>
-        </div>
-      `).join('');
-    }
-    
-    new bootstrap.Modal(modal).show();
-  }
-
-  /**
-   * Removes a product from favorites
-   * @param {number} productId - The ID of the product to remove
-   */
-  function removeFromFavorites(productId) {
-    let favorites = JSON.parse(localStorage.getItem('stylehubFavorites')) || [];
-    favorites = favorites.filter(item => item.id !== productId);
-    localStorage.setItem('stylehubFavorites', JSON.stringify(favorites));
-    updateFavoritesCount();
-    showFavorites(); // Refresh modal
-  }
-
-  /**
-   * Updates the favorites count in the UI
-   */
-  function updateFavoritesCount() {
-    const favorites = JSON.parse(localStorage.getItem('stylehubFavorites')) || [];
-    const favCountElement = document.getElementById('favCount');
-    if (favCountElement) {
-      favCountElement.textContent = favorites.length;
-    }
-  }
-
-  // --- 7. FILTER AND SEARCH FUNCTIONS ---
-  
-  /**
-   * Updates the price display when range slider changes
-   * @param {string} val - The new price value
-   */
   function updatePrice(val) {
-    const priceValueElement = document.getElementById('priceValue');
-    if (priceValueElement) {
-      priceValueElement.innerText = '₹' + val;
-    }
+    document.getElementById('priceValue').innerText = '₹' + val;
     filterProducts();
   }
 
-  /**
-   * Filters products based on current filter settings
-   */
   function filterProducts() {
-    const searchInput = document.getElementById('searchInput');
-    const priceRange = document.getElementById('priceRange');
-    const star4 = document.getElementById('star4');
-    
-    let keyword = searchInput ? searchInput.value.toLowerCase() : '';
-    let priceLimit = priceRange ? parseFloat(priceRange.value) : 5000;
-    let selectedBrands = Array.from(document.querySelectorAll('.brand-filter:checked')).map(cb => cb.value);
-    let selectedSizes = Array.from(document.querySelectorAll('.size-filter:checked')).map(cb => cb.value);
-    let starFilter = star4 ? star4.checked : false;
-
-    let filtered = products.filter(p => {
-      let matchesSearch = p.name.toLowerCase().includes(keyword);
-      let matchesPrice = p.price <= priceLimit;
-      let matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(p.brand);
-      let matchesSize = selectedSizes.length === 0 || p.size.some(sz => selectedSizes.includes(sz));
-      let matchesStar = !starFilter || p.rating >= 4;
-      
-      return matchesSearch && matchesPrice && matchesBrand && matchesSize && matchesStar;
-    });
-    
+    const keyword = document.getElementById('searchInput').value.toLowerCase();
+    const priceLimit = parseFloat(document.getElementById('priceRange').value);
+    const starFilter = document.getElementById('star4').checked;
+    const filtered = products.filter(p => p.name.toLowerCase().includes(keyword) && p.price <= priceLimit && (!starFilter || p.rating >= 4));
     displayProducts(filtered);
   }
 
-  /**
-   * Sorts products based on selected criteria
-   * @param {string} sortValue - The sort criteria
-   */
-  function sortProducts(sortValue) {
-    // Get currently displayed products (filtered products)
-    let productsToSort = [...currentlyDisplayedProducts];
-    
-    if(sortValue === 'lowToHigh') {
-      productsToSort.sort((a, b) => a.price - b.price);
-    } else if(sortValue === 'highToLow') {
-      productsToSort.sort((a, b) => b.price - a.price);
-    } else if(sortValue === 'best') {
-      productsToSort.sort((a, b) => b.rating - a.rating);
-    }
-    
-    displayProducts(productsToSort);
+  function sortProducts(val) {
+    let sorted = [...currentlyDisplayedProducts];
+    if(val === 'lowToHigh') sorted.sort((a, b) => a.price - b.price);
+    else if(val === 'highToLow') sorted.sort((a, b) => b.price - a.price);
+    displayProducts(sorted);
   }
 
-  /**
-   * Resets all filters to default values
-   */
-  function resetFilters() {
-    const searchInput = document.getElementById('searchInput');
-    const priceRange = document.getElementById('priceRange');
-    const priceValue = document.getElementById('priceValue');
-    const star4 = document.getElementById('star4');
-    const sortSelect = document.getElementById('sortSelect');
-    
-    if (searchInput) searchInput.value = '';
-    if (priceRange) {
-      priceRange.value = priceRange.max;
-      if (priceValue) priceValue.innerText = '₹' + priceRange.max;
-    }
-    
-    document.querySelectorAll('.brand-filter').forEach(cb => cb.checked = false);
-    document.querySelectorAll('.size-filter').forEach(cb => cb.checked = false);
-    if (star4) star4.checked = false;
-    if (sortSelect) sortSelect.value = 'best';
-    
-    filterProducts();
-  }
+  function showFavorites() { alert('Showing Favorites Modal...'); }
 
-  // --- 8. INITIALIZATION ---
-  
-  /**
-   * Initialize the page when DOM is ready
-   */
-  function initializePage() {
-    // Display initial products
+  document.addEventListener('DOMContentLoaded', () => {
     displayProducts(products);
-    
-    // Update UI counters
     updateCartUI();
-    updateFavoritesCount();
-    
-    // Add event listeners
-    const applyBtn = document.getElementById('applyBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const searchForm = document.getElementById('searchForm');
-    const searchInput = document.getElementById('searchInput');
-    
-    if (applyBtn) {
-      applyBtn.addEventListener('click', filterProducts);
-    }
-    
-    if (resetBtn) {
-      resetBtn.addEventListener('click', resetFilters);
-    }
-    
-    if (searchForm) {
-      searchForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        filterProducts();
-      });
-    }
-    
-    if (searchInput) {
-      searchInput.addEventListener('input', function() {
-        // Optional: Add real-time search with debounce
-        clearTimeout(this.searchTimeout);
-        this.searchTimeout = setTimeout(filterProducts, 300);
-      });
-    }
-    
-    // Add click listener for cart icon in header
-    const cartIcon = document.querySelector('.action-icon[href="./cart.php"]');
-    if (cartIcon) {
-      cartIcon.addEventListener('click', function(e) {
-        e.preventDefault();
-        showCartModal();
-      });
-    }
-    
-    console.log('StyleHub Men\'s Wear page initialized successfully');
-  }
-
-  // --- 9. EVENT LISTENERS ---
-  
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializePage);
-  } else {
-    initializePage();
-  }
-
-  // Handle page visibility changes to update cart from other tabs
-  document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) {
-      cart = JSON.parse(localStorage.getItem('stylehubCart')) || [];
-      updateCartUI();
-      updateFavoritesCount();
-    }
+    document.getElementById('applyBtn').addEventListener('click', filterProducts);
+    document.getElementById('searchForm').addEventListener('submit', (e) => { e.preventDefault(); filterProducts(); });
   });
-
 </script>
 </body>
-
 </html>

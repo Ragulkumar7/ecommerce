@@ -202,8 +202,8 @@ try {
                     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Electronics</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./electronics.php">Mobile Phones</a></li>
-                        <li><a class="dropdown-item" href="./electronics.php">Laptops</a></li>
-                        <li><a class="dropdown-item" href="./electronics.php">Accessories</a></li>
+                        <li><a class="dropdown-item" href="./laptops.php">Laptops</a></li>
+                        <li><a class="dropdown-item" href="./accessories.php">Accessories</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

@@ -26,10 +26,51 @@ try {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/kids-wear.css">
+  <style>
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    
+    /* Apply Filters, Add to Cart, and Modal Buy Now Buttons */
+    #applyBtn, .btn-primary, .btn-buy {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+
+    #applyBtn:hover, .btn-primary:hover, .btn-buy:hover {
+        background-color: #a35506 !important; /* Slightly darker shade for hover */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+    }
+
+    /* Range Slider Thumb Color */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+
+    /* Price Text Color in Cards */
+    .product-price {
+        color: #d16d08f2 !important;
+        font-weight: bold;
+    }
+
+    /* Star Rating Color */
+    .rating i {
+        color: #d16d08f2 !important;
+    }
+
+    /* Sidebar Structure Preservation */
+    .sidebar { border: 1px solid #e0e0e0; border-radius: 20px; background: white; overflow: hidden; }
+  </style>
 </head>
 <body>
-<!-- Header Section -->
-  <header class="main-header">
+<header class="main-header">
     <div class="container py-3">
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
@@ -62,7 +103,6 @@ try {
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav class="main-navbar">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
@@ -117,7 +157,6 @@ try {
       </div>
     </div>
   </nav>
-  <!-- Main Content Section -->
   <main class="container-fluid py-4" role="main">
     <section class="row">
       <aside class="col-md-3" role="complementary">
@@ -208,7 +247,7 @@ try {
           
           <div class="filter-buttons">
             <button id="applyBtn" type="button">Apply Filters</button>
-            <button id="resetBtn" type="button">Reset Filters</button>
+            <button id="resetBtn" type="button" class="btn btn-outline-secondary w-100 mt-2">Reset Filters</button>
           </div>
         </div>
       </aside>
@@ -230,7 +269,6 @@ try {
     </section>
   </main>
 
-  <!-- Cart Modal -->
   <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -305,18 +343,18 @@ try {
               <img src="${p.image}" class="product-img" alt="${p.name}" />
               <div class="p-3">
                 <h3 class="product-title">${p.name}</h3>
-                <div>
-                  <span class="rating">${starsHTML}</span>
+                <div class="rating">
+                  <span>${starsHTML}</span>
                   <span class="text-secondary ms-2">(${p.reviews})</span>
                 </div>
                 <div class="mt-2">
                   <span class="product-price">₹${p.price.toFixed(2)}</span>
                   ${oldPrice}
                 </div>
-                <div class="mt-2 mb-2">Available Sizes: <strong>${sizes}</strong></div>
-                <div class="button-group">
-                  <button class="btn btn-outline-primary btn-sm" onclick="viewDetails(${p.id})">View Details</button>
-                  <button class="btn btn-primary btn-sm" onclick="addToCart(${p.id})">Add to Cart</button>
+                <div class="mt-2 mb-2 small">Sizes: <strong>${sizes}</strong></div>
+                <div class="button-group d-flex gap-2">
+                  <button class="btn btn-outline-primary btn-sm flex-grow-1" onclick="viewDetails(${p.id})">Details</button>
+                  <button class="btn btn-primary btn-sm flex-grow-1" onclick="addToCart(${p.id})">Add to Cart</button>
                 </div>
               </div>
             </div>
@@ -343,7 +381,7 @@ try {
                     <img src="${product.image}" class="img-fluid rounded" alt="${product.name}">
                   </div>
                   <div class="col-md-6">
-                    <h4>₹${product.price.toLocaleString()}</h4>
+                    <h4 class="text-primary">₹${product.price.toLocaleString()}</h4>
                     ${product.old_price ? `<p class="text-muted"><s>₹${product.old_price.toLocaleString()}</s></p>` : ''}
                     <p><strong>Brand:</strong> ${product.brand}</p>
                     <p><strong>Available Sizes:</strong> ${product.size.join(', ')}</p>
@@ -396,71 +434,12 @@ try {
       document.getElementById('header-total').textContent = totalPrice.toFixed(2);
     }
 
-    function showCartModal() {
-      const modal = document.getElementById('cartModal');
-      const cartItems = document.getElementById('cartItems');
-      const modalCartTotal = document.getElementById('modalCartTotal');
-      
-      if (cart.length === 0) {
-        cartItems.innerHTML = '<p class="text-center">Your cart is empty</p>';
-      } else {
-        cartItems.innerHTML = cart.map(item => `
-          <div class="d-flex align-items-center mb-3 p-2 border-bottom">
-            <img src="${item.image}" alt="${item.name}" class="rounded me-3" width="60" height="60" onerror="this.src='https://via.placeholder.com/60x60?text=Product'">
-            <div class="flex-grow-1">
-              <h6 class="mb-0">${item.name}</h6>
-              <p class="mb-0">₹${item.price.toLocaleString()} x ${item.quantity}</p>
-              <p class="mb-0 fw-bold">Subtotal: ₹${(item.price * item.quantity).toLocaleString()}</p>
-            </div>
-            <div>
-              <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})">
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-          </div>
-        `).join('');
-      }
-      
-      const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-      modalCartTotal.textContent = totalPrice.toFixed(2);
-      
-      new bootstrap.Modal(modal).show();
-    }
-
-    function removeFromCart(productId) {
-      cart = cart.filter(item => item.id !== productId);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCartUI();
-      showCartModal();
-    }
-
-    function addToFavorites(productId) {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      const product = products.find(p => p.id === productId);
-      
-      if (!favorites.find(f => f.id === productId)) {
-        favorites.push(product);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        updateFavoritesCount();
-        showToast(`${product.name} added to favorites!`);
-      } else {
-        showToast(`${product.name} is already in your favorites!`);
-      }
-    }
-
-    function updateFavoritesCount() {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      document.getElementById('favCount').textContent = favorites.length;
-    }
-
     function buyNow() {
       if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
       }
-      
       alert('Proceeding to checkout...');
-      // In a real application, this would redirect to a checkout page
     }
 
     function showToast(message) {
@@ -496,146 +475,66 @@ try {
       if (filterState.sizes.length > 0) activeFilters.push(`Sizes: ${filterState.sizes.join(', ')}`);
       if (filterState.minRating > 0) activeFilters.push(`Min Rating: ${filterState.minRating}+ stars`);
       
-      if (activeFilters.length === 0) {
-        summary.textContent = 'No filters applied';
-        summary.style.backgroundColor = '#f8f9fa';
-      } else {
-        summary.textContent = 'Active filters: ' + activeFilters.join(' • ');
-        summary.style.backgroundColor = '#e8f5e8';
-      }
+      summary.textContent = activeFilters.length === 0 ? 'No filters applied' : 'Active filters: ' + activeFilters.join(' • ');
     }
 
     function applyFilters() {
-      // Get search keyword
       filterState.keyword = document.getElementById('searchInput').value.trim().toLowerCase();
-      
-      // Get price limit
       filterState.priceLimit = parseFloat(document.getElementById('priceRange').value);
-      
-      // Get selected sizes
       filterState.sizes = Array.from(document.querySelectorAll('.size-filter:checked')).map(cb => cb.value);
       
-      // Get selected rating (highest selected rating takes precedence)
       const ratingCheckboxes = document.querySelectorAll('.rating-filter:checked');
-      if (ratingCheckboxes.length > 0) {
-        const ratings = Array.from(ratingCheckboxes).map(cb => parseInt(cb.value));
-        filterState.minRating = Math.max(...ratings);
-      } else {
-        filterState.minRating = 0;
-      }
+      filterState.minRating = ratingCheckboxes.length > 0 ? Math.max(...Array.from(ratingCheckboxes).map(cb => parseInt(cb.value))) : 0;
       
-      // Apply filters to products
       currentFilteredProducts = products.filter(p => {
-        const matchKeyword = filterState.keyword === '' || 
-                            p.name.toLowerCase().includes(filterState.keyword) || 
-                            p.brand.toLowerCase().includes(filterState.keyword);
+        const matchKeyword = filterState.keyword === '' || p.name.toLowerCase().includes(filterState.keyword) || p.brand.toLowerCase().includes(filterState.keyword);
         const matchPrice = p.price <= filterState.priceLimit;
-        const matchSize = filterState.sizes.length === 0 || 
-                         filterState.sizes.some(sz => p.size.includes(sz));
+        const matchSize = filterState.sizes.length === 0 || filterState.sizes.some(sz => p.size.includes(sz));
         const matchRating = filterState.minRating === 0 || p.rating >= filterState.minRating;
         
         return matchKeyword && matchPrice && matchSize && matchRating;
       });
       
-      // Update UI
       displayProducts(currentFilteredProducts);
       updateFilterSummary();
-      
-      // Highlight active filter sections
-      document.querySelectorAll('.filter-section').forEach(section => {
-        section.classList.remove('filter-active');
-      });
-      
-      if (filterState.keyword) {
-        document.querySelector('.filter-section[aria-label="Category filter"]').classList.add('filter-active');
-      }
-      if (filterState.priceLimit < 1000) {
-        document.querySelector('.filter-section[aria-label="Price filter"]').classList.add('filter-active');
-      }
-      if (filterState.sizes.length > 0) {
-        document.querySelector('.filter-section[aria-label="Size filter"]').classList.add('filter-active');
-      }
-      if (filterState.minRating > 0) {
-        document.querySelector('.filter-section[aria-label="Rating filter"]').classList.add('filter-active');
-      }
     }
 
     function resetFilters() {
-      // Reset form elements
       document.getElementById('searchInput').value = '';
       document.getElementById('priceRange').value = 1000;
       document.getElementById('priceValue').innerText = '₹1000';
       document.querySelectorAll('.size-filter').forEach(cb => cb.checked = false);
       document.querySelectorAll('.rating-filter').forEach(cb => cb.checked = false);
       
-      // Reset filter state
-      filterState = {
-        keyword: '',
-        priceLimit: 1000,
-        sizes: [],
-        minRating: 0
-      };
-      
-      // Reset product list
+      filterState = { keyword: '', priceLimit: 1000, sizes: [], minRating: 0 };
       currentFilteredProducts = [...products];
-      
-      // Update UI
       displayProducts(products);
       updateFilterSummary();
-      
-      // Remove active filter highlights
-      document.querySelectorAll('.filter-section').forEach(section => {
-        section.classList.remove('filter-active');
-      });
     }
 
     function sortProducts(sortValue) {
       let sortedProducts = [...currentFilteredProducts];
-      
-      if (sortValue === 'lowToHigh') {
-        sortedProducts.sort((a, b) => a.price - b.price);
-      } else if (sortValue === 'highToLow') {
-        sortedProducts.sort((a, b) => b.price - a.price);
-      }
-      // For 'best' option, we keep the current filtered order
-      
+      if (sortValue === 'lowToHigh') sortedProducts.sort((a, b) => a.price - b.price);
+      else if (sortValue === 'highToLow') sortedProducts.sort((a, b) => b.price - a.price);
       displayProducts(sortedProducts);
     }
 
-    // Event listeners
     document.addEventListener('DOMContentLoaded', function() {
-      // Price range input value update
       document.getElementById('priceRange').addEventListener('input', function() {
         document.getElementById('priceValue').innerText = '₹' + this.value;
       });
       
-      // Apply filters button
       document.getElementById('applyBtn').addEventListener('click', applyFilters);
-      
-      // Reset filters button
       document.getElementById('resetBtn').addEventListener('click', resetFilters);
       
-      // Auto-apply filters when rating or size checkboxes change
       document.querySelectorAll('.size-filter, .rating-filter').forEach(checkbox => {
         checkbox.addEventListener('change', applyFilters);
       });
       
-      // Auto-apply filters when price range changes
       document.getElementById('priceRange').addEventListener('change', applyFilters);
       
-      // Search input enter key
-      document.getElementById('searchInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          applyFilters();
-        }
-      });
-      
-      // Initialize the page
       displayProducts(products);
       updateCartUI();
-      updateFavoritesCount();
-      updateFilterSummary();
     });
   </script>
 </body>

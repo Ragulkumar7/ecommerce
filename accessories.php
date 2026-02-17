@@ -221,7 +221,7 @@ try {
   const accessories = [
     { id: 301, name: "Wireless Gaming Mouse", price: 2500, image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500", brand: "Logitech" },
     { id: 302, name: "Fast Charging Type-C Cable", price: 499, image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500", brand: "Samsung" },
-    { id: 303, name: "Laptop Cooling Pad", price: 1800, image: "https://images.unsplash.com/photo-1587202395103-53d748273615?w=500", brand: "Zeb" },
+    { id: 303, name: "Laptop Cooling Pad", price: 1800, image: "./ASSEST/img/laptop.jpg", brand: "Zeb" },
     { id: 304, name: "Bluetooth Selfie Stick", price: 850, image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=500", brand: "Generic" },
     { id: 305, name: "65W Laptop Power Adapter", price: 3200, image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=500", brand: "Dell" }
   ];

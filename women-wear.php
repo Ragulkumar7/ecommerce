@@ -26,9 +26,50 @@ try {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/women-wear.css">
+  <style>
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    
+    /* Apply Filters, Add to Cart, and Buy Now Buttons */
+    #applyBtn, .btn-primary, .btn-buy {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+
+    #applyBtn:hover, .btn-primary:hover, .btn-buy:hover {
+        background-color: #a35506 !important; /* Slightly darker shade for hover effect */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+    }
+
+    /* Range Slider Thumb Color */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+
+    /* Price Text Color in Cards */
+    .product-price {
+        color: #d16d08f2 !important;
+        font-weight: bold;
+    }
+
+    /* Star Rating Color */
+    .bi-star-fill, .bi-star-half {
+        color: #d16d08f2 !important;
+    }
+
+    /* Preserve Sidebar Structure */
+    .sidebar { border: 1px solid #e0e0e0; border-radius: 20px; background: white; overflow: hidden; }
+  </style>
 </head>
 <body>
-  <!-- Header Section -->
   <header class="main-header">
     <div class="container py-3">
       <div class="row align-items-center">
@@ -59,7 +100,6 @@ try {
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav class="main-navbar">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
@@ -206,9 +246,9 @@ try {
             </div>
           </div>
 
-          <div class="filter-buttons">
-            <button id="applyBtn" type="button">Apply Filters</button>
-            <button id="resetBtn" type="button">Reset Filters</button>
+          <div class="filter-buttons p-3">
+            <button id="applyBtn" type="button" class="w-100 mb-2">Apply Filters</button>
+            <button id="resetBtn" type="button" class="btn btn-outline-secondary w-100">Reset Filters</button>
           </div>
         </div>
       </aside>
@@ -229,7 +269,6 @@ try {
     </section>
   </main>
 
-  <!-- Cart Modal -->
   <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
       <div class="modal-content">
@@ -238,7 +277,7 @@ try {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="cartItems"></div>
-        <h5 class="mt-3">Total: ₹<span id="modalCartTotal">0.00</span></h5>
+        <h5 class="mt-3 p-3">Total: ₹<span id="modalCartTotal">0.00</span></h5>
         <div class="modal-footer">
           <button class="btn btn-buy" onclick="buyNow()">Buy Now</button>
           <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -247,7 +286,6 @@ try {
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="footer-section">
     <div class="container">
       <div class="row">
@@ -312,7 +350,7 @@ try {
     const products = [
       { id: 1, name: "SilentParrot Ladies' Panties - Classic Collection", price: 299.99, old_price: 899.99, rating: 4.5, reviews: 142, tag: 'Sale', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/1.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
       { id: 2, name: "SilentParrot Multi-Pack Ladies' Collection (3-Pack)", price: 179.99, old_price: 0, rating: 4, reviews: 87, tag: 'New', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/2.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
-      { id: 3, name: "SilentParrot Premium Cotton Panties - Blue Patterns", price: 349.99, old_price: 399.99, rating: 5, reviews: 215, tag: '', image: 'https://test.divasprik.in/Silentparrot/frontend/ASSETS/images/womenproduct2.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
+      { id: 3, name: "SilentParrot Premium Cotton Panties - Blue Patterns", price: 349.99, old_price: 399.99, rating: 5, reviews: 215, tag: '', image: './ASSEST/img/parrot.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
       { id: 4, name: "Premium Men's Dress Series 3", price: 399.99, old_price: 499.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/f5/a0/4c/f5a04c9dfbcfceb0eebc347d7ffa71b5.jpg', brand: 'Levis', size: ['L', 'XL'] },
       { id: 5, name: "Premium Men's Dress Series 8", price: 299.99, old_price: 369.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/49/67/15/496715d79127f5bf9b1864625400216b.jpg', brand: 'Levis', size: ['L', 'XL'] },
       { id: 6, name: "Premium Men's Dress Series 2", price: 399.99, old_price: 479.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/aa/07/19/aa0719404f01f341cbeb2771a489ef81.jpg', brand: 'Levis', size: ['L', 'XL'] },
@@ -377,11 +415,6 @@ try {
       });
       document.getElementById('resultCount').textContent = `Showing 1-${productList.length} of ${productList.length} results`;
     }
-
-    function viewDetails(productId) {
-      alert('View Details clicked for product ID: ' + productId);
-    }
-
 
     function addToCart(productId) {
       const product = products.find(p => p.id === productId);
@@ -450,64 +483,9 @@ try {
       showCartModal();
     }
 
-    function addToFavorites(productId) {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      const product = products.find(p => p.id === productId);
-      
-      if (!favorites.find(f => f.id === productId)) {
-        favorites.push(product);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        updateFavoritesCount();
-        showToast(`${product.name} added to favorites!`);
-      } else {
-        showToast(`${product.name} is already in your favorites!`);
-      }
-    }
-
-    function updateFavoritesCount() {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      document.getElementById('favCount').textContent = favorites.length;
-    }
-
     function quickView(productId) {
-      const product = products.find(p => p.id === productId);
-      const modalContent = `
-        <div class="modal fade" id="quickViewModal" tabindex="-1">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">${product.name}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="${product.image}" class="img-fluid" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x400?text=Product+Image'">
-                  </div>
-                  <div class="col-md-6">
-                    <h4>₹${product.price.toLocaleString()}</h4>
-                    ${product.old_price ? `<p class="text-muted"><s>₹${product.old_price.toLocaleString()}</s></p>` : ''}
-                    <p>${generateRatingStars(product.rating)} (${product.reviews} reviews)</p>
-                    <p><strong>Brand:</strong> ${product.brand}</p>
-                    <p><strong>Material:</strong> ${product.material.join(', ')}</p>
-                    <button class="btn btn-primary w-100 mt-3" onclick="addToCart(${product.id}); bootstrap.Modal.getInstance(document.getElementById('quickViewModal')).hide();">Add to Cart</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      // Remove existing modal if any
-      const existingModal = document.getElementById('quickViewModal');
-      if (existingModal) {
-        existingModal.remove();
-      }
-      
-      document.body.insertAdjacentHTML('beforeend', modalContent);
-      const quickViewModal = new bootstrap.Modal(document.getElementById('quickViewModal'));
-      quickViewModal.show();
+        const product = products.find(p => p.id === productId);
+        alert('Details for: ' + product.name);
     }
 
     function buyNow() {
@@ -515,13 +493,10 @@ try {
         alert('Your cart is empty!');
         return;
       }
-      
       alert('Proceeding to checkout...');
-      // In a real application, this would redirect to a checkout page
     }
 
     function showToast(message) {
-      // Create toast element if it doesn't exist
       let toast = document.getElementById('toast');
       if (!toast) {
         toast = document.createElement('div');
@@ -540,17 +515,14 @@ try {
       } else {
         toast.querySelector('.toast-body').textContent = message;
       }
-      
       const bsToast = new bootstrap.Toast(toast);
       bsToast.show();
     }
 
-    // Update price label dynamically when slider moves
     document.getElementById('priceRange').addEventListener('input', function () {
       document.getElementById('priceValue').innerText = '₹' + this.value;
     });
 
-    // Add event listeners so filters apply on change
     document.querySelectorAll('.size-filter').forEach(el => el.addEventListener('change', applyFilters));
     document.querySelectorAll('.rating-filter').forEach(el => el.addEventListener('change', applyFilters));
     document.getElementById('priceRange').addEventListener('change', applyFilters);
@@ -578,7 +550,6 @@ try {
       filterState.keyword = document.getElementById('searchInput').value.trim().toLowerCase();
       filterState.priceLimit = parseFloat(document.getElementById('priceRange').value);
       filterState.sizes = Array.from(document.querySelectorAll('.size-filter:checked')).map(cb => cb.value);
-      // Determine highest selected rating or 0 if none
       const ratingChecks = Array.from(document.querySelectorAll('.rating-filter:checked')).map(cb => parseInt(cb.value));
       filterState.minRating = ratingChecks.length > 0 ? Math.min(...ratingChecks) : 0;
 
@@ -594,31 +565,15 @@ try {
     }
 
     function sortProducts(sortValue) {
-      const container = document.getElementById('productContainer');
-      // Get currently displayed products by reading product titles shown
-      let displayedIds = Array.from(container.children).map(div => {
-        return products.find(p => p.name === div.querySelector('.product-title').textContent).id;
-      });
-      let currentProducts = products.filter(p => displayedIds.includes(p.id));
-
-      if (sortValue === 'lowToHigh') {
-        currentProducts.sort((a, b) => a.price - b.price);
-      } else if (sortValue === 'highToLow') {
-        currentProducts.sort((a, b) => b.price - a.price);
-      } else {
-        currentProducts = [...products];
-      }
-      displayProducts(currentProducts);
+        if(sortValue === 'lowToHigh') products.sort((a,b) => a.price - b.price);
+        if(sortValue === 'highToLow') products.sort((a,b) => b.price - a.price);
+        displayProducts(products);
     }
 
     window.onload = () => {
       displayProducts(products);
       updateCartUI();
-
-      // Link search input to filters for immediate application
-      document.getElementById('searchInput').addEventListener('input', applyFilters);
     };
   </script>
 </body>
-
 </html>
