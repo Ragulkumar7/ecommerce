@@ -26,10 +26,22 @@ try {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/tea.css">
+  <style>
+    /* Added clean product card styles */
+    .clean-product-card {
+        border: 1px solid #eee;
+        border-radius: 15px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        background: #fff;
+    }
+    .clean-product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+    }
+  </style>
 </head>
 <body>
-<!-- Header Section -->
-  <header class="main-header">
+<header class="main-header">
     <div class="container py-3">
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
@@ -47,8 +59,8 @@ try {
         <div class="col-lg-3 col-md-3 col-6">
           <div class="d-flex align-items-center justify-content-end header-actions">
             <a href="#" class="action-icon me-3 position-relative"><i class="bi bi-arrow-repeat"></i></a>
-            <a href="#" class="action-icon me-3 position-relative"><i class="bi bi-heart"></i><span class="cart-badge">0</span></a>
-            <a href="cart.php" class="action-icon position-relative"><i class="bi bi-cart3"></i><span class="cart-badge" id="header-cart-count">0</span></a>
+            <a href="#" class="action-icon me-3 position-relative"><i class="bi bi-heart"></i><span class="cart-badge" id="favCount">0</span></a>
+            <a href="cart.php" class="action-icon position-relative" onclick="showCartModal()"><i class="bi bi-cart3"></i><span class="cart-badge" id="header-cart-count">0</span></a>
             <span class="fs-5 ms-2 fw-bold d-none d-lg-block">₹<span id="header-total">0.00</span></span>
           </div>
         </div>
@@ -56,7 +68,6 @@ try {
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav class="main-navbar">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
@@ -112,8 +123,7 @@ try {
     </div>
   </nav>
 
-  <!-- Main Content Section -->
-<main class="container-fluid py-4" role="main">
+  <main class="container-fluid py-4" role="main">
   <section class="row">
     <aside class="col-md-3" role="complementary" aria-label="Product filters">
       <div class="sidebar shadow-box p-4 mb-4">
@@ -149,14 +159,14 @@ try {
           </div>
         </section>
         <div class="filter-buttons">
-          <button id="applyBtn" type="button">Apply Filters</button>
-          <button id="resetBtn" type="button">Reset Filters</button>
+          <button id="applyBtn" type="button" class="btn btn-primary w-100 mb-2 rounded-pill">Apply Filters</button>
+          <button id="resetBtn" type="button" class="btn btn-outline-secondary w-100 rounded-pill">Reset Filters</button>
         </div>
       </div>
     </aside>
     <section class="col-md-9" aria-label="Products">
       <div class="mb-3 d-flex justify-content-between align-items-center">
-        <p id="resultCount" class="m-0"></p>
+        <p id="resultCount" class="m-0 text-muted"></p>
         <select class="form-select d-inline w-auto" id="sortSelect" onchange="sortProducts(this.value)" aria-label="Sort products">
           <option value="default">Sort by</option>
           <option value="lowToHigh">Price - Low to High</option>
@@ -168,8 +178,7 @@ try {
   </section>
 </main>
 
- <!-- Footer Section -->
-  <footer class="footer-section">
+ <footer class="footer-section">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 mb-4 mb-lg-0">
@@ -207,7 +216,7 @@ try {
           <p>Subscribe to get special offers, brewing tips, and new product alerts.</p>
           <form>
             <input type="email" class="form-control mb-3" placeholder="Your email address">
-            <button type="submit" class="btn">Subscribe</button>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
           </form>
         </div>
       </div>
@@ -227,18 +236,39 @@ try {
     </div>
   </footer>
 
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="cartItems"></div>
+        <div class="modal-footer">
+          <h5 class="mt-3 me-auto">Total: ₹<span id="modalCartTotal">0.00</span></h5>
+          <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div id="toastContainer" aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 9999"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
   const products = [
-    { id: 1, name: "Earl Grey Premium Tea", price: 850, category: "Tea", rating: 4.7, reviews: 120, image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 2, name: "Ethiopian Yirgacheffe Coffee", price: 1200, category: "Coffee", rating: 4.8, reviews: 95, image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 3, name: "Ceramic Teapot Set", price: 1800, category: "Accessories", rating: 4.5, reviews: 65, image: "https://images.unsplash.com/photo-1594736797933-d0b1d0bf8d78?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 4, name: "Japanese Matcha Green Tea", price: 950, category: "Tea", rating: 4.9, reviews: 150, image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 5, name: "French Press Coffee Maker", price: 2200, category: "Accessories", rating: 4.6, reviews: 80, image: "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 6, name: "Colombian Supremo Coffee", price: 1100, category: "Coffee", rating: 4.7, reviews: 110, image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 7, name: "Chamomile Herbal Tea", price: 650, category: "Tea", rating: 4.4, reviews: 75, image: "https://images.unsplash.com/photo-1597481499751-6d3c16b365b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 8, name: "Coffee Grinder", price: 1500, category: "Accessories", rating: 4.3, reviews: 60, image: "https://images.unsplash.com/photo-1572021335465-7a98d66bce65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
-    { id: 9, name: "Assam Black Tea", price: 750, category: "Tea", rating: 4.6, reviews: 90, image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" }
+    { id: 101, name: "Earl Grey Premium Tea", price: 850, category: "Tea", rating: 4.7, reviews: 120, image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 102, name: "Ethiopian Yirgacheffe Coffee", price: 1200, category: "Coffee", rating: 4.8, reviews: 95, image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 103, name: "Ceramic Teapot Set", price: 1800, category: "Accessories", rating: 4.5, reviews: 65, image: "https://images.unsplash.com/photo-1594736797933-d0b1d0bf8d78?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 104, name: "Japanese Matcha Green Tea", price: 950, category: "Tea", rating: 4.9, reviews: 150, image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 105, name: "French Press Coffee Maker", price: 2200, category: "Accessories", rating: 4.6, reviews: 80, image: "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 106, name: "Colombian Supremo Coffee", price: 1100, category: "Coffee", rating: 4.7, reviews: 110, image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 107, name: "Chamomile Herbal Tea", price: 650, category: "Tea", rating: 4.4, reviews: 75, image: "https://images.unsplash.com/photo-1597481499751-6d3c16b365b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 108, name: "Coffee Grinder", price: 1500, category: "Accessories", rating: 4.3, reviews: 60, image: "https://images.unsplash.com/photo-1572021335465-7a98d66bce65?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" },
+    { id: 109, name: "Assam Black Tea", price: 750, category: "Tea", rating: 4.6, reviews: 90, image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" }
   ];
 
   let filterState = {
@@ -248,33 +278,41 @@ try {
     minRating: 0
   };
 
+  // UPDATED FUNCTION: Clean card style, image/title linked to product-details.php
   function displayProducts(filteredProducts) {
     const container = document.getElementById("productContainer");
     container.innerHTML = "";
     if(filteredProducts.length === 0) {
-      document.getElementById("resultCount").textContent = "No products found.";
+      container.innerHTML = '<div class="col-12 text-center py-5"><h4>No products found matching your criteria.</h4></div>';
+      document.getElementById("resultCount").textContent = "Showing 0 products";
       return;
     }
     filteredProducts.forEach(p => {
       const stars = "★★★★★".slice(0, Math.floor(p.rating)) + (p.rating % 1 >= 0.5 ? "½" : "");
       container.innerHTML += `
-        <article class="col-12 col-sm-6 col-md-4" role="listitem">
-          <div class="product-card shadow-box position-relative">
-            <img src="${p.image}" alt="${p.name}" class="product-img" />
-            <div class="p-3">
-              <h3 class="product-title">${p.name}</h3>
-              <div>
-                <span class="rating" aria-label="${p.rating} stars">${stars}</span>
-                <span class="text-secondary ms-2">(${p.reviews})</span>
-              </div>
-              <div class="mt-2 mb-3"><span class="product-price">₹${p.price}</span></div>
-              <div class="button-group mt-auto">
-                <button type="button" class="btn btn-outline-primary btn-sm" onclick="viewDetails(${p.id})">View Details</button>
-                <button type="button" class="btn btn-primary btn-sm" onclick="addToCart(${p.id})">Add to Cart</button>
-              </div>
+        <div class="col-12 col-sm-6 col-md-4" role="listitem">
+          <div class="clean-product-card p-3 h-100 shadow-sm d-flex flex-column position-relative">
+            
+            <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
+              <img src="${p.image}" alt="${p.name}" class="img-fluid rounded mb-3 w-100" style="height: 200px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
+              <h5 class="h6 fw-bold mb-1">${p.name}</h5>
+            </a>
+            
+            <div class="mb-2">
+              <span class="text-warning small">${stars}</span>
+              <span class="text-secondary ms-1" style="font-size: 0.8rem;">(${p.reviews} reviews)</span>
             </div>
+            
+            <div class="mb-3">
+              <span class="text-primary fw-bold fs-5">₹${p.price.toLocaleString()}</span>
+            </div>
+            
+            <button type="button" class="btn btn-primary btn-sm w-100 rounded-pill mt-auto" onclick="addToCart(${p.id})">
+              Add to Cart
+            </button>
+            
           </div>
-        </article>
+        </div>
       `;
     });
     document.getElementById("resultCount").textContent = `Showing ${filteredProducts.length} products`;
@@ -309,7 +347,7 @@ try {
     displayProducts(sortedProducts);
   }
 
-function addToCart(productId) {
+  function addToCart(productId) {
       const product = products.find(p => p.id === productId);
       const existingItem = cart.find(item => item.id === productId);
       
@@ -395,47 +433,6 @@ function addToCart(productId) {
       document.getElementById('favCount').textContent = favorites.length;
     }
 
-    function quickView(productId) {
-      const product = products.find(p => p.id === productId);
-      const modalContent = `
-        <div class="modal fade" id="quickViewModal" tabindex="-1">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">${product.name}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="${product.image}" class="img-fluid" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x400?text=Product+Image'">
-                  </div>
-                  <div class="col-md-6">
-                    <h4>₹${product.price.toLocaleString()}</h4>
-                    ${product.old_price ? `<p class="text-muted"><s>₹${product.old_price.toLocaleString()}</s></p>` : ''}
-                    <p>${generateRatingStars(product.rating)} (${product.reviews} reviews)</p>
-                    <p><strong>Brand:</strong> ${product.brand}</p>
-                    <p><strong>Material:</strong> ${product.material.join(', ')}</p>
-                    <button class="btn btn-primary w-100 mt-3" onclick="addToCart(${product.id}); bootstrap.Modal.getInstance(document.getElementById('quickViewModal')).hide();">Add to Cart</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      // Remove existing modal if any
-      const existingModal = document.getElementById('quickViewModal');
-      if (existingModal) {
-        existingModal.remove();
-      }
-      
-      document.body.insertAdjacentHTML('beforeend', modalContent);
-      const quickViewModal = new bootstrap.Modal(document.getElementById('quickViewModal'));
-      quickViewModal.show();
-    }
-
     function buyNow() {
       if (cart.length === 0) {
         alert('Your cart is empty!');
@@ -443,11 +440,9 @@ function addToCart(productId) {
       }
       
       alert('Proceeding to checkout...');
-      // In a real application, this would redirect to a checkout page
     }
 
     function showToast(message) {
-      // Create toast element if it doesn't exist
       let toast = document.getElementById('toast');
       if (!toast) {
         toast = document.createElement('div');
@@ -499,7 +494,10 @@ function addToCart(productId) {
   window.onload = () => {
     displayProducts(products);
     updatePrice(document.getElementById("priceRange").value);
+    updateCartUI();
+    updateFavoritesCount();
   };
 </script>
+
 </body>
 </html>
