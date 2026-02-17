@@ -56,14 +56,29 @@ try {
         padding: 20px;
         margin-bottom: 20px;
     }
-    .apply-btn {
-        background-color: #0d6efd;
-        color: white;
+
+    /* --- UPDATED BUTTONS WITH COLOR #d16d08f2 --- */
+    .apply-btn, .btn-primary {
+        background-color: #d16d08f2 !important; /* Burnt Orange */
+        border-color: #d16d08f2 !important;
+        color: white !important;
         border: none;
         border-radius: 12px;
         padding: 12px;
         width: 100%;
         font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .apply-btn:hover, .btn-primary:hover {
+        background-color: #a35506 !important; /* Slightly darker on hover */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+    }
+
+    /* Updated Slider Color */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
     }
 
     .product-card {
@@ -147,8 +162,8 @@ try {
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./electronics.php">Mobile Phones</a></li>
-                        <li><a class="dropdown-item" href="./electronics.php">Laptops</a></li>
-                        <li><a class="dropdown-item" href="./electronics.php">Accessories</a></li>
+                        <li><a class="dropdown-item" href="./laptops.php">Laptops</a></li>
+                        <li><a class="dropdown-item" href="./accessories.php">Accessories</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -211,22 +226,22 @@ try {
     { id: 305, name: "65W Laptop Power Adapter", price: 3200, image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=500", brand: "Dell" }
   ];
 
-  // Replace this part in your accessories.php
-function displayProducts(list) {
-  const container = document.getElementById('accessoryContainer');
-  container.innerHTML = list.map(p => `
-      <div class="col-md-6 col-xl-4">
-          <div class="product-card p-3 h-100 shadow-sm">
-              <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
-                  <img src="${p.image}" class="img-fluid rounded mb-3" style="height:160px; width:100%; object-fit:cover;">
-                  <h5 class="h6 fw-bold mb-1">${p.name}</h5>
-              </a>
-              <p class="text-primary fw-bold mb-3">₹${p.price.toLocaleString()}</p>
-              <button class="btn btn-primary btn-sm w-100 rounded-pill" onclick="addToCart(${p.id})">Add to Cart</button>
-          </div>
-      </div>
-  `).join('');
-}
+  function displayProducts(list) {
+    const container = document.getElementById('accessoryContainer');
+    container.innerHTML = list.map(p => `
+        <div class="col-md-6 col-xl-4">
+            <div class="product-card p-3 h-100 shadow-sm">
+                <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
+                    <img src="${p.image}" class="img-fluid rounded mb-3" style="height:160px; width:100%; object-fit:cover;">
+                    <h5 class="h6 fw-bold mb-1">${p.name}</h5>
+                </a>
+                <p class="text-primary fw-bold mb-3" style="color: #d16d08f2 !important;">₹${p.price.toLocaleString()}</p>
+                <button class="btn btn-primary btn-sm w-100 rounded-pill" onclick="addToCart(${p.id})">Add to Cart</button>
+            </div>
+        </div>
+    `).join('');
+    document.getElementById('resultCount').textContent = `Showing ${list.length} results`;
+  }
 
   function updatePriceLabel(val) {
     document.getElementById('priceValue').innerText = '₹' + parseInt(val).toLocaleString();

@@ -72,27 +72,31 @@ try {
         font-weight: bold !important;
     }
 
-    /* --- DEEP TEAL BUTTONS & SLIDERS (CONTRAST COLOR) --- */
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    
+    /* Main Buttons (Apply Filters and Add to Cart) */
     .btn-primary, .apply-btn {
-        background-color: #006d77 !important; /* Deep Teal */
-        border-color: #006d77 !important;
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
         color: white !important;
         transition: all 0.3s ease;
     }
 
     .btn-primary:hover, .apply-btn:hover {
-        background-color: #004e56 !important; /* Darker Teal on Hover */
-        border-color: #004e56 !important;
+        background-color: #a35506 !important; /* Darker shade for hover effect */
+        border-color: #a35506 !important;
         transform: translateY(-2px);
     }
 
-    /* Range Slider Styling */
+    /* Price Range Slider Thumb */
     .form-range::-webkit-slider-thumb {
-        background: #006d77 !important; /* Deep Teal Slider */
+        background: #d16d08f2 !important;
     }
-    
-    .form-range::-webkit-slider-runnable-track {
-        background: #dee2e6;
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-ms-thumb {
+        background: #d16d08f2 !important;
     }
 
     /* --- SIDEBAR & CONTENT --- */
@@ -120,6 +124,7 @@ try {
         border: 1px solid #eee;
         border-radius: 15px;
         transition: transform 0.3s;
+        background: #fff;
     }
     
     .product-card:hover {
@@ -197,8 +202,8 @@ try {
                     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Electronics</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./electronics.php">Mobile Phones</a></li>
-                        <li><a class="dropdown-item" href="./laptops.php">Laptops</a></li>
-                        <li><a class="dropdown-item" href="./accessories.php">Accessories</a></li>
+                        <li><a class="dropdown-item" href="./electronics.php">Laptops</a></li>
+                        <li><a class="dropdown-item" href="./electronics.php">Accessories</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -258,10 +263,10 @@ try {
     const container = document.getElementById('productContainer');
     container.innerHTML = list.map(p => `
       <div class="col-12 col-sm-6 col-md-4">
-        <div class="product-card shadow-sm p-3 border rounded">
+        <div class="product-card shadow-sm p-3 border rounded h-100">
           <img src="${p.image}" class="img-fluid mb-3 rounded" style="height: 200px; width: 100%; object-fit: cover;">
           <h3 class="h6 fw-bold">${p.name}</h3>
-          <p class="text-primary fw-bold" style="color: #006d77 !important;">₹${p.price.toLocaleString()}</p>
+          <p class="text-primary fw-bold" style="color: #d16d08f2 !important;">₹${p.price.toLocaleString()}</p>
           <button class="btn btn-primary btn-sm w-100" onclick="addToCart(${p.id})">Add to Cart</button>
         </div>
       </div>
@@ -274,7 +279,6 @@ try {
   }
 
   function applyFilters() {
-      // Basic filter logic for demo purposes
       const priceLimit = document.getElementById('priceRange').value;
       const filtered = products.filter(p => p.price <= priceLimit);
       displayProducts(filtered);

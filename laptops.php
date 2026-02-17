@@ -29,7 +29,7 @@ try {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/electronics.css" />
   <style>
-    /* Updated terracotta/clay-red navbar styling based on screenshot */
+    /* Navbar Styling */
     .main-navbar {
         background-color: #cd7d73 !important;
         padding: 0;
@@ -45,7 +45,6 @@ try {
         transition: all 0.3s ease;
     }
 
-    /* The yellow underline for the active link from screenshot */
     .main-navbar .nav-link.active::after {
         content: "";
         position: absolute;
@@ -56,15 +55,6 @@ try {
         background-color: #ffcc66;
     }
 
-    .main-navbar .nav-link:hover {
-        opacity: 0.9;
-        color: #f8f9fa !important;
-    }
-
-    .main-navbar .nav-link i {
-        margin-right: 8px;
-    }
-
     /* Sidebar Styling */
     .sidebar-card {
         border: 1px solid #e0e0e0;
@@ -73,31 +63,33 @@ try {
         background: white;
         max-width: 350px;
     }
-    .sidebar-card h2 {
-        font-size: 1.8rem;
-        font-weight: 600;
-        margin-bottom: 20px;
+
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    .apply-btn, .btn-outline-primary {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
     }
-    .price-range-box {
-        background-color: #f8f9fa;
-        border-radius: 15px;
-        padding: 20px;
-        margin-bottom: 20px;
+
+    .apply-btn:hover, .btn-outline-primary:hover {
+        background-color: #a35506 !important; /* Darker shade for hover */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+        color: white !important;
     }
-    .price-range-box h3 {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 25px;
+
+    /* Price Range Slider Thumb */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
     }
-    .apply-btn {
-        background-color: #0d6efd;
-        color: white;
-        border: none;
-        border-radius: 12px;
-        padding: 12px;
-        width: 100%;
-        font-size: 1.2rem;
-        font-weight: 500;
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+
+    /* Product card price text color */
+    .text-primary {
+        color: #d16d08f2 !important;
     }
 
     .product-card {

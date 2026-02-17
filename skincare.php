@@ -27,6 +27,52 @@ try {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/beauty-products.css" />
+  <style>
+    /* Navbar Theme */
+    .main-navbar { background-color: #cd7d73 !important; }
+    
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    
+    /* Apply and Add to Cart Buttons */
+    #applyBtn, .btn-primary, .btn-sm {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+    }
+
+    #applyBtn:hover, .btn-primary:hover {
+        background-color: #a35506 !important; /* Slightly darker hover */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+    }
+
+    /* Price Range Slider Thumb */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+
+    /* Reset Button */
+    #resetBtn {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px 15px;
+        background: white;
+    }
+
+    .product-card {
+        border: 1px solid #eee;
+        border-radius: 15px;
+        transition: transform 0.3s;
+        background: #fff;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+  </style>
 </head>
 <body>
 
@@ -121,7 +167,7 @@ try {
 <main class="container-fluid py-4" role="main">
   <section class="row">
     <aside class="col-md-3">
-      <div class="sidebar shadow-box p-4 mb-4">
+      <div class="sidebar shadow-box p-4 mb-4" style="border: 1px solid #e0e0e0; border-radius: 20px; background: white;">
         <h2 class="h4 mb-4">Filters</h2>
         <section class="filter-section mb-4">
           <h3 class="h5"><i class="bi bi-currency-rupee me-2"></i>Price Range</h3>
@@ -143,8 +189,8 @@ try {
           </div>
         </section>
         <div class="filter-buttons">
-          <button id="applyBtn" type="button">Apply Filters</button>
-          <button id="resetBtn" type="button">Reset Filters</button>
+          <button id="applyBtn" type="button" class="btn w-100 mb-2">Apply Filters</button>
+          <button id="resetBtn" type="button" class="btn w-100">Reset Filters</button>
         </div>
       </div>
     </aside>
@@ -166,7 +212,6 @@ try {
 <script>
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   
-  // Products array for SKINCARE
   let products = [
     { 
       id: 10, 
@@ -220,7 +265,6 @@ try {
       sortProducts(this.value);
     });
 
-    // Added search support for the new header
     const searchForm = document.getElementById('searchForm');
     if(searchForm) {
         searchForm.addEventListener('submit', function(e) {
@@ -239,13 +283,12 @@ try {
       return;
     }
     productsToDisplay.forEach(p => {
-      const stars = "★★★★★".slice(0, Math.floor(p.rating));
       container.innerHTML += `
         <article class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="product-card shadow-box p-3">
-            <img src="${p.image}" alt="${p.name}" class="product-img mb-3" style="object-fit: cover; height: 200px; width: 100%;" />
-            <h3 class="h6">${p.name}</h3>
-            <p class="text-primary fw-bold">₹${p.price}</p>
+          <div class="product-card p-3 shadow-sm h-100">
+            <img src="${p.image}" alt="${p.name}" class="product-img mb-3 rounded" style="object-fit: cover; height: 200px; width: 100%;" />
+            <h3 class="h6 fw-bold">${p.name}</h3>
+            <p class="text-primary fw-bold" style="color: #d16d08f2 !important;">₹${p.price}</p>
             <button class="btn btn-primary btn-sm w-100" onclick="addToCart(${p.id})">Add to Cart</button>
           </div>
         </article>`;
@@ -261,6 +304,12 @@ try {
       return matchesSearch && matchesPrice && matchesCategory;
     });
     displayProducts(filtered);
+  }
+
+  function sortProducts(sortBy) {
+      if(sortBy === 'lowToHigh') products.sort((a, b) => a.price - b.price);
+      else if(sortBy === 'highToLow') products.sort((a, b) => b.price - a.price);
+      filterProducts();
   }
 
   function addToCart(productId) {
@@ -279,7 +328,8 @@ try {
 
   function updateFavoritesCount() {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    document.getElementById('favCount').textContent = favorites.length;
+    const countEl = document.getElementById('favCount');
+    if(countEl) countEl.textContent = favorites.length;
   }
 </script>
 </body>

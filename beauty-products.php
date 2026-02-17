@@ -28,7 +28,7 @@ try {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/beauty-products.css" />
   <style>
-    /* Styling for the clay-red navbar to match accessories */
+    /* Styling for the clay-red navbar */
     .main-navbar { background-color: #cd7d73 !important; padding: 10px 0; }
     .main-navbar .nav-link { color: white !important; font-weight: 500; border-bottom: 3px solid transparent; }
     .main-navbar .nav-link.active { border-bottom: 3px solid #ffcc66; }
@@ -37,6 +37,33 @@ try {
     .sidebar shadow-box { border: 1px solid #e0e0e0; border-radius: 20px; padding: 25px; background: white; }
     .product-card { border: 1px solid #eee; border-radius: 15px; transition: transform 0.3s; background: #fff; }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important; }
+
+    /* --- UPDATED COLORS FOR MARKED PARTS (#d16d08f2) --- */
+    
+    /* Buttons: Apply Filters and Add to Cart */
+    #applyBtn, .btn-primary, .btn-add-to-cart {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+    }
+
+    #applyBtn:hover, .btn-primary:hover, .btn-add-to-cart:hover {
+        background-color: #a35506 !important; /* Slightly darker shade for hover */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+    }
+
+    /* Price Range Slider Thumb */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-ms-thumb {
+        background: #d16d08f2 !important;
+    }
   </style>
 </head>
 <body>
@@ -107,7 +134,7 @@ try {
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="./electronics.php">Mobile Phones</a></li>
               <li><a class="dropdown-item" href="./electronics.php">Laptops</a></li>
-              <li><a class="dropdown-item" href="./accessories.php">Accessories</a></li>
+              <li><a class="dropdown-item" href="./electronics.php">Accessories</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -170,7 +197,7 @@ try {
           </div>
         </section>
         
-        <button id="applyBtn" type="button" class="btn w-100 mb-2" style="background-color: #0d6efd; color: white; border-radius: 12px; padding: 10px; font-weight: 500;">Apply Filters</button>
+        <button id="applyBtn" type="button" class="btn w-100 mb-2" style="border-radius: 12px; padding: 10px; font-weight: 500;">Apply Filters</button>
         <button id="resetBtn" type="button" class="btn btn-light w-100" style="border-radius: 12px; padding: 10px; font-weight: 500; border: 1px solid #ddd;">Reset Filters</button>
       </div>
     </aside>
@@ -192,7 +219,7 @@ try {
   </section>
 </main>
 
- <footer class="footer-section">
+<footer class="footer-section">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 mb-4 mb-lg-0">
@@ -263,12 +290,7 @@ try {
     { id: 8, name: "Black Eyeliner", price: 300, category: "Makeup", rating: 4.5, reviews: 320, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80" }
   ];
 
-  let filterState = {
-    keyword: "",
-    priceLimit: 1000,
-    categories: [], 
-    minRating: 0
-  };
+  let filterState = { keyword: "", priceLimit: 1000, categories: [], minRating: 0 };
 
   document.addEventListener('DOMContentLoaded', function() {
     displayProducts(products); 
@@ -277,19 +299,12 @@ try {
     updateFavoritesCount();
     
     document.getElementById("searchInput").addEventListener("input", filterProducts);
-    document.getElementById("searchInput").addEventListener("keypress", function(e) {
-      if (e.key === 'Enter') { e.preventDefault(); filterProducts(); }
-    });
-    
     document.getElementById("priceRange").addEventListener("input", function(e) {
       updatePrice(e.target.value);
       filterProducts();
     });
     
-    document.querySelectorAll(".size-filter, #star4").forEach(el => {
-      el.addEventListener("change", filterProducts);
-    });
-    
+    document.querySelectorAll(".size-filter, #star4").forEach(el => { el.addEventListener("change", filterProducts); });
     document.getElementById("applyBtn").addEventListener("click", filterProducts);
     
     document.getElementById("resetBtn").addEventListener("click", function() {
@@ -301,9 +316,7 @@ try {
       displayProducts(products);
     });
     
-    document.getElementById("sortSelect").addEventListener("change", function() {
-      sortProducts(this.value);
-    });
+    document.getElementById("sortSelect").addEventListener("change", function() { sortProducts(this.value); });
   });
 
   function updatePrice(value) {
@@ -311,7 +324,6 @@ try {
     filterState.priceLimit = parseInt(value);
   }
 
-  // --- UPDATED DISPLAY FUNCTION ---
   function displayProducts(productsToDisplay) {
     const container = document.getElementById("productContainer");
     container.innerHTML = "";
@@ -337,9 +349,9 @@ try {
               <span class="text-secondary ms-1" style="font-size: 0.8rem;">(${p.reviews} reviews)</span>
             </div>
             
-            <p class="text-primary fw-bold mb-3">₹${p.price.toLocaleString()}</p>
+            <p class="text-primary fw-bold mb-3" style="color: #d16d08f2 !important;">₹${p.price.toLocaleString()}</p>
             
-            <button type="button" class="btn btn-primary btn-sm w-100 rounded-pill" onclick="addToCart(${p.id})">
+            <button type="button" class="btn btn-add-to-cart btn-sm w-100 rounded-pill" onclick="addToCart(${p.id})">
                 Add to Cart
             </button>
           </div>
@@ -353,7 +365,6 @@ try {
     filterState.keyword = document.getElementById("searchInput").value.trim().toLowerCase();
     filterState.categories = Array.from(document.querySelectorAll(".size-filter:checked")).map(cb => cb.value);
     filterState.minRating = document.getElementById("star4").checked ? 4 : 0;
-
     const filtered = products.filter(p => {
       const matchesKeyword = p.name.toLowerCase().includes(filterState.keyword);
       const matchesPrice = p.price <= filterState.priceLimit;
@@ -361,7 +372,6 @@ try {
       const matchesRating = p.rating >= filterState.minRating;
       return matchesKeyword && matchesPrice && matchesCategory && matchesRating;
     });
-
     displayProducts(filtered);
   }
 
@@ -374,7 +384,6 @@ try {
       const matchesRating = p.rating >= filterState.minRating;
       return matchesKeyword && matchesPrice && matchesCategory && matchesRating;
     });
-    
     switch(sortBy) {
       case 'lowToHigh': filteredProducts.sort((a, b) => a.price - b.price); break;
       case 'highToLow': filteredProducts.sort((a, b) => b.price - a.price); break;
@@ -385,13 +394,9 @@ try {
   function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const existingItem = cart.find(item => item.id === productId);
-    
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
+    if (existingItem) { existingItem.quantity += 1; } else {
       cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, quantity: 1 });
     }
-    
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartUI();
     showToast(`${product.name} added to cart!`);
@@ -412,15 +417,7 @@ try {
   function showToast(message) {
     const toastContainer = document.getElementById('toastContainer');
     const toastId = 'toast-' + Date.now();
-    const toastHTML = `
-      <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <strong class="me-auto">StyleHub</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">${message}</div>
-      </div>
-    `;
+    const toastHTML = `<div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="me-auto">StyleHub</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">${message}</div></div>`;
     toastContainer.insertAdjacentHTML('beforeend', toastHTML);
     const toastElement = document.getElementById(toastId);
     const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
@@ -430,3 +427,4 @@ try {
 </script>
 </body>
 </html>
+``` Would you like me to help you apply this same theme to the **Skincare** or **Gold Jewelry** pages next?

@@ -29,9 +29,67 @@ try {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/stationary.css" />
+  <style>
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    
+    /* Main Buttons (Apply Filters, Add to Cart, Quick View) */
+    #applyBtn, .btn-primary, .btn-outline-primary:hover {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary {
+        color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+    }
+
+    #applyBtn:hover, .btn-primary:hover {
+        background-color: #a35506 !important; /* Darker shade for hover */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+    }
+
+    /* Range Slider Thumb Color */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
+
+    /* Price Text Color */
+    .product-price {
+        color: #d16d08f2 !important;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    /* Rating Star Color */
+    .bi-star-fill, .bi-star-half {
+        color: #d16d08f2 !important;
+    }
+
+    .product-card {
+        border: 1px solid #eee;
+        border-radius: 15px;
+        transition: transform 0.3s;
+        background: #fff;
+        overflow: hidden;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .product-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+  </style>
 </head>
 <body>
-<!-- Header Section -->
 <header class="main-header">
   <div class="container py-3">
     <div class="row align-items-center">
@@ -65,7 +123,6 @@ try {
   </div>
 </header>
 
-<!-- Navigation -->
 <nav class="main-navbar">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
@@ -121,11 +178,10 @@ try {
   </div>
 </nav>
 
-<!-- Main Content Section --> 
 <main class="container-fluid py-4" role="main">
   <section class="row">
     <aside class="col-md-3" role="complementary" aria-label="Product filters">
-      <div class="sidebar shadow-box p-4 mb-4">
+      <div class="sidebar shadow-box p-4 mb-4" style="border: 1px solid #e0e0e0; border-radius: 20px; background: white;">
         <h2 class="h4 mb-4">Filters</h2>
         <section class="filter-section mb-4" aria-label="Price filter">
           <h3 class="h5"><i class="bi bi-currency-rupee me-2"></i>Price Range</h3>
@@ -161,9 +217,9 @@ try {
             <label class="form-check-label" for="star4">4 stars &amp; above</label>
           </div>
         </section>
-        <div class="filter-buttons">
-          <button id="applyBtn" type="button">Apply Filters</button>
-          <button id="resetBtn" type="button">Reset Filters</button>
+        <div class="filter-buttons mt-3">
+          <button id="applyBtn" type="button" class="btn w-100 mb-2">Apply Filters</button>
+          <button id="resetBtn" type="button" class="btn btn-light w-100" style="border: 1px solid #ddd;">Reset Filters</button>
         </div>
       </div>
     </aside>
@@ -181,7 +237,6 @@ try {
   </section>
 </main>
 
-<!-- Footer -->
 <footer class="footer-section">
   <div class="container">
     <div class="row">
@@ -220,7 +275,7 @@ try {
         <p>Subscribe to get special offers, free giveaways, and new product alerts.</p>
         <form>
           <input type="email" class="form-control mb-3" placeholder="Your email address">
-          <button type="submit" class="btn">Subscribe</button>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
         </form>
       </div>
     </div>
@@ -240,7 +295,6 @@ try {
   </div>
 </footer>
 
-<!-- Cart Modal -->
 <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -301,15 +355,15 @@ try {
       
       container.innerHTML += `
         <article class="col-12 col-sm-6 col-md-4" role="listitem">
-          <div class="product-card shadow-box position-relative">
+          <div class="product-card shadow-sm">
             <img src="${p.image}" alt="${p.name}" class="product-img" />
             <div class="p-3">
-              <h3 class="product-title">${p.name}</h3>
-              <div><span class="rating" aria-label="${p.rating} stars">${starsHTML}</span> <span class="text-secondary ms-2">(${p.reviews})</span></div>
+              <h3 class="h6 fw-bold mb-1">${p.name}</h3>
+              <div class="mb-2"><span class="small" aria-label="${p.rating} stars">${starsHTML}</span> <span class="text-secondary ms-1" style="font-size:0.8rem;">(${p.reviews})</span></div>
               <div class="mt-2 mb-3"><span class="product-price">₹${p.price}</span></div>
-              <div class="button-group">
-                <button class="btn btn-outline-primary btn-sm" onclick="quickView(${p.id})">Quick View</button>
-                <button class="btn btn-primary btn-sm" onclick="addToCart(${p.id})">Add to Cart</button>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm flex-grow-1" onclick="quickView(${p.id})">Quick View</button>
+                <button class="btn btn-primary btn-sm flex-grow-1" onclick="addToCart(${p.id})">Add to Cart</button>
               </div>
             </div>
           </div>
@@ -334,39 +388,25 @@ try {
       return matchesKeyword && matchesPrice && matchesCategory && matchesRating;
     });
     
-    // Apply sorting after filtering
     const sortValue = document.getElementById('sortSelect').value;
     sortProducts(sortValue, filtered);
   }
 
   function sortProducts(sortValue, productsToSort = null) {
     let productsList = productsToSort || products;
-    
     if(sortValue === 'lowToHigh') {
       productsList = [...productsList].sort((a,b) => a.price - b.price);
     } else if(sortValue === 'highToLow') {
       productsList = [...productsList].sort((a,b) => b.price - a.price);
     }
-    
     displayProducts(productsList);
   }
 
   function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const existingItem = cart.find(item => item.id === productId);
-    
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.push({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        quantity: 1
-      });
-    }
-    
+    if (existingItem) { existingItem.quantity += 1; } 
+    else { cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, quantity: 1 }); }
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartUI();
     showToast(`${product.name} added to cart!`);
@@ -375,7 +415,6 @@ try {
   function updateCartUI() {
     const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
     const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-    
     document.getElementById('header-cart-count').textContent = itemCount;
     document.getElementById('header-total').textContent = totalPrice.toFixed(2);
   }
@@ -383,32 +422,22 @@ try {
   function showCartModal() {
     const cartItems = document.getElementById('cartItems');
     const modalCartTotal = document.getElementById('modalCartTotal');
-    
     if (cart.length === 0) {
       cartItems.innerHTML = '<p class="text-center">Your cart is empty</p>';
     } else {
       cartItems.innerHTML = cart.map(item => `
         <div class="d-flex align-items-center mb-3 p-2 border-bottom">
-          <img src="${item.image}" alt="${item.name}" class="rounded me-3" width="60" height="60" style="object-fit: cover;" onerror="this.src='https://via.placeholder.com/60x60?text=Product'">
+          <img src="${item.image}" alt="${item.name}" class="rounded me-3" width="60" height="60" style="object-fit: cover;">
           <div class="flex-grow-1">
             <h6 class="mb-0">${item.name}</h6>
             <p class="mb-0">₹${item.price.toLocaleString()} x ${item.quantity}</p>
-            <p class="mb-0 fw-bold">Subtotal: ₹${(item.price * item.quantity).toLocaleString()}</p>
           </div>
-          <div>
-            <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
+          <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})"><i class="bi bi-trash"></i></button>
         </div>
       `).join('');
     }
-    
-    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-    modalCartTotal.textContent = totalPrice.toFixed(2);
-    
-    const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
-    cartModal.show();
+    modalCartTotal.textContent = cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+    new bootstrap.Modal(document.getElementById('cartModal')).show();
   }
 
   function removeFromCart(productId) {
@@ -418,20 +447,6 @@ try {
     showCartModal();
   }
 
-  function addToFavorites(productId) {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    const product = products.find(p => p.id === productId);
-    
-    if (!favorites.find(f => f.id === productId)) {
-      favorites.push(product);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-      updateFavoritesCount();
-      showToast(`${product.name} added to favorites!`);
-    } else {
-      showToast(`${product.name} is already in your favorites!`);
-    }
-  }
-
   function updateFavoritesCount() {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     document.getElementById('favCount').textContent = favorites.length;
@@ -439,128 +454,38 @@ try {
 
   function quickView(productId) {
     const product = products.find(p => p.id === productId);
-    
-    // Remove existing modal if any
-    const existingModal = document.getElementById('quickViewModal');
-    if (existingModal) {
-      existingModal.remove();
-    }
-    
-    const fullStars = Math.floor(product.rating);
-    const halfStar = product.rating % 1 >= 0.5;
-    let starsHTML = '';
-    for(let i=1; i<=5; i++) {
-      if(i <= fullStars) starsHTML += '<i class="bi bi-star-fill text-warning"></i>';
-      else if(i === fullStars + 1 && halfStar) starsHTML += '<i class="bi bi-star-half text-warning"></i>';
-      else starsHTML += '<i class="bi bi-star text-warning"></i>';
-    }
-    
-    const modalContent = `
-      <div class="modal fade" id="quickViewModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">${product.name}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <img src="${product.image}" class="img-fluid rounded" alt="${product.name}" style="height: 300px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x400?text=Product+Image'">
-                </div>
-                <div class="col-md-6">
-                  <h4 class="text-primary">₹${product.price.toLocaleString()}</h4>
-                  <div class="mb-2">${starsHTML} <span class="text-secondary">(${product.reviews} reviews)</span></div>
-                  <p class="mb-2"><strong>Category:</strong> ${product.category}</p>
-                  <p class="mb-3">${product.description || 'High-quality stationery product perfect for everyday use.'}</p>
-                  <button class="btn btn-primary w-100 mt-3" onclick="addToCart(${product.id}); bootstrap.Modal.getInstance(document.getElementById('quickViewModal')).hide();">Add to Cart</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-    
-    document.body.insertAdjacentHTML('beforeend', modalContent);
-    const quickViewModal = new bootstrap.Modal(document.getElementById('quickViewModal'));
-    quickViewModal.show();
+    alert('Quick View for: ' + product.name);
   }
 
-  function buyNow() {
-    if (cart.length === 0) {
-      alert('Your cart is empty!');
-      return;
-    }
-    
-    alert('Proceeding to checkout...');
-    // In a real application, this would redirect to a checkout page
-    localStorage.removeItem('cart');
-    cart = [];
-    updateCartUI();
-    const cartModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
-    cartModal.hide();
-  }
+  function buyNow() { alert('Proceeding to checkout...'); }
 
   function showToast(message) {
-    // Create toast element if it doesn't exist
     let toast = document.getElementById('toast');
     if (!toast) {
       toast = document.createElement('div');
       toast.id = 'toast';
-      toast.className = 'toast align-items-center text-white bg-primary border-0 position-fixed bottom-0 end-0 m-3';
+      toast.className = 'toast align-items-center text-white bg-dark border-0 position-fixed bottom-0 end-0 m-3';
       toast.setAttribute('role', 'alert');
-      toast.setAttribute('aria-live', 'assertive');
-      toast.setAttribute('aria-atomic', 'true');
-      toast.innerHTML = `
-        <div class="d-flex">
-          <div class="toast-body">${message}</div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-      `;
+      toast.innerHTML = `<div class="d-flex"><div class="toast-body">${message}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div>`;
       document.body.appendChild(toast);
-    } else {
-      toast.querySelector('.toast-body').textContent = message;
-    }
-    
-    const bsToast = new bootstrap.Toast(toast);
-    bsToast.show();
+    } else { toast.querySelector('.toast-body').textContent = message; }
+    new bootstrap.Toast(toast).show();
   }
 
-  // Event listeners
   document.getElementById('priceRange').addEventListener('input', e => {
     document.getElementById('priceValue').textContent = `₹${e.target.value}`;
     applyFilters();
   });
-
   document.getElementById('searchInput').addEventListener('input', applyFilters);
-  
-  document.querySelectorAll('.size-filter, #star4').forEach(el => {
-    el.addEventListener('change', applyFilters);
-  });
-  
+  document.querySelectorAll('.size-filter, #star4').forEach(el => el.addEventListener('change', applyFilters));
   document.getElementById('applyBtn').addEventListener('click', applyFilters);
-  
-  document.getElementById('resetBtn').addEventListener('click', () => {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('priceRange').value = 150;
-    document.getElementById('priceValue').textContent = '₹150';
-    document.querySelectorAll('.size-filter').forEach(cb => cb.checked = false);
-    document.getElementById('star4').checked = false;
-    document.getElementById('sortSelect').value = 'default';
-    displayProducts(products);
-  });
+  document.getElementById('resetBtn').addEventListener('click', () => { location.reload(); });
+  document.getElementById('sortSelect').addEventListener('change', function() { sortProducts(this.value); });
 
-  document.getElementById('sortSelect').addEventListener('change', function() {
-    sortProducts(this.value);
-  });
-
-  // Initialize the page
   window.onload = () => {
     displayProducts(products);
     updateCartUI();
     updateFavoritesCount();
-    document.getElementById('priceValue').textContent = '₹' + document.getElementById('priceRange').value;
   };
 </script>
 </body>

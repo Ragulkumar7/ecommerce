@@ -39,6 +39,30 @@ try {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
     }
+
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    
+    /* Apply Filter and Add to Cart Buttons */
+    #applyBtn, .btn-primary, .btn-sm {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+    }
+
+    #applyBtn:hover, .btn-primary:hover {
+        background-color: #a35506 !important; /* Slightly darker shade for hover */
+        border-color: #a35506 !important;
+        transform: translateY(-2px);
+    }
+
+    /* Price Range Slider Thumb */
+    .form-range::-webkit-slider-thumb {
+        background: #d16d08f2 !important;
+    }
+    .form-range::-moz-range-thumb {
+        background: #d16d08f2 !important;
+    }
   </style>
 </head>
 <body>
@@ -361,7 +385,6 @@ try {
       });
     });
 
-    // UPDATED FUNCTION: Clean card style, no tags/badges, image/title linked to product-details.php
     function renderProducts() {
       const container = document.getElementById('productContainer');
       container.innerHTML = '';
@@ -533,20 +556,6 @@ try {
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartUI();
       showCartModal();
-    }
-
-    function addToFavorites(productId) {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      const product = products.find(p => p.id === productId);
-      
-      if (!favorites.find(f => f.id === productId)) {
-        favorites.push(product);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        updateFavoritesCount();
-        showToast(`${product.name} added to favorites!`);
-      } else {
-        showToast(`${product.name} is already in your favorites!`);
-      }
     }
 
     function updateFavoritesCount() {
