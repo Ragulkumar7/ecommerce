@@ -836,12 +836,13 @@ try {
     }
 
     function buyNow() {
-      if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-      }
-      alert('Proceeding to checkout...');
-    }
+  if (cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+  // Redirect directly to the checkout page
+  window.location.href = 'checkout.php';
+}
 
     function updateFavoritesCount() {
       const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
