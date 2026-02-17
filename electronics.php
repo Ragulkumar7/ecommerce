@@ -99,6 +99,11 @@ try {
         background: #d16d08f2 !important;
     }
 
+    /* Price Text Color */
+    .product-price {
+        color: #d16d08f2 !important;
+    }
+
     /* --- SIDEBAR & CONTENT --- */
     .sidebar-card {
         border: 1px solid #e0e0e0;
@@ -120,15 +125,16 @@ try {
         margin-bottom: 20px;
     }
 
-    .product-card {
+    /* Clean Product Card Style */
+    .clean-product-card {
         border: 1px solid #eee;
         border-radius: 15px;
-        transition: transform 0.3s;
+        transition: transform 0.3s, box-shadow 0.3s;
         background: #fff;
     }
-    
-    .product-card:hover {
+    .clean-product-card:hover {
         transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
     }
     
     .dropdown-menu {
@@ -153,7 +159,7 @@ try {
                 <form class="search-form" id="searchForm">
                     <div class="input-group">
                         <input class="form-control search-input rounded-start-pill px-4" type="search" id="searchInput" placeholder="Search for products..." aria-label="Search">
-                        <button class="search-btn rounded-end-pill px-3" type="submit"><i class="bi bi-search"></i></button>
+                        <button class="search-btn rounded-end-pill px-3" type="button" onclick="applyFilters()"><i class="bi bi-search"></i></button>
                     </div>
                 </form>
             </div>
@@ -202,8 +208,8 @@ try {
                     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Electronics</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./electronics.php">Mobile Phones</a></li>
-                        <li><a class="dropdown-item" href="./electronics.php">Laptops</a></li>
-                        <li><a class="dropdown-item" href="./electronics.php">Accessories</a></li>
+                        <li><a class="dropdown-item" href="./laptops.php">Laptops</a></li>
+                        <li><a class="dropdown-item" href="./accessories.php">Accessories</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -222,24 +228,25 @@ try {
 <main class="container-fluid py-4" role="main">
   <section class="row">
     <aside class="col-md-3">
-      <div class="sidebar-card shadow-sm p-3">
+      <div class="sidebar-card shadow-sm p-4">
         <h2 class="h4 mb-3">Filters</h2>
         <div class="filter-section mb-4">
-          <h3 class="h5">Price Range</h3>
+          <h3 class="h6 fw-bold mb-3">Price Range</h3>
           <input id="priceRange" type="range" min="0" max="150000" value="150000" step="5000" class="form-range" oninput="updatePrice(this.value)" />
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between mt-2" style="font-weight: 600; font-size: 0.95rem;">
             <span>₹0</span>
             <span id="priceValue">₹150,000</span>
           </div>
         </div>
-        <button class="btn btn-primary w-100 apply-btn" onclick="applyFilters()">Apply Filters</button>
+        <button class="btn btn-primary w-100 apply-btn rounded-pill mb-2" onclick="applyFilters()">Apply Filters</button>
+        <button class="btn btn-light border w-100 rounded-pill" onclick="location.reload()">Reset Filters</button>
       </div>
     </aside>
     
     <section class="col-md-9">
       <div class="mb-3 d-flex justify-content-between align-items-center">
-        <p id="resultCount" class="m-0">Showing results</p>
-        <select class="form-select w-auto" id="sortSelect" onchange="sortProducts(this.value)">
+        <p id="resultCount" class="m-0 text-muted">Showing results</p>
+        <select class="form-select w-auto d-inline" id="sortSelect" onchange="sortProducts(this.value)">
           <option value="best">Best Match</option>
           <option value="lowToHigh">Price: Low to High</option>
           <option value="highToLow">Price: High to Low</option>
@@ -252,26 +259,57 @@ try {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  // Updated IDs to 601, 602 to match the master array
   const products = [
-    { id: 5, name: "iPhone 14 Pro", price: 80000, rating: 4.2, reviews: 70, image: 'https://i.pinimg.com/736x/f5/c1/66/f5c16671a90ff6094847c3a765d26147.jpg', brand: 'Apple' },
-    { id: 6, name: "Samsung S23", price: 60000, rating: 5, reviews: 40, image: 'https://i.pinimg.com/736x/66/c2/3f/66c23f9566266ec63f39b2dac1a56585.jpg', brand: 'Samsung' }
+    { id: 601, name: "iPhone 14 Pro", price: 80000, rating: 4.2, reviews: 70, image: 'https://i.pinimg.com/736x/f5/c1/66/f5c16671a90ff6094847c3a765d26147.jpg', brand: 'Apple', category: 'Mobile Phones' },
+    { id: 602, name: "Samsung S23", price: 60000, rating: 5.0, reviews: 40, image: 'https://i.pinimg.com/736x/66/c2/3f/66c23f9566266ec63f39b2dac1a56585.jpg', brand: 'Samsung', category: 'Mobile Phones' }
   ];
   
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   function displayProducts(list) {
     const container = document.getElementById('productContainer');
-    container.innerHTML = list.map(p => `
+    
+    if (list.length === 0) {
+      container.innerHTML = '<div class="col-12 text-center py-5"><h4>No products found matching your criteria.</h4></div>';
+      document.getElementById('resultCount').textContent = `Showing 0 results`;
+      return;
+    }
+
+    container.innerHTML = list.map(p => {
+      const fullStars = Math.floor(p.rating);
+      const halfStar = (p.rating % 1) >= 0.5;
+      let starsHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        if (i <= fullStars) starsHTML += '<i class="bi bi-star-fill text-warning"></i>';
+        else if (i === fullStars + 1 && halfStar) starsHTML += '<i class="bi bi-star-half text-warning"></i>';
+        else starsHTML += '<i class="bi bi-star text-warning"></i>';
+      }
+
+      return `
       <div class="col-12 col-sm-6 col-md-4">
-        <div class="product-card shadow-sm p-3 border rounded h-100">
-          <img src="${p.image}" class="img-fluid mb-3 rounded" style="height: 200px; width: 100%; object-fit: cover;">
-          <h3 class="h6 fw-bold">${p.name}</h3>
-          <p class="text-primary fw-bold" style="color: #d16d08f2 !important;">₹${p.price.toLocaleString()}</p>
-          <button class="btn btn-primary btn-sm w-100" onclick="addToCart(${p.id})">Add to Cart</button>
+        <div class="clean-product-card shadow-sm p-3 d-flex flex-column h-100 position-relative">
+          
+          <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
+              <img src="${p.image}" class="img-fluid mb-3 rounded w-100" style="height: 200px; object-fit: cover;" alt="${p.name}">
+              <h3 class="h6 fw-bold mb-1">${p.name}</h3>
+          </a>
+          
+          <div class="mb-2">
+            <span class="small">${starsHTML}</span>
+            <span class="text-secondary ms-1" style="font-size: 0.8rem;">(${p.reviews} reviews)</span>
+          </div>
+          
+          <div class="mb-3">
+            <span class="product-price fw-bold fs-5">₹${p.price.toLocaleString()}</span>
+          </div>
+          
+          <button class="btn btn-primary btn-sm w-100 rounded-pill mt-auto" onclick="addToCart(${p.id})">Add to Cart</button>
         </div>
       </div>
-    `).join('');
-    document.getElementById('resultCount').textContent = `Showing ${list.length} results`;
+    `}).join('');
+    
+    document.getElementById('resultCount').textContent = `Showing ${list.length} products`;
   }
 
   function updatePrice(val) {
@@ -279,8 +317,14 @@ try {
   }
 
   function applyFilters() {
-      const priceLimit = document.getElementById('priceRange').value;
-      const filtered = products.filter(p => p.price <= priceLimit);
+      const priceLimit = parseFloat(document.getElementById('priceRange').value);
+      const keyword = document.getElementById('searchInput').value.toLowerCase();
+      
+      const filtered = products.filter(p => {
+        const matchesPrice = p.price <= priceLimit;
+        const matchesSearch = p.name.toLowerCase().includes(keyword);
+        return matchesPrice && matchesSearch;
+      });
       displayProducts(filtered);
   }
   
@@ -292,21 +336,36 @@ try {
   }
 
   function addToCart(id) {
-    const p = products.find(i => i.id === id);
-    cart.push(p);
+    const product = products.find(i => i.id === id);
+    const existingItem = cart.find(item => item.id === id);
+    
+    if (existingItem) { 
+      existingItem.quantity += 1; 
+    } else { 
+      cart.push({ ...product, quantity: 1 }); 
+    }
+    
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartUI();
+    alert(`${product.name} added to cart!`);
   }
 
   function updateCartUI() {
-    document.getElementById('header-cart-count').textContent = cart.length;
-    const total = cart.reduce((sum, p) => sum + p.price, 0);
-    document.getElementById('header-total').textContent = total.toFixed(2);
+    const itemCount = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+    const totalPrice = cart.reduce((total, item) => total + (item.price * (item.quantity || 1)), 0);
+    document.getElementById('header-cart-count').textContent = itemCount;
+    document.getElementById('header-total').textContent = totalPrice.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     displayProducts(products);
     updateCartUI();
+    
+    // Search on enter key
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      applyFilters();
+    });
   });
 </script>
 </body>

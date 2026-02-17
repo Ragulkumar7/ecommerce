@@ -63,14 +63,21 @@ try {
         background: white;
     }
 
-    .product-card {
+    /* Rating Star Color */
+    .bi-star-fill, .bi-star-half {
+        color: #d16d08f2 !important;
+    }
+
+    /* Clean Product Card Style */
+    .clean-product-card {
         border: 1px solid #eee;
         border-radius: 15px;
-        transition: transform 0.3s;
+        transition: transform 0.3s, box-shadow 0.3s;
         background: #fff;
     }
-    .product-card:hover {
+    .clean-product-card:hover {
         transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
     }
   </style>
 </head>
@@ -88,7 +95,7 @@ try {
         <div class="col-lg-6 col-md-5 d-none d-md-block">
           <form class="search-form" id="searchForm">
             <input class="form-control search-input" type="search" id="searchInput" placeholder="Search for products..." aria-label="Search">
-            <button class="search-btn" type="submit"><i class="bi bi-search"></i></button>
+            <button class="search-btn" type="submit" style="background-color: #d16d08f2; border-color: #d16d08f2;"><i class="bi bi-search text-white"></i></button>
           </form>
         </div>
         <div class="col-lg-3 col-md-3 col-6">
@@ -96,11 +103,11 @@ try {
             <a href="#" class="action-icon me-3 position-relative"><i class="bi bi-arrow-repeat"></i></a>
             <a href="#" class="action-icon me-3 position-relative" onclick="showFavorites()">
               <i class="bi bi-heart"></i>
-              <span class="cart-badge" id="favCount">0</span>
+              <span class="cart-badge bg-dark" id="favCount">0</span>
             </a>
             <a href="./cart.php" class="action-icon position-relative">
               <i class="bi bi-cart3"></i>
-              <span class="cart-badge" id="header-cart-count">0</span>
+              <span class="cart-badge bg-dark" id="header-cart-count">0</span>
             </a>
             <span class="fs-5 ms-2 fw-bold d-none d-lg-block">₹<span id="header-total">0.00</span></span>
           </div>
@@ -114,10 +121,10 @@ try {
       <div class="d-flex justify-content-between align-items-center">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link active" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
+            <a class="nav-link active text-white" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-gem me-1"></i> Beauty & Jewelry
             </a>
             <ul class="dropdown-menu">
@@ -127,7 +134,7 @@ try {
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-heart me-1"></i> Stationery & Gifts
             </a>
             <ul class="dropdown-menu">
@@ -137,7 +144,7 @@ try {
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-pencil me-1"></i> Electronics
             </a>
             <ul class="dropdown-menu">
@@ -147,7 +154,7 @@ try {
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-person me-1"></i> Fashion
             </a>
             <ul class="dropdown-menu">
@@ -157,7 +164,7 @@ try {
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
+            <a class="nav-link text-white" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
           </li>
         </ul>
       </div>
@@ -172,7 +179,7 @@ try {
         <section class="filter-section mb-4">
           <h3 class="h5"><i class="bi bi-currency-rupee me-2"></i>Price Range</h3>
           <input id="priceRange" type="range" min="0" max="2000" value="2000" step="10" class="form-range" />
-          <div class="d-flex justify-content-between mt-2">
+          <div class="d-flex justify-content-between mt-2" style="font-weight: 600; font-size: 0.95rem;">
             <span>₹0</span>
             <span id="priceValue">₹2000</span>
           </div>
@@ -189,14 +196,14 @@ try {
           </div>
         </section>
         <div class="filter-buttons">
-          <button id="applyBtn" type="button" class="btn w-100 mb-2">Apply Filters</button>
-          <button id="resetBtn" type="button" class="btn w-100">Reset Filters</button>
+          <button id="applyBtn" type="button" class="btn w-100 rounded-pill mb-2">Apply Filters</button>
+          <button id="resetBtn" type="button" class="btn btn-light w-100 rounded-pill border">Reset Filters</button>
         </div>
       </div>
     </aside>
     <section class="col-md-9">
       <div class="mb-3 d-flex justify-content-between align-items-center">
-        <p id="resultCount" class="m-0"></p>
+        <p id="resultCount" class="m-0 text-muted"></p>
         <select class="form-select d-inline w-auto" id="sortSelect">
           <option value="default">Sort by</option>
           <option value="lowToHigh">Price - Low to High</option>
@@ -208,15 +215,97 @@ try {
   </section>
 </main>
 
+<footer class="footer-section bg-dark text-white pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <h2 class="footer-brand-text mb-3 text-white">StyleHub</h2>
+        <p class="mb-4 text-white-50">We offer the best products at competitive prices with fast shipping and excellent customer service.</p>
+        <div class="d-flex">
+          <a href="#" class="text-light me-3"><i class="bi bi-facebook fs-4"></i></a>
+          <a href="#" class="text-light me-3"><i class="bi bi-twitter fs-4"></i></a>
+          <a href="#" class="text-light me-3"><i class="bi bi-instagram fs-4"></i></a>
+          <a href="#" class="text-light"><i class="bi bi-linkedin fs-4"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0 footer-links">
+        <h5 class="text-white">Shop</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white-50 text-decoration-none">Beauty & Jewelry</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Homemade Gifts</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Stationery</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Men's Fashion</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Women's Fashion</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4 mb-md-0 footer-links">
+        <h5 class="text-white">Customer Service</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white-50 text-decoration-none">Contact Us</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Returns & Exchanges</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Shipping & Delivery</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">Product Support</a></li>
+          <li><a href="#" class="text-white-50 text-decoration-none">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-4 footer-newsletter">
+        <h5 class="mb-3 text-white">Newsletter</h5>
+        <p class="text-white-50">Subscribe to get special offers, free giveaways, and new product alerts.</p>
+        <form>
+          <input type="email" class="form-control mb-3" placeholder="Your email address">
+          <button type="submit" class="btn btn-primary rounded-pill w-100" style="background-color: #d16d08f2 !important; border-color: #d16d08f2 !important;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <hr class="my-4 border-secondary">
+    <div class="row">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <p class="mb-0 text-white-50">&copy; 2023 StyleHub. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <div class="d-flex justify-content-md-end">
+          <a href="#" class="text-white-50 me-3 text-decoration-none">Privacy Policy</a>
+          <a href="#" class="text-white-50 me-3 text-decoration-none">Terms of Service</a>
+          <a href="#" class="text-white-50 text-decoration-none">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   
+  // Products array for SKINCARE
   let products = [
-    // --- SKINCARE (400s) ---
-    { id: 401, name: "Hydrating Moisturizer", price: 1200, category: "Skincare", rating: 4.9, reviews: 450, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80", desc: "Deep hydration formula perfect for dry skin types." },
-    { id: 402, name: "Vitamin C Serum", price: 1500, category: "Skincare", rating: 4.7, reviews: 312, image: "./assest/img/serum.jpg", desc: "Brightening serum for a glowing and even complexion." },
-    { id: 403, name: "Gentle Cleanser", price: 800, category: "Skincare", rating: 4.5, reviews: 180, image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", desc: "Daily facial cleanser that doesn't strip skin of its natural oils." }
+    { 
+      id: 401, 
+      name: "Hydrating Moisturizer", 
+      price: 1200, 
+      category: "Skincare", 
+      rating: 4.9, 
+      reviews: 450, 
+      image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80" 
+    },
+    { 
+      id: 402, 
+      name: "Vitamin C Serum", 
+      price: 1500, 
+      category: "Skincare", 
+      rating: 4.7, 
+      reviews: 312, 
+      image: "./assest/img/serum.jpg"
+    },
+    { 
+      id: 403, 
+      name: "Gentle Cleanser", 
+      price: 800, 
+      category: "Skincare", 
+      rating: 4.5, 
+      reviews: 180, 
+      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80"
+    }
   ];
 
   let filterState = {
@@ -238,6 +327,7 @@ try {
     });
 
     document.getElementById("applyBtn").addEventListener("click", filterProducts);
+    document.getElementById("resetBtn").addEventListener("click", function() { location.reload(); });
     document.getElementById("sortSelect").addEventListener("change", function() {
       sortProducts(this.value);
     });
@@ -260,13 +350,30 @@ try {
       return;
     }
     productsToDisplay.forEach(p => {
+      const fullStars = Math.floor(p.rating);
+      const halfStar = (p.rating % 1) >= 0.5;
+      let starsHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        if (i <= fullStars) starsHTML += '<i class="bi bi-star-fill"></i>';
+        else if (i === fullStars + 1 && halfStar) starsHTML += '<i class="bi bi-star-half"></i>';
+        else starsHTML += '<i class="bi bi-star"></i>';
+      }
+
       container.innerHTML += `
         <article class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="product-card p-3 shadow-sm h-100">
-            <img src="${p.image}" alt="${p.name}" class="product-img mb-3 rounded" style="object-fit: cover; height: 200px; width: 100%;" />
-            <h3 class="h6 fw-bold">${p.name}</h3>
-            <p class="text-primary fw-bold" style="color: #d16d08f2 !important;">₹${p.price}</p>
-            <button class="btn btn-primary btn-sm w-100" onclick="addToCart(${p.id})">Add to Cart</button>
+          <div class="clean-product-card shadow-sm p-3 d-flex flex-column h-100 position-relative">
+            <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
+              <img src="${p.image}" alt="${p.name}" class="product-img mb-3 rounded" style="object-fit: cover; height: 200px; width: 100%;" />
+              <h3 class="h6 fw-bold mb-1">${p.name}</h3>
+            </a>
+            <div class="mb-2">
+              <span class="small">${starsHTML}</span>
+              <span class="text-secondary ms-1" style="font-size: 0.8rem;">(${p.reviews} reviews)</span>
+            </div>
+            <div class="mb-3">
+              <span class="text-primary fw-bold fs-5" style="color: #d16d08f2 !important;">₹${p.price.toLocaleString()}</span>
+            </div>
+            <button class="btn btn-primary btn-sm w-100 rounded-pill mt-auto" onclick="addToCart(${p.id})">Add to Cart</button>
           </div>
         </article>`;
     });
@@ -280,25 +387,35 @@ try {
       const matchesCategory = filterState.categories.length === 0 || filterState.categories.includes(p.category);
       return matchesSearch && matchesPrice && matchesCategory;
     });
+    
+    // Maintain current sort order when filtering
+    const sortValue = document.getElementById("sortSelect").value;
+    if (sortValue === 'lowToHigh') filtered.sort((a, b) => a.price - b.price);
+    else if (sortValue === 'highToLow') filtered.sort((a, b) => b.price - a.price);
+
     displayProducts(filtered);
   }
 
-  function sortProducts(sortBy) {
-      if(sortBy === 'lowToHigh') products.sort((a, b) => a.price - b.price);
-      else if(sortBy === 'highToLow') products.sort((a, b) => b.price - a.price);
-      filterProducts();
+  function sortProducts(sortValue) {
+      filterProducts(); // filterProducts automatically applies the sort based on the select box value
   }
 
   function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    cart.push(product);
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) { 
+        existingItem.quantity += 1; 
+    } else { 
+        cart.push({ ...product, quantity: 1 }); 
+    }
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartUI();
+    alert(`${product.name} added to cart!`);
   }
 
   function updateCartUI() {
-    const itemCount = cart.length;
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     document.getElementById('header-cart-count').textContent = itemCount;
     document.getElementById('header-total').textContent = totalPrice.toFixed(2);
   }
