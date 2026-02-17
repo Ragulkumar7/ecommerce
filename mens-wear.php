@@ -38,10 +38,25 @@ try {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
     }
+
+    /* Target Add to Cart button color */
+    .clean-product-card .btn-primary {
+        background-color: #d16d08f2 !important;
+        border-color: #d16d08f2 !important;
+    }
+    
+    .clean-product-card .btn-primary:hover {
+        background-color: #b35d07 !important; /* Slightly darker for hover effect */
+        border-color: #b35d07 !important;
+    }
+
+    /* Target Price Text color to match */
+    .text-primary {
+        color: #d16d08f2 !important;
+    }
   </style>
 </head>
 <body>
-<header class="main-header">
 <header class="main-header">
     <div class="container py-3">
       <div class="row align-items-center">
@@ -164,7 +179,7 @@ try {
           <div class="form-check"><input type="checkbox" class="form-check-input" id="star4" onchange="filterProducts()"><label class="form-check-label" for="star4">4 stars & above</label></div>
         </div>
         <div class="filter-buttons mt-3">
-          <button id="applyBtn" type="button" class="btn btn-primary w-100 rounded-pill mb-2" aria-label="Apply filters">Apply Filters</button>
+          <button id="applyBtn" type="button" class="btn btn-primary w-100 rounded-pill mb-2" aria-label="Apply filters" style="background-color: #d16d08f2; border: none;">Apply Filters</button>
           <button id="resetBtn" type="button" class="btn btn-light border w-100 rounded-pill" aria-label="Reset filters">Reset Filters</button>
         </div>
       </div>
@@ -239,8 +254,7 @@ try {
           <h5 class="mb-3">Newsletter</h5>
           <form>
             <input type="email" class="form-control mb-3" placeholder="Your email address">
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #d16d08f2; border: none;">Subscribe</button>
           </form>
         </div>
       </div>
@@ -261,7 +275,6 @@ try {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // --- 1. PRODUCT DATA (IDs 501-509 to avoid conflicts) ---
   const products = [
     { id: 501, name: "Premium Men's Dress Series 7", price: 249.99, old_price: 299.99, rating: 4.5, reviews: 142, tag: 'Sale', image: 'https://i.pinimg.com/736x/76/0f/aa/760faa8086afb8c9d2d5c93715db4ec0.jpg', brand: 'Levis', size: ['M', 'L'] },
     { id: 502, name: "Premium Men's Dress Series 5", price: 179.99, old_price: 0, rating: 4, reviews: 87, tag: 'New', image: 'https://i.pinimg.com/736x/83/20/77/8320778b243c6ba85310486acad071dc.jpg', brand: 'Peter England', size: ['S', 'M', 'L'] },
