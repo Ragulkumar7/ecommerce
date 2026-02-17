@@ -1,17 +1,35 @@
+<?php
+// database connection
+$host = 'localhost';
+$dbname = 'electro_store';
+$username = 'root';
+$password = '';
 
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Fetching only Makeup products
+    $stmt = $pdo->query("SELECT * FROM products WHERE category = 'Makeup'");
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    echo "Database connection failed: " . $e->getMessage();
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StyleHub | Men's Fashion</title>
+  <title>StyleHub | Makeup Products</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/beauty-products.css" />
 </head>
 <body>
-<!-- Header Section -->
-  <header class="main-header">
+<header class="main-header">
     <div class="container py-3">
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
@@ -44,7 +62,6 @@
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav class="main-navbar">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
@@ -58,7 +75,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="beauty-products.php">Makeup</a></li>
-              <li><a class="dropdown-item" href="beauty-products.php">Skincare</a></li>
+              <li><a class="dropdown-item" href="skincare.php">Skincare</a></li>
               <li><a class="dropdown-item" href="gold.php">Gold Jewelry</a></li>
             </ul>
           </li>
@@ -100,8 +117,7 @@
     </div>
   </nav>
 
-  <!-- Main Content Section -->
-<main class="container-fluid py-4" role="main">
+  <main class="container-fluid py-4" role="main">
   <section class="row">
     <aside class="col-md-3" role="complementary" aria-label="Product filters">
       <div class="sidebar shadow-box p-4 mb-4">
@@ -129,7 +145,7 @@
             <label class="form-check-label" for="fragrance">Fragrance</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input size-filter" id="makeup" value="Makeup" />
+            <input type="checkbox" class="form-check-input size-filter" id="makeup" value="Makeup" checked />
             <label class="form-check-label" for="makeup">Makeup</label>
           </div>
         </section>
@@ -160,8 +176,7 @@
   </section>
 </main>
 
- <!-- Footer Section -->
-  <footer class="footer-section">
+ <footer class="footer-section">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 mb-4 mb-lg-0">
@@ -219,31 +234,63 @@
     </div>
   </footer>
 
-  <!-- Toast Container -->
   <div id="toastContainer" aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 9999"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   // Global variables
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // UPDATED: Products array now contains only MAKEUP items with correct placeholder images
   let products = [
-    { id: 1, name: "Gentle Skin Moisturizer", price: 450, category: "Skincare", rating: 4.5, reviews: 150, image: "https://i.pinimg.com/736x/bb/9c/69/bb9c691524dc7575451ca8c0930692ea.jpg" },
-    { id: 2, name: "Herbal Hair Oil", price: 350, category: "Haircare", rating: 4.2, reviews: 100, image: "https://i.pinimg.com/1200x/dc/8a/f0/dc8af027923404bca657f01fd20cbf1a.jpg" },
-    { id: 3, name: "Floral Fragrance", price: 800, category: "Fragrance", rating: 4.7, reviews: 200, image: "https://i.pinimg.com/736x/ab/56/91/ab56915ca57968a148699deb2963c915.jpg" },
-    { id: 4, name: "Natural Lipstick", price: 600, category: "Makeup", rating: 4.1, reviews: 130, image: "https://i.pinimg.com/1200x/35/75/96/357596954cb89f345a9683041cb3e600.jpg" },
-    { id: 5, name: "Face Wash Foam", price: 300, category: "Skincare", rating: 4.6, reviews: 170, image: "https://i.pinimg.com/736x/9e/c0/8c/9ec08c4a35473c29b3f764664ed6269c.jpg" }
+    { 
+      id: 4, 
+      name: "Matte Red Lipstick", 
+      price: 600, 
+      category: "Makeup", 
+      rating: 4.8, 
+      reviews: 130, 
+      image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&q=80" 
+    },
+    { 
+      id: 6, 
+      name: "Liquid Foundation", 
+      price: 850, 
+      category: "Makeup", 
+      rating: 4.6, 
+      reviews: 210, 
+      image: "./assest/img/foundation.jpg"
+    },
+    { 
+      id: 7, 
+      name: "Volume Mascara", 
+      price: 450, 
+      category: "Makeup", 
+      rating: 4.3, 
+      reviews: 95, 
+      image: "./assest/img/mascara.jpg"
+    },
+    { 
+      id: 8, 
+      name: "Black Eyeliner", 
+      price: 300, 
+      category: "Makeup", 
+      rating: 4.5, 
+      reviews: 320, 
+      image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80" 
+    }
   ];
 
   let filterState = {
     keyword: "",
     priceLimit: 1000,
-    categories: [],
+    categories: [], 
     minRating: 0
   };
 
   // Initialize the page
   document.addEventListener('DOMContentLoaded', function() {
-    displayProducts(products);
+    displayProducts(products); 
     updatePrice(document.getElementById("priceRange").value);
     updateCartUI();
     updateFavoritesCount();
@@ -272,7 +319,11 @@
       document.getElementById("searchInput").value = "";
       document.getElementById("priceRange").value = 1000;
       updatePrice(1000);
+      
       document.querySelectorAll(".size-filter, #star4").forEach(cb => cb.checked = false);
+      // Optional: re-check makeup if you strictly want it always checked on reset
+      // document.getElementById("makeup").checked = true; 
+      
       filterState = {
         keyword: "",
         priceLimit: 1000,
@@ -307,7 +358,7 @@
       container.innerHTML += `
         <article class="col-12 col-sm-6 col-md-4 col-lg-3" role="listitem">
           <div class="product-card shadow-box position-relative">
-            <img src="${p.image}" alt="${p.name}" class="product-img" />
+            <img src="${p.image}" alt="${p.name}" class="product-img" style="object-fit: cover; height: 250px; width: 100%;" />
             <div class="p-3 d-flex flex-column" style="height: 200px;">
               <h3 class="product-title">${p.name}</h3>
               <div>
@@ -364,7 +415,7 @@
         filteredProducts.sort((a, b) => b.price - a.price);
         break;
       default:
-        // Default sorting (by ID or keep original order)
+        // Default sorting
         break;
     }
     
@@ -422,7 +473,6 @@
   function viewDetails(productId) {
     const product = products.find(p => p.id === productId);
     showToast(`Viewing details for ${product.name}`);
-    // In a real application, this would redirect to a product detail page
   }
 
   function showToast(message) {
@@ -447,7 +497,6 @@
     const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
     toast.show();
     
-    // Remove the toast from DOM after it's hidden
     toastElement.addEventListener('hidden.bs.toast', function() {
       toastElement.remove();
     });

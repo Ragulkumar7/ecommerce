@@ -1,4 +1,24 @@
+<?php
+// Database connection
+$host = 'localhost';
+$dbname = 'electro_store';
+$username = 'root';
+$password = '';
 
+$products = [];
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $pdo->query("SELECT * FROM products WHERE category = 'stationery'");
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    // If database fails, use sample data
+    $products = [];
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
