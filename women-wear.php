@@ -319,15 +319,15 @@ try {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const products = [
-      { id: 1, name: "SilentParrot Ladies' Panties - Classic Collection", price: 299.99, old_price: 899.99, rating: 4.5, reviews: 142, tag: 'Sale', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/1.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
-      { id: 2, name: "SilentParrot Multi-Pack Ladies' Collection (3-Pack)", price: 179.99, old_price: 0, rating: 4, reviews: 87, tag: 'New', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/2.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
-      { id: 3, name: "SilentParrot Premium Cotton Panties - Blue Patterns", price: 349.99, old_price: 399.99, rating: 5, reviews: 215, tag: '', image: 'https://test.divasprik.in/Silentparrot/frontend/ASSETS/images/womenproduct2.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
-      { id: 4, name: "Premium Men's Dress Series 3", price: 399.99, old_price: 499.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/f5/a0/4c/f5a04c9dfbcfceb0eebc347d7ffa71b5.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 5, name: "Premium Men's Dress Series 8", price: 299.99, old_price: 369.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/49/67/15/496715d79127f5bf9b1864625400216b.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 6, name: "Premium Men's Dress Series 2", price: 399.99, old_price: 479.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/aa/07/19/aa0719404f01f341cbeb2771a489ef81.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 7, name: "Premium Men's Dress Series 5", price: 449.99, old_price: 599.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/b7/af/12/b7af1257268780a1f43495fefd2e6601.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 8, name: "Premium Men's Dress Series 8", price: 649.99, old_price: 799.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/19/3e/cf/193ecf4993db80e67e9d125adadfe9f3.jpg', brand: 'Levis', size: ['L', 'XL'] },
-      { id: 9, name: "Premium Men's Dress Series 9", price: 649.99, old_price: 699.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/5e/64/9b/5e649bad379266840a64a9699fd746d6.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 201, name: "SilentParrot Ladies' Panties - Classic Collection", price: 299.99, old_price: 899.99, rating: 4.5, reviews: 142, tag: 'Sale', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/1.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
+      { id: 202, name: "SilentParrot Multi-Pack Ladies' Collection (3-Pack)", price: 179.99, old_price: 0, rating: 4, reviews: 87, tag: 'New', image: 'https://www.silentparrot.in/wp-content/uploads/2025/06/2.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
+      { id: 203, name: "SilentParrot Premium Cotton Panties - Blue Patterns", price: 349.99, old_price: 399.99, rating: 5, reviews: 215, tag: '', image: 'https://test.divasprik.in/Silentparrot/frontend/ASSETS/images/womenproduct2.jpg', brand: 'Slient parrot', size: ['L', 'XL', 'S', 'X'] },
+      { id: 204, name: "Premium Men's Dress Series 3", price: 399.99, old_price: 499.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/f5/a0/4c/f5a04c9dfbcfceb0eebc347d7ffa71b5.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 205, name: "Premium Men's Dress Series 8", price: 299.99, old_price: 369.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/49/67/15/496715d79127f5bf9b1864625400216b.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 206, name: "Premium Men's Dress Series 2", price: 399.99, old_price: 479.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/aa/07/19/aa0719404f01f341cbeb2771a489ef81.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 207, name: "Premium Men's Dress Series 5", price: 449.99, old_price: 599.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/736x/b7/af/12/b7af1257268780a1f43495fefd2e6601.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 208, name: "Premium Men's Dress Series 8", price: 649.99, old_price: 799.99, rating: 5, reviews: 215, tag: '', image: 'https://i.pinimg.com/1200x/19/3e/cf/193ecf4993db80e67e9d125adadfe9f3.jpg', brand: 'Levis', size: ['L', 'XL'] },
+      { id: 209, name: "Premium Men's Dress Series 9", price: 649.99, old_price: 699.99, rating: 5, reviews: 215, tag: '', image:'https://i.pinimg.com/736x/5e/64/9b/5e649bad379266840a64a9699fd746d6.jpg', brand: 'Levis', size: ['L', 'XL'] }
     ];
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];

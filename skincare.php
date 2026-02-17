@@ -213,33 +213,10 @@ try {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   
   let products = [
-    { 
-      id: 10, 
-      name: "Hydrating Moisturizer", 
-      price: 1200, 
-      category: "Skincare", 
-      rating: 4.9, 
-      reviews: 450, 
-      image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80" 
-    },
-    { 
-      id: 11, 
-      name: "Vitamin C Serum", 
-      price: 1500, 
-      category: "Skincare", 
-      rating: 4.7, 
-      reviews: 312, 
-      image: "./assest/img/serum.jpg"
-    },
-    { 
-      id: 12, 
-      name: "Gentle Cleanser", 
-      price: 800, 
-      category: "Skincare", 
-      rating: 4.5, 
-      reviews: 180, 
-      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80"
-    }
+    // --- SKINCARE (400s) ---
+    { id: 401, name: "Hydrating Moisturizer", price: 1200, category: "Skincare", rating: 4.9, reviews: 450, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80", desc: "Deep hydration formula perfect for dry skin types." },
+    { id: 402, name: "Vitamin C Serum", price: 1500, category: "Skincare", rating: 4.7, reviews: 312, image: "./assest/img/serum.jpg", desc: "Brightening serum for a glowing and even complexion." },
+    { id: 403, name: "Gentle Cleanser", price: 800, category: "Skincare", rating: 4.5, reviews: 180, image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80", desc: "Daily facial cleanser that doesn't strip skin of its natural oils." }
   ];
 
   let filterState = {
