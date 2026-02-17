@@ -1037,7 +1037,7 @@ try {
       {
         id: 1,
         name: "Premium Men's Dress Series 7",
-        image: "https://blog.g3fashion.com/wp-content/uploads/2016/05/quilted-velvet-nehru-jacket-in-dark-teal-blue-v1-mtx7013.jpg",
+        image: "./ASSEST/img/Premium.jpg",
         badge: "Sale",
         price: 249.99,
         originalPrice: 299.99,
@@ -1053,7 +1053,7 @@ try {
       {
         id: 2,
         name: "Women Fashion Dress",
-        image: "https://wforwoman.com/cdn/shop/files/24AUSP11990-12442_61f6b1c6-aa0c-4a0b-b043-30ced7f9c986_600x.jpg?v=1739786248",
+        image: "./ASSEST/img/women.jpg",
         badge: "New",
         price: 179.99,
         originalPrice: null,
@@ -1069,7 +1069,7 @@ try {
       {
         id: 3,
         name: "Luxury Smart Watch - Gold Edition",
-        image: "https://www.littlefingersindia.com/wp-content/uploads/2024/03/IMG20240324135020-1.jpg",
+        image: "./ASSEST/img/watch.jpg",
         badge: "",
         price: 349.99,
         originalPrice: 399.99,
