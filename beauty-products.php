@@ -27,6 +27,17 @@ try {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/beauty-products.css" />
+  <style>
+    /* Styling for the clay-red navbar to match accessories */
+    .main-navbar { background-color: #cd7d73 !important; padding: 10px 0; }
+    .main-navbar .nav-link { color: white !important; font-weight: 500; border-bottom: 3px solid transparent; }
+    .main-navbar .nav-link.active { border-bottom: 3px solid #ffcc66; }
+    
+    /* Product Card Styling */
+    .sidebar shadow-box { border: 1px solid #e0e0e0; border-radius: 20px; padding: 25px; background: white; }
+    .product-card { border: 1px solid #eee; border-radius: 15px; transition: transform 0.3s; background: #fff; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important; }
+  </style>
 </head>
 <body>
 <header class="main-header">
@@ -67,10 +78,10 @@ try {
       <div class="d-flex justify-content-between align-items-center">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link active" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
+            <a class="nav-link" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-gem me-1"></i> Beauty & Jewelry
             </a>
             <ul class="dropdown-menu">
@@ -96,7 +107,7 @@ try {
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="./electronics.php">Mobile Phones</a></li>
               <li><a class="dropdown-item" href="./electronics.php">Laptops</a></li>
-              <li><a class="dropdown-item" href="./electronics.php">Accessories</a></li>
+              <li><a class="dropdown-item" href="./accessories.php">Accessories</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -120,56 +131,61 @@ try {
   <main class="container-fluid py-4" role="main">
   <section class="row">
     <aside class="col-md-3" role="complementary" aria-label="Product filters">
-      <div class="sidebar shadow-box p-4 mb-4">
-        <h2 class="h4 mb-4">Filters</h2>
-        <section class="filter-section mb-4" aria-label="Price filter">
-          <h3 class="h5"><i class="bi bi-currency-rupee me-2"></i>Price Range</h3>
+      <div class="sidebar shadow-box p-4 mb-4" style="border: 1px solid #e0e0e0; border-radius: 20px; background: white;">
+        <h2 class="h4 mb-4 fw-bold">Filters</h2>
+        
+        <section class="filter-section mb-4 p-3 rounded" style="background-color: #f8f9fa;" aria-label="Price filter">
+          <h3 class="h6 fw-bold mb-3"><i class="bi bi-currency-rupee me-2"></i>Price Range</h3>
           <input id="priceRange" type="range" min="0" max="1000" value="1000" step="10" class="form-range" aria-label="Filter by price range" />
-          <div class="d-flex justify-content-between mt-2 mb-0" style="font-weight: 600; font-size: 0.95rem;">
+          <div class="d-flex justify-content-between mt-2 mb-0" style="font-weight: 600; font-size: 0.90rem;">
             <span>₹0</span>
             <span id="priceValue">₹1000</span>
           </div>
         </section>
+
         <section class="filter-section mb-4" aria-label="Category filter">
-          <h3 class="h5">Category</h3>
-          <div class="form-check">
+          <h3 class="h6 fw-bold mb-3">Category</h3>
+          <div class="form-check mb-2">
             <input type="checkbox" class="form-check-input size-filter" id="skincare" value="Skincare" />
             <label class="form-check-label" for="skincare">Skincare</label>
           </div>
-          <div class="form-check">
+          <div class="form-check mb-2">
             <input type="checkbox" class="form-check-input size-filter" id="haircare" value="Haircare" />
             <label class="form-check-label" for="haircare">Haircare</label>
           </div>
-          <div class="form-check">
+          <div class="form-check mb-2">
             <input type="checkbox" class="form-check-input size-filter" id="fragrance" value="Fragrance" />
             <label class="form-check-label" for="fragrance">Fragrance</label>
           </div>
-          <div class="form-check">
+          <div class="form-check mb-2">
             <input type="checkbox" class="form-check-input size-filter" id="makeup" value="Makeup" checked />
             <label class="form-check-label" for="makeup">Makeup</label>
           </div>
         </section>
-        <section class="filter-section" aria-label="Rating filter">
-          <h3 class="h5">Rating</h3>
+        <section class="filter-section mb-4" aria-label="Rating filter">
+          <h3 class="h6 fw-bold mb-3">Rating</h3>
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="star4" />
             <label class="form-check-label" for="star4">4 stars &amp; above</label>
           </div>
         </section>
-        <div class="filter-buttons">
-          <button id="applyBtn" type="button">Apply Filters</button>
-          <button id="resetBtn" type="button">Reset Filters</button>
-        </div>
+        
+        <button id="applyBtn" type="button" class="btn w-100 mb-2" style="background-color: #0d6efd; color: white; border-radius: 12px; padding: 10px; font-weight: 500;">Apply Filters</button>
+        <button id="resetBtn" type="button" class="btn btn-light w-100" style="border-radius: 12px; padding: 10px; font-weight: 500; border: 1px solid #ddd;">Reset Filters</button>
       </div>
     </aside>
+
     <section class="col-md-9" aria-label="Products">
-      <div class="mb-3 d-flex justify-content-between align-items-center">
-        <p id="resultCount" class="m-0"></p>
-        <select class="form-select d-inline w-auto" id="sortSelect" aria-label="Sort products">
-          <option value="default">Sort by</option>
-          <option value="lowToHigh">Price - Low to High</option>
-          <option value="highToLow">Price - High to Low</option>
-        </select>
+      <div class="mb-4 d-flex justify-content-between align-items-center">
+        <h1 class="h4 m-0 fw-bold">Makeup Collection</h1>
+        <div class="d-flex align-items-center gap-3">
+            <p id="resultCount" class="m-0 text-muted small"></p>
+            <select class="form-select d-inline w-auto" id="sortSelect" aria-label="Sort products">
+              <option value="default">Sort by</option>
+              <option value="lowToHigh">Price - Low to High</option>
+              <option value="highToLow">Price - High to Low</option>
+            </select>
+        </div>
       </div>
       <div class="row g-4" id="productContainer" role="list"></div>
     </section>
@@ -238,47 +254,13 @@ try {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Global variables
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   
-  // UPDATED: Products array now contains only MAKEUP items with correct placeholder images
   let products = [
-    { 
-      id: 4, 
-      name: "Matte Red Lipstick", 
-      price: 600, 
-      category: "Makeup", 
-      rating: 4.8, 
-      reviews: 130, 
-      image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&q=80" 
-    },
-    { 
-      id: 6, 
-      name: "Liquid Foundation", 
-      price: 850, 
-      category: "Makeup", 
-      rating: 4.6, 
-      reviews: 210, 
-      image: "./assest/img/foundation.jpg"
-    },
-    { 
-      id: 7, 
-      name: "Volume Mascara", 
-      price: 450, 
-      category: "Makeup", 
-      rating: 4.3, 
-      reviews: 95, 
-      image: "./assest/img/mascara.jpg"
-    },
-    { 
-      id: 8, 
-      name: "Black Eyeliner", 
-      price: 300, 
-      category: "Makeup", 
-      rating: 4.5, 
-      reviews: 320, 
-      image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80" 
-    }
+    { id: 4, name: "Matte Red Lipstick", price: 600, category: "Makeup", rating: 4.8, reviews: 130, image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&q=80" },
+    { id: 6, name: "Liquid Foundation", price: 850, category: "Makeup", rating: 4.6, reviews: 210, image: "./assest/img/foundation.jpg" },
+    { id: 7, name: "Volume Mascara", price: 450, category: "Makeup", rating: 4.3, reviews: 95, image: "./assest/img/mascara.jpg" },
+    { id: 8, name: "Black Eyeliner", price: 300, category: "Makeup", rating: 4.5, reviews: 320, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80" }
   ];
 
   let filterState = {
@@ -288,20 +270,15 @@ try {
     minRating: 0
   };
 
-  // Initialize the page
   document.addEventListener('DOMContentLoaded', function() {
     displayProducts(products); 
     updatePrice(document.getElementById("priceRange").value);
     updateCartUI();
     updateFavoritesCount();
     
-    // Add event listeners
     document.getElementById("searchInput").addEventListener("input", filterProducts);
     document.getElementById("searchInput").addEventListener("keypress", function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        filterProducts();
-      }
+      if (e.key === 'Enter') { e.preventDefault(); filterProducts(); }
     });
     
     document.getElementById("priceRange").addEventListener("input", function(e) {
@@ -319,17 +296,8 @@ try {
       document.getElementById("searchInput").value = "";
       document.getElementById("priceRange").value = 1000;
       updatePrice(1000);
-      
       document.querySelectorAll(".size-filter, #star4").forEach(cb => cb.checked = false);
-      // Optional: re-check makeup if you strictly want it always checked on reset
-      // document.getElementById("makeup").checked = true; 
-      
-      filterState = {
-        keyword: "",
-        priceLimit: 1000,
-        categories: [],
-        minRating: 0
-      };
+      filterState = { keyword: "", priceLimit: 1000, categories: [], minRating: 0 };
       displayProducts(products);
     });
     
@@ -343,6 +311,7 @@ try {
     filterState.priceLimit = parseInt(value);
   }
 
+  // --- UPDATED DISPLAY FUNCTION ---
   function displayProducts(productsToDisplay) {
     const container = document.getElementById("productContainer");
     container.innerHTML = "";
@@ -357,25 +326,27 @@ try {
       const stars = "★★★★★".slice(0, Math.floor(p.rating)) + (p.rating % 1 >= 0.5 ? "½" : "");
       container.innerHTML += `
         <article class="col-12 col-sm-6 col-md-4 col-lg-3" role="listitem">
-          <div class="product-card shadow-box position-relative">
-            <img src="${p.image}" alt="${p.name}" class="product-img" style="object-fit: cover; height: 250px; width: 100%;" />
-            <div class="p-3 d-flex flex-column" style="height: 200px;">
-              <h3 class="product-title">${p.name}</h3>
-              <div>
-                <span class="rating" aria-label="${p.rating} stars">${stars}</span>
-                <span class="text-secondary ms-2">(${p.reviews})</span>
-              </div>
-              <div class="mt-2 mb-3"><span class="product-price">₹${p.price}</span></div>
-              <div class="button-group mt-auto d-flex gap-2">
-                <button type="button" class="btn btn-outline-primary btn-sm flex-fill" onclick="viewDetails(${p.id})">View Details</button>
-                <button type="button" class="btn btn-primary btn-sm flex-fill" onclick="addToCart(${p.id})">Add to Cart</button>
-              </div>
+          <div class="product-card p-3 h-100 shadow-sm">
+            <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
+              <img src="${p.image}" alt="${p.name}" class="img-fluid rounded mb-3" style="object-fit: cover; height: 180px; width: 100%;" />
+              <h5 class="h6 fw-bold mb-1">${p.name}</h5>
+            </a>
+            
+            <div class="mb-2">
+              <span class="text-warning small">${stars}</span>
+              <span class="text-secondary ms-1" style="font-size: 0.8rem;">(${p.reviews} reviews)</span>
             </div>
+            
+            <p class="text-primary fw-bold mb-3">₹${p.price.toLocaleString()}</p>
+            
+            <button type="button" class="btn btn-primary btn-sm w-100 rounded-pill" onclick="addToCart(${p.id})">
+                Add to Cart
+            </button>
           </div>
         </article>
       `;
     });
-    document.getElementById("resultCount").textContent = `Showing ${productsToDisplay.length} products`;
+    document.getElementById("resultCount").textContent = `Showing ${productsToDisplay.length} results`;
   }
 
   function filterProducts() {
@@ -395,9 +366,7 @@ try {
   }
 
   function sortProducts(sortBy) {
-    let filteredProducts = [...products]; // Start with all products
-    
-    // Apply current filters first
+    let filteredProducts = [...products]; 
     filteredProducts = filteredProducts.filter(p => {
       const matchesKeyword = p.name.toLowerCase().includes(filterState.keyword);
       const matchesPrice = p.price <= filterState.priceLimit;
@@ -406,19 +375,10 @@ try {
       return matchesKeyword && matchesPrice && matchesCategory && matchesRating;
     });
     
-    // Then sort
     switch(sortBy) {
-      case 'lowToHigh':
-        filteredProducts.sort((a, b) => a.price - b.price);
-        break;
-      case 'highToLow':
-        filteredProducts.sort((a, b) => b.price - a.price);
-        break;
-      default:
-        // Default sorting
-        break;
+      case 'lowToHigh': filteredProducts.sort((a, b) => a.price - b.price); break;
+      case 'highToLow': filteredProducts.sort((a, b) => b.price - a.price); break;
     }
-    
     displayProducts(filteredProducts);
   }
 
@@ -429,13 +389,7 @@ try {
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
-      cart.push({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        quantity: 1
-      });
+      cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, quantity: 1 });
     }
     
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -446,23 +400,8 @@ try {
   function updateCartUI() {
     const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
     const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-    
     document.getElementById('header-cart-count').textContent = itemCount;
     document.getElementById('header-total').textContent = totalPrice.toFixed(2);
-  }
-
-  function addToFavorites(productId) {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    const product = products.find(p => p.id === productId);
-    
-    if (!favorites.find(f => f.id === productId)) {
-      favorites.push(product);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-      updateFavoritesCount();
-      showToast(`${product.name} added to favorites!`);
-    } else {
-      showToast(`${product.name} is already in your favorites!`);
-    }
   }
 
   function updateFavoritesCount() {
@@ -470,36 +409,23 @@ try {
     document.getElementById('favCount').textContent = favorites.length;
   }
 
-  function viewDetails(productId) {
-    const product = products.find(p => p.id === productId);
-    showToast(`Viewing details for ${product.name}`);
-  }
-
   function showToast(message) {
     const toastContainer = document.getElementById('toastContainer');
     const toastId = 'toast-' + Date.now();
-    
     const toastHTML = `
       <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
           <strong class="me-auto">StyleHub</strong>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-        <div class="toast-body">
-          ${message}
-        </div>
+        <div class="toast-body">${message}</div>
       </div>
     `;
-    
     toastContainer.insertAdjacentHTML('beforeend', toastHTML);
-    
     const toastElement = document.getElementById(toastId);
     const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
     toast.show();
-    
-    toastElement.addEventListener('hidden.bs.toast', function() {
-      toastElement.remove();
-    });
+    toastElement.addEventListener('hidden.bs.toast', function() { toastElement.remove(); });
   }
 </script>
 </body>

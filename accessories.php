@@ -211,20 +211,22 @@ try {
     { id: 305, name: "65W Laptop Power Adapter", price: 3200, image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=500", brand: "Dell" }
   ];
 
-  function displayProducts(list) {
-    const container = document.getElementById('accessoryContainer');
-    container.innerHTML = list.map(p => `
-        <div class="col-md-6 col-xl-4">
-            <div class="product-card p-3 h-100 shadow-sm">
-                <img src="${p.image}" class="img-fluid rounded mb-3" style="height:160px; width:100%; object-fit:cover;">
-                <h5 class="h6 fw-bold mb-1">${p.name}</h5>
-                <p class="text-primary fw-bold mb-3">₹${p.price.toLocaleString()}</p>
-                <button class="btn btn-primary btn-sm w-100 rounded-pill" onclick="addToCart(${p.id})">Add to Cart</button>
-            </div>
-        </div>
-    `).join('');
-    document.getElementById('resultCount').textContent = `Showing ${list.length} results`;
-  }
+  // Replace this part in your accessories.php
+function displayProducts(list) {
+  const container = document.getElementById('accessoryContainer');
+  container.innerHTML = list.map(p => `
+      <div class="col-md-6 col-xl-4">
+          <div class="product-card p-3 h-100 shadow-sm">
+              <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
+                  <img src="${p.image}" class="img-fluid rounded mb-3" style="height:160px; width:100%; object-fit:cover;">
+                  <h5 class="h6 fw-bold mb-1">${p.name}</h5>
+              </a>
+              <p class="text-primary fw-bold mb-3">₹${p.price.toLocaleString()}</p>
+              <button class="btn btn-primary btn-sm w-100 rounded-pill" onclick="addToCart(${p.id})">Add to Cart</button>
+          </div>
+      </div>
+  `).join('');
+}
 
   function updatePriceLabel(val) {
     document.getElementById('priceValue').innerText = '₹' + parseInt(val).toLocaleString();

@@ -27,10 +27,22 @@ try {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/gold.css">
+  <style>
+    /* Added only this specific class to give the cards that clean hover effect you liked */
+    .clean-product-card {
+        border: 1px solid #eee;
+        border-radius: 15px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        background: #fff;
+    }
+    .clean-product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+    }
+  </style>
 </head>
 <body>
-<!-- Header Section -->
-  <header class="main-header">
+<header class="main-header">
     <div class="container py-3">
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
@@ -59,7 +71,6 @@ try {
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav class="main-navbar">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center">
@@ -115,7 +126,6 @@ try {
     </div>
   </nav>
 
-  <!-- Hero Banner -->
   <section class="hero-banner">
     <div class="container text-white">
       <nav aria-label="breadcrumb">
@@ -131,7 +141,6 @@ try {
     </div>
   </section>
 
-  <!-- Shop Page Section -->
   <section class="shop-page container py-5" id="products-section">
     <div class="row">
       <aside class="col-md-3" role="complementary">
@@ -216,7 +225,6 @@ try {
         
         <div class="row g-4" id="productContainer" role="list"></div>
         
-        <!-- Pagination -->
         <nav aria-label="Product pagination" class="mt-5">
           <ul class="pagination justify-content-center">
             <li class="page-item disabled">
@@ -234,7 +242,6 @@ try {
     </div>
   </section>
 
-  <!-- Cart Modal -->
   <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
       <div class="modal-content">
@@ -252,7 +259,6 @@ try {
     </div>
   </div>
 
-  <!-- Footer Section -->
   <footer class="footer-section">
     <div class="container">
       <div class="row">
@@ -311,6 +317,8 @@ try {
     </div>
   </footer>
 
+  <div id="toastContainer" aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 9999"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const products = [
@@ -336,7 +344,6 @@ try {
       updateCartUI();
       updateFavoritesCount();
       
-      // Price range slider
       const priceRange = document.getElementById('priceRange');
       const priceValue = document.getElementById('priceValue');
       
@@ -344,26 +351,17 @@ try {
         priceValue.textContent = '₹' + parseInt(this.value).toLocaleString();
       });
       
-      // Apply filters button
       document.getElementById('applyBtn').addEventListener('click', applyFilters);
-      
-      // Reset filters button
       document.getElementById('resetBtn').addEventListener('click', resetFilters);
-      
-      // Sort select
-      document.getElementById('sortSelect').addEventListener('change', function() {
-        sortProducts(this.value);
-      });
-      
-      // Real-time search
+      document.getElementById('sortSelect').addEventListener('change', function() { sortProducts(this.value); });
       document.getElementById('searchInput').addEventListener('input', applyFilters);
       
-      // Real-time filter changes
       document.querySelectorAll('.category-filter, .material-filter, .rating-filter').forEach(filter => {
         filter.addEventListener('change', applyFilters);
       });
     });
 
+    // UPDATED FUNCTION: Clean card style, no tags/badges, image/title linked to product-details.php
     function renderProducts() {
       const container = document.getElementById('productContainer');
       container.innerHTML = '';
@@ -376,34 +374,30 @@ try {
       
       filteredProducts.forEach(product => {
         const ratingStars = generateRatingStars(product.rating);
+        
         const productCard = `
           <div class="col-md-6 col-xl-4" role="listitem">
-            <div class="product-card card h-100">
-              <div class="product-img-container">
-                ${product.tag ? `<span class="product-badge">${product.tag}</span>` : ''}
-                <div class="product-actions">
-                  <button class="action-btn" onclick="addToFavorites(${product.id})" title="Add to favorites"><i class="bi bi-heart"></i></button>
-                  <button class="action-btn" onclick="quickView(${product.id})" title="Quick view"><i class="bi bi-eye"></i></button>
-                </div>
-                <img src="${product.image}" class="product-img" alt="${product.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
+            <div class="clean-product-card p-3 h-100 shadow-sm d-flex flex-column">
+              
+              <a href="product-details.php?id=${product.id}" class="text-decoration-none text-dark">
+                <img src="${product.image}" class="img-fluid rounded mb-3 w-100" alt="${product.name}" style="height: 200px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
+                <h5 class="h6 fw-bold mb-1">${product.name}</h5>
+              </a>
+              
+              <div class="mb-2">
+                <span class="text-warning small">${ratingStars}</span>
+                <span class="text-secondary ms-1" style="font-size: 0.8rem;">(${product.reviews} reviews)</span>
               </div>
-              <div class="card-body d-flex flex-column">
-                <h5 class="product-title">${product.name}</h5>
-                <div class="product-rating mb-2">
-                  ${ratingStars}
-                  <span class="text-muted ms-1">(${product.reviews})</span>
-                </div>
-                <div class="mb-3">
-                  <span class="product-price">₹${product.price.toLocaleString()}</span>
-                  ${product.old_price ? `<span class="original-price ms-2">₹${product.old_price.toLocaleString()}</span>` : ''}
-                </div>
-                <div class="product-footer mt-auto">
-                  <a href="product.php?id=${product.id}" class="view-details-btn">Details</a>
-                  <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
-                    <i class="bi bi-cart-plus me-1"></i> Add to Cart
-                  </button>
-                </div>
+              
+              <div class="mb-3">
+                <span class="text-primary fw-bold fs-5">₹${product.price.toLocaleString()}</span>
+                ${product.old_price ? `<span class="text-muted text-decoration-line-through ms-2 small">₹${product.old_price.toLocaleString()}</span>` : ''}
               </div>
+              
+              <button type="button" class="btn btn-primary btn-sm w-100 rounded-pill mt-auto" onclick="addToCart(${product.id})">
+                Add to Cart
+              </button>
+              
             </div>
           </div>
         `;
@@ -418,19 +412,11 @@ try {
       const fullStars = Math.floor(rating);
       const hasHalfStar = rating % 1 !== 0;
       
-      for (let i = 0; i < fullStars; i++) {
-        stars += '<i class="bi bi-star-fill"></i>';
-      }
-      
-      if (hasHalfStar) {
-        stars += '<i class="bi bi-star-half"></i>';
-      }
+      for (let i = 0; i < fullStars; i++) { stars += '<i class="bi bi-star-fill"></i>'; }
+      if (hasHalfStar) { stars += '<i class="bi bi-star-half"></i>'; }
       
       const emptyStars = 5 - Math.ceil(rating);
-      for (let i = 0; i < emptyStars; i++) {
-        stars += '<i class="bi bi-star"></i>';
-      }
-      
+      for (let i = 0; i < emptyStars; i++) { stars += '<i class="bi bi-star"></i>'; }
       return stars;
     }
 
@@ -444,12 +430,10 @@ try {
       const minRating = selectedRatings.length > 0 ? Math.min(...selectedRatings) : 0;
       
       filteredProducts = products.filter(product => {
-        const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
-                             product.brand.toLowerCase().includes(searchTerm);
+        const matchesSearch = product.name.toLowerCase().includes(searchTerm) || product.brand.toLowerCase().includes(searchTerm);
         const matchesPrice = product.price <= maxPrice;
         const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
-        const matchesMaterial = selectedMaterials.length === 0 || 
-                               selectedMaterials.some(material => product.material.includes(material));
+        const matchesMaterial = selectedMaterials.length === 0 || selectedMaterials.some(material => product.material.includes(material));
         const matchesRating = product.rating >= minRating;
         
         return matchesSearch && matchesPrice && matchesCategory && matchesMaterial && matchesRating;
@@ -475,23 +459,12 @@ try {
 
     function sortProducts(criteria) {
       sortBy = criteria;
-      
       switch(criteria) {
-        case 'lowToHigh':
-          filteredProducts.sort((a, b) => a.price - b.price);
-          break;
-        case 'highToLow':
-          filteredProducts.sort((a, b) => b.price - a.price);
-          break;
-        case 'rating':
-          filteredProducts.sort((a, b) => b.rating - a.rating);
-          break;
-        default:
-          // Best match - keep original order
-          filteredProducts.sort((a, b) => a.id - b.id);
-          break;
+        case 'lowToHigh': filteredProducts.sort((a, b) => a.price - b.price); break;
+        case 'highToLow': filteredProducts.sort((a, b) => b.price - a.price); break;
+        case 'rating': filteredProducts.sort((a, b) => b.rating - a.rating); break;
+        default: filteredProducts.sort((a, b) => a.id - b.id); break;
       }
-      
       renderProducts();
     }
 
@@ -581,59 +554,15 @@ try {
       document.getElementById('favCount').textContent = favorites.length;
     }
 
-    function quickView(productId) {
-      const product = products.find(p => p.id === productId);
-      const modalContent = `
-        <div class="modal fade" id="quickViewModal" tabindex="-1">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">${product.name}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <img src="${product.image}" class="img-fluid" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x400?text=Product+Image'">
-                  </div>
-                  <div class="col-md-6">
-                    <h4>₹${product.price.toLocaleString()}</h4>
-                    ${product.old_price ? `<p class="text-muted"><s>₹${product.old_price.toLocaleString()}</s></p>` : ''}
-                    <p>${generateRatingStars(product.rating)} (${product.reviews} reviews)</p>
-                    <p><strong>Brand:</strong> ${product.brand}</p>
-                    <p><strong>Material:</strong> ${product.material.join(', ')}</p>
-                    <button class="btn btn-primary w-100 mt-3" onclick="addToCart(${product.id}); bootstrap.Modal.getInstance(document.getElementById('quickViewModal')).hide();">Add to Cart</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      // Remove existing modal if any
-      const existingModal = document.getElementById('quickViewModal');
-      if (existingModal) {
-        existingModal.remove();
-      }
-      
-      document.body.insertAdjacentHTML('beforeend', modalContent);
-      const quickViewModal = new bootstrap.Modal(document.getElementById('quickViewModal'));
-      quickViewModal.show();
-    }
-
     function buyNow() {
       if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
       }
-      
       alert('Proceeding to checkout...');
-      // In a real application, this would redirect to a checkout page
     }
 
     function showToast(message) {
-      // Create toast element if it doesn't exist
       let toast = document.getElementById('toast');
       if (!toast) {
         toast = document.createElement('div');
@@ -652,7 +581,6 @@ try {
       } else {
         toast.querySelector('.toast-body').textContent = message;
       }
-      
       const bsToast = new bootstrap.Toast(toast);
       bsToast.show();
     }
@@ -663,9 +591,7 @@ try {
     }
 
     function scrollToProducts() {
-      document.getElementById('products-section').scrollIntoView({ 
-        behavior: 'smooth' 
-      });
+      document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </body>
