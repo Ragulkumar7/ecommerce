@@ -239,7 +239,7 @@ try {
                                     <a href="electronics.php" class="dropdown-item">Electronics</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link me-2">Contact</a>
+                            <a href="profile.php" class="nav-item nav-link me-2">Profile</a>
                             <div class="nav-item dropdown d-block d-lg-none mb-3">
                                 <a href="#!" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Category</a>
                                 <div class="dropdown-menu m-0">

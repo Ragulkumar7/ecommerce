@@ -29,9 +29,17 @@ try {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/electronics.css" />
   <style>
+    /* Global Variables */
+    :root {
+        --primary: #6F4AA2;
+        --primary-dark: #5a3a80;
+        --dark: #1e1e2c;
+        --accent: #ffd166;
+    }
+
     /* Styling for the clay-red navbar */
     .main-navbar {
-        background-color: #cd7d73 !important;
+        background-color: var(--primary) !important;
         padding: 10px 0;
     }
     .main-navbar .nav-link {
@@ -59,8 +67,8 @@ try {
 
     /* --- UPDATED BUTTONS WITH COLOR #d16d08f2 --- */
     .apply-btn, .btn-primary {
-        background-color: #d16d08f2 !important; /* Burnt Orange */
-        border-color: #d16d08f2 !important;
+        background-color: var(--primary) !important; /* Burnt Orange */
+        border-color: var(--primary) !important;
         color: white !important;
         border: none;
         border-radius: 12px;
@@ -71,14 +79,14 @@ try {
     }
 
     .apply-btn:hover, .btn-primary:hover {
-        background-color: #a35506 !important; /* Slightly darker on hover */
-        border-color: #a35506 !important;
+        background-color: var(--primary-dark) !important; /* Slightly darker on hover */
+        border-color: var(--primary-dark) !important;
         transform: translateY(-2px);
     }
 
     /* Updated Slider Color */
     .form-range::-webkit-slider-thumb {
-        background: #d16d08f2 !important;
+        background: var(--primary) !important;
     }
 
     .product-card {
@@ -89,6 +97,71 @@ try {
     }
     .product-card:hover {
         transform: translateY(-5px);
+    }
+
+    /* Footer Styles */
+    .main-footer {
+        background: var(--dark);
+        color: white;
+        border-top: 5px solid var(--primary);
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent);
+        padding-left: 5px;
+    }
+
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .social-links a:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+    }
+
+    .newsletter-form .form-control {
+        border-radius: 10px 0 0 10px;
+        border: none;
+        padding: 12px;
+    }
+
+    .btn-accent {
+        background-color: var(--accent);
+        color: var(--dark);
+        font-weight: 600;
+        border-radius: 0 10px 10px 0;
+        padding: 0 20px;
+    }
+
+    .btn-accent:hover {
+        background-color: #ffc107;
+    }
+
+    .footer-bottom {
+        background: rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
   </style>
 </head>
@@ -134,7 +207,7 @@ try {
         <div class="d-flex justify-content-between align-items-center">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
+                    <a class="nav-link " href="index.php"><i class="bi bi-house me-1"></i> Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -158,7 +231,7 @@ try {
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-pencil me-1"></i> Electronics
+                        <i class="bi bi-pencil me-1 active"></i> Electronics
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./electronics.php">Mobile Phones</a></li>
@@ -177,7 +250,7 @@ try {
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
+                    <a class="nav-link" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a>
                 </li>
             </ul>
         </div>
@@ -213,70 +286,138 @@ try {
   </div>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  let cart = JSON.parse(localStorage.getItem('stylehubCart')) || [];
-  
-  // Mixed Accessories Data
-  const accessories = [
-    { id: 301, name: "Wireless Gaming Mouse", price: 2500, image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500", brand: "Logitech" },
-    { id: 302, name: "Fast Charging Type-C Cable", price: 499, image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500", brand: "Samsung" },
-    { id: 303, name: "Laptop Cooling Pad", price: 1800, image: "./ASSEST/img/laptop.jpg", brand: "Zeb" },
-    { id: 304, name: "Bluetooth Selfie Stick", price: 850, image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=500", brand: "Generic" },
-    { id: 305, name: "65W Laptop Power Adapter", price: 3200, image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=500", brand: "Dell" }
-  ];
+<footer class="main-footer mt-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="brand-icon"><i class="bi bi-shop"></i></span>
+                    <span class="brand-logo text-white">StyleHub</span>
+                </div>
+                <p class="text-white-50">Your one-stop destination for the latest in fashion, electronics, and lifestyle essentials. Quality products delivered to your doorstep.</p>
+                <div class="social-links mt-4">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
 
-  function displayProducts(list) {
-    const container = document.getElementById('accessoryContainer');
-    container.innerHTML = list.map(p => `
-        <div class="col-md-6 col-xl-4">
-            <div class="product-card p-3 h-100 shadow-sm">
-                <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
-                    <img src="${p.image}" class="img-fluid rounded mb-3" style="height:160px; width:100%; object-fit:cover;">
-                    <h5 class="h6 fw-bold mb-1">${p.name}</h5>
-                </a>
-                <p class="text-primary fw-bold mb-3" style="color: #d16d08f2 !important;">₹${p.price.toLocaleString()}</p>
-                <button class="btn btn-primary btn-sm w-100 rounded-pill" onclick="addToCart(${p.id})">Add to Cart</button>
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Quick Links</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="electronics.php">Electronics</a></li>
+                    <li><a href="beauty-products.php">Beauty</a></li>
+                    <li><a href="mens-wear.php">Fashion</a></li>
+                    <li><a href="#">Deals</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Support</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Subscribe to Newsletter</h5>
+                <p class="text-white-50">Get updates on new arrivals and exclusive offers.</p>
+                <form class="newsletter-form mt-3">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                        <button class="btn btn-accent" type="button">Subscribe</button>
+                    </div>
+                </form>
+                <div class="mt-4">
+                    <img src="https://i.imgur.com/768Y59S.png" alt="Payment Methods" class="img-fluid" style="max-height: 30px; opacity: 0.8;">
+                </div>
             </div>
         </div>
-    `).join('');
-    document.getElementById('resultCount').textContent = `Showing ${list.length} results`;
-  }
-
-  function updatePriceLabel(val) {
-    document.getElementById('priceValue').innerText = '₹' + parseInt(val).toLocaleString();
-  }
-
-  function applyFilters() {
-    const priceLimit = document.getElementById('priceRange').value;
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    </div>
     
-    const filtered = accessories.filter(p => {
-        const matchesPrice = p.price <= priceLimit;
-        const matchesSearch = p.name.toLowerCase().includes(searchTerm);
-        return matchesPrice && matchesSearch;
+    <div class="footer-bottom py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white-50">&copy; 2026 StyleHub. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <p class="mb-0 text-white-50">Designed with <i class="bi bi-heart-fill text-danger"></i> for Style.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    let cart = JSON.parse(localStorage.getItem('stylehubCart')) || [];
+    
+    const accessories = [
+        { id: 301, name: "Wireless Gaming Mouse", price: 2500, image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500", brand: "Logitech" },
+        { id: 302, name: "Fast Charging Type-C Cable", price: 499, image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500", brand: "Samsung" },
+        { id: 303, name: "Laptop Cooling Pad", price: 1800, image: "./ASSEST/img/laptop.jpg", brand: "Zeb" },
+        { id: 304, name: "Bluetooth Selfie Stick", price: 850, image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=500", brand: "Generic" },
+        { id: 305, name: "65W Laptop Power Adapter", price: 3200, image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=500", brand: "Dell" }
+    ];
+
+    function displayProducts(list) {
+        const container = document.getElementById('accessoryContainer');
+        container.innerHTML = list.map(p => `
+            <div class="col-md-6 col-xl-4">
+                <div class="product-card p-3 h-100 shadow-sm">
+                    <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
+                        <img src="${p.image}" class="img-fluid rounded mb-3" style="height:160px; width:100%; object-fit:cover;">
+                        <h5 class="h6 fw-bold mb-1">${p.name}</h5>
+                    </a>
+                    <p class="text-primary fw-bold mb-3" style="color: #d16d08f2 !important;">₹${p.price.toLocaleString()}</p>
+                    <button class="btn btn-primary btn-sm w-100 rounded-pill" onclick="addToCart(${p.id})">Add to Cart</button>
+                </div>
+            </div>
+        `).join('');
+        document.getElementById('resultCount').textContent = `Showing ${list.length} results`;
+    }
+
+    function updatePriceLabel(val) {
+        document.getElementById('priceValue').innerText = '₹' + parseInt(val).toLocaleString();
+    }
+
+    function applyFilters() {
+        const priceLimit = document.getElementById('priceRange').value;
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        
+        const filtered = accessories.filter(p => {
+            const matchesPrice = p.price <= priceLimit;
+            const matchesSearch = p.name.toLowerCase().includes(searchTerm);
+            return matchesPrice && matchesSearch;
+        });
+        displayProducts(filtered);
+    }
+
+    function addToCart(id) {
+        const product = accessories.find(p => p.id === id);
+        cart.push(product);
+        localStorage.setItem('stylehubCart', JSON.stringify(cart));
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        const count = cart.length;
+        document.getElementById('header-cart-count').textContent = count;
+        const total = cart.reduce((sum, p) => sum + p.price, 0);
+        document.getElementById('header-total').textContent = total.toLocaleString();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        displayProducts(accessories);
+        updateCartUI();
     });
-    displayProducts(filtered);
-  }
-
-  function addToCart(id) {
-    const product = accessories.find(p => p.id === id);
-    cart.push(product);
-    localStorage.setItem('stylehubCart', JSON.stringify(cart));
-    updateCartUI();
-  }
-
-  function updateCartUI() {
-    const count = cart.length;
-    document.getElementById('header-cart-count').textContent = count;
-    const total = cart.reduce((sum, p) => sum + p.price, 0);
-    document.getElementById('header-total').textContent = total.toLocaleString();
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    displayProducts(accessories);
-    updateCartUI();
-  });
 </script>
 </body>
 </html>

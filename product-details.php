@@ -8,29 +8,40 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <style>
     /* Styling for the clay-red navbar */
-    .main-navbar { background-color: #d16d08f2 !important; padding: 10px 0; }
+    .main-navbar { background-color: #6F4AA2 !important; padding: 10px 0; }
     .main-navbar .nav-link { color: white !important; font-weight: 500; border-bottom: 3px solid transparent; }
     .main-navbar .nav-link.active { border-bottom: 3px solid #ffcc66; }
 
     /* Product Detail UI specific styles */
     .detail-card { background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); }
     .product-img-main { width: 100%; border-radius: 15px; max-height: 550px; object-fit: contain; background: #f9f9f9; padding: 20px;}
-    .price-large { font-size: 2.2rem; color: #d16d08f2; font-weight: 800; }
+    .price-large { font-size: 2.2rem; color: #6F4AA2; font-weight: 800; }
     .price-old { font-size: 1.2rem; color: #999; text-decoration: line-through; margin-left: 10px; font-weight: 500;}
     
     /* Buttons */
-    .btn-buy-now { background-color: #e47e09; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; width: 100%; transition: all 0.3s; }
-    .btn-buy-now:hover { background-color: #b56b62; color: white; transform: translateY(-2px); }
+    .btn-buy-now { background-color: #6F4AA2; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; width: 100%; transition: all 0.3s; }
+    .btn-buy-now:hover { background-color: #5a3a80; color: white; transform: translateY(-2px); }
     
-    .btn-add-cart { background-color: white; color: #cd7d73; border: 2px solid #cd7d73; padding: 12px 30px; border-radius: 50px; font-weight: 600; width: 100%; transition: all 0.3s;}
-    .btn-add-cart:hover { background-color: #fcf5f4; color: #cd7d73; transform: translateY(-2px);}
+    .btn-add-cart { background-color: white; color: #6F4AA2; border: 2px solid #6F4AA2; padding: 12px 30px; border-radius: 50px; font-weight: 600; width: 100%; transition: all 0.3s;}
+    .btn-add-cart:hover { background-color: #f8f5ff; color: #6F4AA2; transform: translateY(-2px);}
 
-    .breadcrumb-item a { color: #cd7d73; text-decoration: none; }
+    .breadcrumb-item a { color: #6F4AA2; text-decoration: none; }
     .product-badge { position: absolute; top: 20px; right: 20px; padding: 8px 15px; border-radius: 20px; font-weight: bold; z-index: 10;}
     
     /* Specs Table */
     .table-specs th { background-color: #f8f9fa; width: 30%; color: #555; font-weight: 600;}
     .table-specs td { color: #333; }
+
+    /* --- FOOTER CSS --- */
+    .footer-section { background-color: #212529; color: #fff; padding: 60px 0 30px; margin-top: 50px; }
+    .footer-section h5 { color: #fff; font-weight: 700; margin-bottom: 25px; }
+    .footer-section ul { list-style: none; padding: 0; }
+    .footer-section ul li { margin-bottom: 12px; }
+    .footer-section ul li a { color: #adb5bd; text-decoration: none; transition: 0.3s; }
+    .footer-section ul li a:hover { color: #6F4AA2; }
+    .footer-brand-text { font-weight: 800; color: #fff; }
+    .footer-newsletter input { border-radius: 50px; padding: 12px 20px; border: none; }
+    .footer-newsletter button { border-radius: 50px; padding: 10px 25px; background-color: #6F4AA2; border: none; color: white; }
   </style>
 </head>
 <body class="bg-light">
@@ -40,7 +51,7 @@
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
           <div class="d-flex align-items-center">
-            <span class="brand-icon" style="color: #cd7d73;"><i class="bi bi-shop fs-3"></i></span>
+            <span class="brand-icon" style="color: #6F4AA2;"><i class="bi bi-shop fs-3"></i></span>
             <span class="brand-logo fw-bold fs-3 ms-2 text-dark">StyleHub</span>
           </div>
         </div>
@@ -48,7 +59,7 @@
           <form class="search-form" onsubmit="event.preventDefault();">
             <div class="input-group">
                 <input class="form-control search-input rounded-start-pill px-4" type="search" placeholder="Search StyleHub..." aria-label="Search">
-                <button class="btn btn-secondary rounded-end-pill px-3" type="button" style="background-color: #cd7d73; border-color: #cd7d73;"><i class="bi bi-search"></i></button>
+                <button class="btn btn-secondary rounded-end-pill px-3" type="button" style="background-color: #6F4AA2; border-color: #6F4AA2;"><i class="bi bi-search"></i></button>
             </div>
           </form>
         </div>
@@ -74,13 +85,14 @@
             <li class="nav-item"><a class="nav-link" href="beauty-products.php">Beauty</a></li>
             <li class="nav-item"><a class="nav-link" href="stationary.php">Stationary</a></li>
             <li class="nav-item"><a class="nav-link" href="mens-wear.php">Fashion</a></li>
+            <li class="nav-item"><a class="nav-link" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a></li>
         </ul>
     </div>
 </nav>
 
 <main class="container py-5">
     <div id="product-detail-loader" class="text-center py-5">
-        <div class="spinner-border text-secondary" style="color: #cd7d73 !important;" role="status"></div>
+        <div class="spinner-border text-secondary" style="color: #6F4AA2 !important;" role="status"></div>
     </div>
 
     <div id="product-content" class="d-none">
@@ -146,8 +158,8 @@
                                 <i class="bi bi-cart-plus me-2"></i>Add to Cart
                             </button>
                             <button id="buy-now-btn" class="btn btn-buy-now flex-grow-1">
-    <i class="bi bi-lightning-charge-fill me-1"></i>Buy Now
-</button>
+                                <i class="bi bi-lightning-charge-fill me-1"></i>Buy Now
+                            </button>
                         </div>
                     </div>
 
@@ -181,17 +193,64 @@
     </div>
 </main>
 
-<footer class="footer-section bg-dark text-white py-4 mt-5">
-    <div class="container text-center">
-        <h3 class="fw-bold mb-2">StyleHub</h3>
-        <p class="text-muted mb-0">&copy; 2026 StyleHub. All rights reserved.</p>
+<footer class="footer-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h2 class="footer-brand-text mb-3">StyleHub</h2>
+          <p class="mb-4">We offer the best products at competitive prices with fast shipping and excellent customer service.</p>
+          <div class="d-flex">
+            <a href="#" class="text-light me-3 fs-4"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-light me-3 fs-4"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-light me-3 fs-4"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-light fs-4"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5>Shop</h5>
+          <ul>
+            <li><a href="beauty-products.php">Beauty & Jewelry</a></li>
+            <li><a href="gifts.php">Homemade Gifts</a></li>
+            <li><a href="stationary.php">Stationery</a></li>
+            <li><a href="mens-wear.php">Men's Fashion</a></li>
+            <li><a href="women-wear.php">Women's Fashion</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5>Customer Service</h5>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+            <li><a href="#">Shipping & Delivery</a></li>
+            <li><a href="#">Product Support</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4 footer-newsletter">
+          <h5>Newsletter</h5>
+          <p>Subscribe to get special offers and product alerts.</p>
+          <form class="d-flex">
+            <input type="email" class="form-control me-2" placeholder="Your email">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4 bg-secondary">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0 text-secondary">&copy; 2023 StyleHub. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+            <a href="#" class="text-secondary me-3 small text-decoration-none">Privacy Policy</a>
+            <a href="#" class="text-secondary me-3 small text-decoration-none">Terms of Service</a>
+            <a href="#" class="text-secondary small text-decoration-none">Cookie Policy</a>
+        </div>
+      </div>
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   // Combine ALL products from your various pages here with UNIQUE IDs
-// Combine ALL products from your various pages here with UNIQUE IDs
   const allProducts = [
     // ==========================================
     // --- MAKEUP PRODUCTS (Original IDs) ---

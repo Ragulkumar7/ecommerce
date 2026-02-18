@@ -1,8 +1,8 @@
 
     /* General Styles */
     :root {
-        --primary: #d16d08f2;
-        --primary-dark: #d16d08f2;
+        --primary: #6F4AA2;
+        --primary-dark: #5a3a8a;
         --secondary: #ff6b6b;
         --dark: #1e1e2c;
         --light: #f8f9fa;
@@ -245,7 +245,7 @@
  .product-price {
    font-weight: bold;
    font-size: 1.2rem;
-   color: #e2403a;
+   color: #6F4AA2;
  }
 
  .product-old {
@@ -295,13 +295,13 @@
  }
 
  .btn-buy {
-   background-color: #28a745;
+   background-color: var(--primary);
    border: none;
    color: #fff;
  }
 
  .btn-buy:hover {
-   background-color: #218838;
+   background-color: var(--primary-dark);
  }
 
  .button-group {
@@ -343,21 +343,21 @@
  }
 
  .filter-buttons button#applyBtn {
-   background-color: #28a745;
+   background-color: var(--primary);
    color: white;
  }
 
  .filter-buttons button#applyBtn:hover {
-   background-color: #218838;
+   background-color: var(--primary-dark);
  }
 
  .filter-buttons button#resetBtn {
-   background-color: #dc3545;
+   background-color: var(--primary);
    color: white;
  }
 
  .filter-buttons button#resetBtn:hover {
-   background-color: #b02a37;
+   background-color: var(--primary-dark);
  }
 
  .footer-section {

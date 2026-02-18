@@ -26,7 +26,7 @@ try {
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-accent: #d16d08f2;
+            --primary-accent: #6F4AA2;
             --soft-bg: #f8f9fa;
         }
 
@@ -36,14 +36,38 @@ try {
             color: #2d3436;
         }
 
-        /* Header Styling */
-        .main-header {
-            background: white;
-            border-bottom: 1px solid #eee;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        /* --- INTEGRATED NAVBAR STYLING --- */
+        .main-navbar { 
+            background: linear-gradient(to right, #6F4AA2, #5a3a80) !important; 
+            padding: 10px 0; 
+        }
+        .main-navbar .nav-link { 
+            color: white !important; 
+            font-weight: 500; 
+            display: flex; 
+            align-items: center;
+            position: relative;
+        }
+        .main-navbar .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15%;
+            width: 70%;
+            height: 3px;
+            background: #ffd166;
+            border-radius: 3px;
         }
         .brand-icon {
-            color: var(--primary-accent);
+            background: #6F4AA2;
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-right: 10px;
         }
         .brand-logo {
             font-weight: 800;
@@ -51,18 +75,12 @@ try {
             color: #333;
             letter-spacing: -0.5px;
         }
-        .nav-link-custom {
-            color: #2d3436;
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .nav-link-custom:hover {
-            color: var(--primary-accent);
-        }
-        .nav-link-active {
-            color: var(--primary-accent) !important;
-            font-weight: 800;
+        .cart-badge {
+            background-color: #333;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 50%;
         }
 
         /* Cart Table Styling */
@@ -128,7 +146,7 @@ try {
 
         /* Buttons */
         .btn-remove {
-            background-color: #ff7675;
+            background-color: var(--primary-accent);
             color: white;
             border: none;
             padding: 6px 14px;
@@ -138,7 +156,7 @@ try {
             transition: 0.3s;
         }
         .btn-remove:hover {
-            background-color: #d63031;
+            opacity: 0.9;
             color: white;
         }
         .btn-continue {
@@ -158,26 +176,21 @@ try {
         }
         .btn-checkout {
             background-color: var(--primary-accent);
+            color: white;
             border: none;
             width: 100%;
             padding: 15px;
             border-radius: 50px;
             font-weight: 700;
             margin-top: 25px;
-            box-shadow: 0 8px 15px rgba(209, 109, 8, 0.2);
+            box-shadow: 0 8px 15px rgba(111, 74, 162, 0.2);
             transition: 0.3s;
         }
         .btn-checkout:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 20px rgba(209, 109, 8, 0.3);
+            box-shadow: 0 12px 20px rgba(111, 74, 162, 0.3);
             color: white;
         }
-        .btn-checkout:focus, .btn-checkout:active {
-    background-color: #a35506 !important; /* Darker orange */
-    color: white !important;
-    outline: none !important;
-    box-shadow: 0 5px 15px rgba(209, 109, 8, 0.3) !important;
-}
 
         .qty-input {
             width: 70px;
@@ -187,27 +200,98 @@ try {
             padding: 6px;
             font-weight: 600;
         }
-        .qty-input:focus {
-            outline: none;
-            border-color: var(--primary-accent);
-        }
     </style>
 </head>
 <body>
 
-<header class="main-header py-3">
-    <div class="container d-flex justify-content-between align-items-center">
+<header class="main-header">
+  <div class="container py-3">
+    <div class="row align-items-center">
+      <div class="col-lg-3 col-md-4 col-6">
         <div class="d-flex align-items-center">
-            <span class="brand-icon"><i class="bi bi-shop fs-3"></i></span>
-            <span class="brand-logo ms-2">StyleHub</span>
+          <span class="brand-icon"><i class="bi bi-shop"></i></span>
+          <span class="brand-logo">StyleHub</span>
         </div>
-        <nav>
-            <a href="index.php" class="nav-link-custom me-4">Home</a>
-            <a href="shop.php" class="nav-link-custom me-4">Shop</a>
-            <a href="cart.php" class="nav-link-custom nav-link-active">Cart</a>
-        </nav>
+      </div>
+      <div class="col-lg-6 col-md-5 d-none d-md-block">
+        <form class="search-form" id="searchForm">
+          <div class="input-group">
+            <input class="form-control" type="search" id="searchInput" placeholder="Search for products..." aria-label="Search">
+            <button class="btn btn-outline-secondary" type="button" onclick="filterProducts()"><i class="bi bi-search"></i></button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-3 col-md-3 col-6">
+        <div class="d-flex align-items-center justify-content-end header-actions">
+          <a href="#" class="action-icon me-3 position-relative text-dark"><i class="bi bi-arrow-repeat fs-4"></i></a>
+          <a href="#" class="action-icon me-3 position-relative text-dark">
+            <i class="bi bi-heart fs-4"></i>
+            <span class="cart-badge position-absolute top-0 start-100 translate-middle" id="favCount">0</span>
+          </a>
+          <a href="cart.php" class="action-icon position-relative text-dark">
+            <i class="bi bi-cart3 fs-4"></i>
+            <span class="cart-badge position-absolute top-0 start-100 translate-middle" id="header-cart-count">0</span>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 </header>
+
+<nav class="main-navbar">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-gem me-1"></i> Beauty & Jewelry
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="beauty-products.php">Makeup</a></li>
+            <li><a class="dropdown-item" href="skincare.php">Skincare</a></li>
+            <li><a class="dropdown-item" href="gold.php">Gold Jewelry</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-heart me-1"></i> Stationery & Gifts
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="gifts.php">Handmade Crafts</a></li>
+            <li><a class="dropdown-item" href="stationary.php">School Supplies</a></li>
+            <li><a class="dropdown-item" href="stationary.php">College Supplies</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-pencil me-1"></i> Electronics
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./electronics.php">Mobile Phones</a></li>
+            <li><a class="dropdown-item" href="./electronics.php">Laptops</a></li>
+            <li><a class="dropdown-item" href="./electronics.php">Accessories</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person me-1"></i> Fashion
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="mens-wear.php">Men's Clothing</a></li>
+            <li><a class="dropdown-item" href="women-wear.php">Women's Clothing</a></li>
+            <li><a class="dropdown-item" href="kids-wear.php">Kids' Clothing</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="deals.php"><i class="bi bi-tag me-1 active"></i> Deals</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div class="container cart-container">
     <div class="row g-4">
@@ -225,12 +309,12 @@ try {
                             </tr>
                         </thead>
                         <tbody id="cart-table-body">
-                            </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
             <div class="mt-4">
-                <a href="shop.php" class="btn-continue">
+                <a href="index.php" class="btn-continue">
                     <i class="bi bi-arrow-left me-2"></i> Continue Shopping
                 </a>
             </div>
@@ -263,14 +347,15 @@ try {
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Fetch cart data from localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     function renderCart() {
         const tbody = document.getElementById('cart-table-body');
         tbody.innerHTML = '';
         let subtotal = 0;
+        let totalItems = 0;
 
         if(cart.length === 0) {
             tbody.innerHTML = `
@@ -283,6 +368,7 @@ try {
                 </tr>
             `;
             updateSummary(0);
+            updateHeader(0);
             document.getElementById('checkoutBtn').disabled = true;
             document.getElementById('checkoutBtn').style.opacity = '0.5';
             return;
@@ -295,6 +381,7 @@ try {
             const qty = item.quantity || 1;
             const itemSubtotal = item.price * qty;
             subtotal += itemSubtotal;
+            totalItems += qty;
 
             tbody.innerHTML += `
                 <tr>
@@ -320,6 +407,7 @@ try {
         });
 
         updateSummary(subtotal);
+        updateHeader(totalItems);
     }
 
     function updateQty(index, val) {
@@ -337,7 +425,7 @@ try {
 
     function updateSummary(subtotal) {
         const shipping = subtotal > 0 ? 50 : 0;
-        const tax = subtotal * 0.12; // 12% tax calculation
+        const tax = subtotal * 0.12;
         const total = subtotal + shipping + tax;
 
         document.getElementById('summary-subtotal').innerText = `₹${subtotal.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
@@ -346,9 +434,13 @@ try {
         document.getElementById('summary-total').innerText = `₹${total.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
     }
 
+    function updateHeader(count) {
+        document.getElementById('header-cart-count').innerText = count;
+    }
+
     function proceedToCheckout() {
         if(cart.length > 0) {
-            window.location.href = 'checkout.php';
+            alert('Proceeding to Checkout...');
         }
     }
 

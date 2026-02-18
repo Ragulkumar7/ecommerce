@@ -29,19 +29,26 @@ try {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/electronics.css" />
   <style>
+    :root {
+      --primary: #6F4AA2;
+      --primary-dark: #5a3a80;
+      --dark: #1e1e2c;
+      --accent: #ffd166;
+    }
+
     /* --- ORANGE HEADER STYLING --- */
     .brand-logo {
-        color: #f18c02 !important; /* Brand Orange */
+        color: #6F4AA2 !important; /* Brand Orange */
     }
     
     .search-btn {
-        background-color: #f18c02 !important;
+        background-color: #6F4AA2 !important;
         border: none;
         color: white;
     }
 
     .main-navbar {
-        background-color: #f18c02 !important; /* Main Nav Orange */
+        background-color: #6F4AA2 !important; /* Main Nav Orange */
         padding: 0 !important;
     }
 
@@ -64,7 +71,7 @@ try {
 
     /* Red Contact Button Style */
     .nav-contact-btn {
-        background-color: #ff2a00 !important;
+        background-color: #6F4AA2 !important;
         color: white !important;
         border-radius: 50px;
         padding: 8px 25px !important;
@@ -72,60 +79,32 @@ try {
         font-weight: bold !important;
     }
 
-    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
-    
-    /* Main Buttons (Apply Filters and Add to Cart) */
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#6F4AA2) --- */
     .btn-primary, .apply-btn {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: #6F4AA2 !important;
+        border-color: #6F4AA2 !important;
         color: white !important;
         transition: all 0.3s ease;
     }
 
     .btn-primary:hover, .apply-btn:hover {
-        background-color: #a35506 !important; /* Darker shade for hover effect */
-        border-color: #a35506 !important;
+        background-color: #5a3a80 !important;
+        border-color: #5a3a80 !important;
         transform: translateY(-2px);
     }
 
-    /* Price Range Slider Thumb */
-    .form-range::-webkit-slider-thumb {
-        background: #d16d08f2 !important;
-    }
-    .form-range::-moz-range-thumb {
-        background: #d16d08f2 !important;
-    }
-    .form-range::-ms-thumb {
-        background: #d16d08f2 !important;
-    }
+    .form-range::-webkit-slider-thumb { background: #6F4AA2 !important; }
+    .form-range::-moz-range-thumb { background: #6F4AA2 !important; }
 
-    /* Price Text Color */
-    .product-price {
-        color: #d16d08f2 !important;
-    }
+    .product-price { color: #6F4AA2 !important; }
 
-    /* --- SIDEBAR & CONTENT --- */
     .sidebar-card {
         border: 1px solid #e0e0e0;
         border-radius: 20px;
         padding: 25px;
         background: white;
     }
-    
-    .sidebar-card h2 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 20px;
-    }
 
-    .price-range-box {
-        background-color: #f8f9fa;
-        border-radius: 15px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
-    /* Clean Product Card Style */
     .clean-product-card {
         border: 1px solid #eee;
         border-radius: 15px;
@@ -136,10 +115,65 @@ try {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
     }
-    
-    .dropdown-menu {
+
+    /* Footer Styles */
+    .main-footer {
+        background: var(--dark);
+        color: white;
+        border-top: 5px solid var(--primary);
+    }
+
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent);
+        padding-left: 5px;
+    }
+
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .social-links a:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+    }
+
+    .newsletter-form .form-control {
+        border-radius: 10px 0 0 10px;
         border: none;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        padding: 12px;
+    }
+
+    .btn-accent {
+        background-color: var(--accent);
+        color: var(--dark);
+        font-weight: 600;
+        border-radius: 0 10px 10px 0;
+        padding: 0 20px;
+    }
+
+    .btn-accent:hover { background-color: #ffc107; }
+
+    .footer-bottom {
+        background: rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
   </style>
 </head>
@@ -150,11 +184,10 @@ try {
         <div class="row align-items-center">
             <div class="col-lg-3 col-md-4 col-6">
                 <div class="d-flex align-items-center">
-                    <span class="brand-icon" style="color: #f18c02;"><i class="bi bi-shop fs-3"></i></span>
+                    <span class="brand-icon" style="color: #6F4AA2;"><i class="bi bi-shop fs-3"></i></span>
                     <span class="brand-logo fw-bold fs-3 ms-2">StyleHub</span>
                 </div>
             </div>
-            
             <div class="col-lg-6 col-md-5 d-none d-md-block">
                 <form class="search-form" id="searchForm">
                     <div class="input-group">
@@ -163,11 +196,10 @@ try {
                     </div>
                 </form>
             </div>
-            
             <div class="col-lg-3 col-md-3 col-6">
                 <div class="d-flex align-items-center justify-content-end header-actions">
                     <a href="#" class="action-icon me-3 position-relative text-dark"><i class="bi bi-arrow-repeat fs-4"></i></a>
-                    <a href="#" class="action-icon me-3 position-relative text-dark" onclick="showFavorites()">
+                    <a href="#" class="action-icon me-3 position-relative text-dark">
                         <i class="bi bi-heart fs-4"></i>
                         <span class="cart-badge badge rounded-pill position-absolute top-0 start-100 translate-middle bg-danger" id="favCount">0</span>
                     </a>
@@ -186,9 +218,7 @@ try {
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Beauty & Jewelry</a>
                     <ul class="dropdown-menu">
@@ -257,9 +287,77 @@ try {
   </section>
 </main>
 
+<footer class="main-footer mt-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="brand-icon"><i class="bi bi-shop"></i></span>
+                    <span class="brand-logo text-white ms-2 fs-3">StyleHub</span>
+                </div>
+                <p class="text-white-50">Your one-stop destination for the latest in fashion, electronics, and lifestyle essentials. Quality products delivered to your doorstep.</p>
+                <div class="social-links mt-4">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Quick Links</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="electronics.php">Electronics</a></li>
+                    <li><a href="beauty-products.php">Beauty</a></li>
+                    <li><a href="mens-wear.php">Fashion</a></li>
+                    <li><a href="deals.php">Deals</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Support</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Subscribe to Newsletter</h5>
+                <p class="text-white-50">Get updates on new arrivals and exclusive offers.</p>
+                <form class="newsletter-form mt-3">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                        <button class="btn btn-accent" type="button">Subscribe</button>
+                    </div>
+                </form>
+                <div class="mt-4">
+                    <img src="https://i.imgur.com/768Y59S.png" alt="Payment Methods" class="img-fluid" style="max-height: 30px; opacity: 0.8;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white-50">&copy; 2026 StyleHub. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <p class="mb-0 text-white-50">Designed with <i class="bi bi-heart-fill text-danger"></i> for Style.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Updated IDs to 601, 602 to match the master array
   const products = [
     { id: 601, name: "iPhone 14 Pro", price: 80000, rating: 4.2, reviews: 70, image: 'https://i.pinimg.com/736x/f5/c1/66/f5c16671a90ff6094847c3a765d26147.jpg', brand: 'Apple', category: 'Mobile Phones' },
     { id: 602, name: "Samsung S23", price: 60000, rating: 5.0, reviews: 40, image: 'https://i.pinimg.com/736x/66/c2/3f/66c23f9566266ec63f39b2dac1a56585.jpg', brand: 'Samsung', category: 'Mobile Phones' }
@@ -269,7 +367,6 @@ try {
 
   function displayProducts(list) {
     const container = document.getElementById('productContainer');
-    
     if (list.length === 0) {
       container.innerHTML = '<div class="col-12 text-center py-5"><h4>No products found matching your criteria.</h4></div>';
       document.getElementById('resultCount').textContent = `Showing 0 results`;
@@ -289,26 +386,21 @@ try {
       return `
       <div class="col-12 col-sm-6 col-md-4">
         <div class="clean-product-card shadow-sm p-3 d-flex flex-column h-100 position-relative">
-          
           <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
               <img src="${p.image}" class="img-fluid mb-3 rounded w-100" style="height: 200px; object-fit: cover;" alt="${p.name}">
               <h3 class="h6 fw-bold mb-1">${p.name}</h3>
           </a>
-          
           <div class="mb-2">
             <span class="small">${starsHTML}</span>
             <span class="text-secondary ms-1" style="font-size: 0.8rem;">(${p.reviews} reviews)</span>
           </div>
-          
           <div class="mb-3">
             <span class="product-price fw-bold fs-5">₹${p.price.toLocaleString()}</span>
           </div>
-          
           <button class="btn btn-primary btn-sm w-100 rounded-pill mt-auto" onclick="addToCart(${p.id})">Add to Cart</button>
         </div>
       </div>
     `}).join('');
-    
     document.getElementById('resultCount').textContent = `Showing ${list.length} products`;
   }
 
@@ -319,7 +411,6 @@ try {
   function applyFilters() {
       const priceLimit = parseFloat(document.getElementById('priceRange').value);
       const keyword = document.getElementById('searchInput').value.toLowerCase();
-      
       const filtered = products.filter(p => {
         const matchesPrice = p.price <= priceLimit;
         const matchesSearch = p.name.toLowerCase().includes(keyword);
@@ -338,13 +429,8 @@ try {
   function addToCart(id) {
     const product = products.find(i => i.id === id);
     const existingItem = cart.find(item => item.id === id);
-    
-    if (existingItem) { 
-      existingItem.quantity += 1; 
-    } else { 
-      cart.push({ ...product, quantity: 1 }); 
-    }
-    
+    if (existingItem) { existingItem.quantity += 1; } 
+    else { cart.push({ ...product, quantity: 1 }); }
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartUI();
     alert(`${product.name} added to cart!`);
@@ -360,8 +446,6 @@ try {
   document.addEventListener('DOMContentLoaded', () => {
     displayProducts(products);
     updateCartUI();
-    
-    // Search on enter key
     document.getElementById('searchForm').addEventListener('submit', function(e) {
       e.preventDefault();
       applyFilters();

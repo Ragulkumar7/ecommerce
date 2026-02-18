@@ -2,8 +2,8 @@
    1. GLOBAL STYLES & VARIABLES
    ========================================= */
 :root {
-    --primary-orange: #d16d08f2;       /* Main Brand Color */
-    --primary-orange-dark: #d16d08f2;  /* Darker Shade for Hover */
+    --primary-orange: #6F4AA2;       /* Main Brand Color */
+    --primary-orange-dark: #5a3a8a;  /* Darker Shade for Hover */
     --secondary-red: #ff2a00;        /* Contact Button Red */
     --text-dark: #333333;
     --text-muted: #6c757d;

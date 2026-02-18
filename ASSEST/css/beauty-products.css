@@ -1,7 +1,7 @@
     /* General Styles */
     :root {
-        --primary: #d16d08f2;
-        --primary-dark: #d16d08f2;
+        --primary: #6F4AA2;
+        --primary-dark: #5a3a8a;
         --secondary: #ff6b6b;
         --dark: #1e1e2c;
         --light: #f8f9fa;
@@ -233,7 +233,7 @@
     .product-price {
         font-weight: bold;
         font-size: 1.2rem;
-        color: #e2403a;
+        color: #6F4AA2;
     }
 
     .filter-buttons {
@@ -264,12 +264,12 @@
     }
 
     .filter-buttons button#resetBtn {
-        background-color: #dc3545;
+        background-color: #6F4AA2;
         color: white;
     }
 
     .filter-buttons button#resetBtn:hover {
-        background-color: #b02a37;
+        background-color: #5a3a8a;
     }
 
     .footer-section {
@@ -305,7 +305,7 @@
         left: 0;
         width: 40px;
         height: 3px;
-        background: #cf665c;
+        background: #6F4AA2;
         /* matches header color */
         border-radius: 3px;
     }
@@ -347,7 +347,7 @@
 
 
     .footer-newsletter button {
-        background: #cf665c;
+        background: #6F4AA2;
         color: white;
         border: none;
         border-radius: 8px;
@@ -359,7 +359,7 @@
 
 
     .footer-newsletter button:hover {
-        background: #b74f46;
+        background: #5a3a8a;
     }
 
 

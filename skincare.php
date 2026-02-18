@@ -29,30 +29,30 @@ try {
   <link rel="stylesheet" href="./assest/css/beauty-products.css" />
   <style>
     /* Navbar Theme */
-    .main-navbar { background-color: #cd7d73 !important; }
+    .main-navbar { background-color: #6F4AA2 !important; }
     
     /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
     
     /* Apply and Add to Cart Buttons */
     #applyBtn, .btn-primary, .btn-sm {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: #6F4AA2 !important;
+        border-color: #6F4AA2 !important;
         color: white !important;
         transition: all 0.3s ease;
     }
 
     #applyBtn:hover, .btn-primary:hover {
-        background-color: #a35506 !important; /* Slightly darker hover */
-        border-color: #a35506 !important;
+        background-color: #5a3a80 !important; /* Slightly darker hover */
+        border-color: #5a3a80 !important;
         transform: translateY(-2px);
     }
 
     /* Price Range Slider Thumb */
     .form-range::-webkit-slider-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
     .form-range::-moz-range-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
 
     /* Reset Button */
@@ -65,7 +65,7 @@ try {
 
     /* Rating Star Color */
     .bi-star-fill, .bi-star-half {
-        color: #d16d08f2 !important;
+        color: #6F4AA2 !important;
     }
 
     /* Clean Product Card Style */
@@ -95,7 +95,7 @@ try {
         <div class="col-lg-6 col-md-5 d-none d-md-block">
           <form class="search-form" id="searchForm">
             <input class="form-control search-input" type="search" id="searchInput" placeholder="Search for products..." aria-label="Search">
-            <button class="search-btn" type="submit" style="background-color: #d16d08f2; border-color: #d16d08f2;"><i class="bi bi-search text-white"></i></button>
+            <button class="search-btn" type="submit" style="background-color: #6F4AA2; border-color: #6F4AA2;"><i class="bi bi-search text-white"></i></button>
           </form>
         </div>
         <div class="col-lg-3 col-md-3 col-6">
@@ -121,7 +121,7 @@ try {
       <div class="d-flex justify-content-between align-items-center">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link active text-white" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
+            <a class="nav-link text-white" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -129,7 +129,7 @@ try {
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="beauty-products.php">Makeup</a></li>
-              <li><a class="dropdown-item" href="skincare.php">Skincare</a></li>
+              <li><a class="dropdown-item active" href="skincare.php">Skincare</a></li>
               <li><a class="dropdown-item" href="gold.php">Gold Jewelry</a></li>
             </ul>
           </li>
@@ -164,7 +164,7 @@ try {
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
+            <a class="nav-link text-white" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a>
           </li>
         </ul>
       </div>

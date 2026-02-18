@@ -32,8 +32,8 @@ try {
   <style>
     /* General Styles */
     :root {
-      --primary: #d16d08f2;
-      --primary-dark: #a35506;
+      --primary: #6F4AA2;
+      --primary-dark: #5a3a80;
       --secondary: #ff6b6b;
       --dark: #1e1e2c;
       --light: #f8f9fa;
@@ -91,7 +91,7 @@ try {
 
     .search-input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 0.25rem rgba(209, 109, 8, 0.15);
+      box-shadow: 0 0 0 0.25rem rgba(111, 74, 162, 0.15);
     }
 
     .search-btn {
@@ -119,6 +119,7 @@ try {
       color: var(--dark);
       font-size: 1.4rem;
       transition: all 0.3s;
+      text-decoration: none;
     }
 
     .header-actions .action-icon:hover {
@@ -140,18 +141,25 @@ try {
       justify-content: center;
     }
 
-    /* Navigation */
+    /* Navigation - FIXED TO MATCH YOUR PERFECT IMAGE */
     .main-navbar {
-      background: linear-gradient(to right, var(--primary), var(--primary-dark));
-      padding: 0.5rem 0;
+      background: linear-gradient(to right, #6F4AA2, #5a3a80);
+      padding: 5px 0;
     }
 
     .nav-link {
-      color: rgba(255, 255, 255, 0.85) !important;
+      color: rgba(255, 255, 255, 0.9) !important;
       font-weight: 500;
-      padding: 0.7rem 1.2rem !important;
+      padding: 0.8rem 1.2rem !important;
       transition: all 0.3s;
       position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link i {
+      margin-right: 8px;
+      font-size: 1.1rem;
     }
 
     .nav-link:hover,
@@ -162,7 +170,7 @@ try {
     .nav-link.active:after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: 5px;
       left: 15%;
       width: 70%;
       height: 3px;
@@ -189,10 +197,10 @@ try {
 
     .phone-btn {
       background: white;
-      color: var(--primary);
+      color: var(--primary) !important;
       font-weight: 600;
       border-radius: 50px;
-      padding: 0.5rem 1.5rem;
+      padding: 0.5rem 1.5rem !important;
       transition: all 0.3s;
     }
 
@@ -245,12 +253,7 @@ try {
       border-color: var(--primary);
     }
 
-    .form-check-label {
-      color: #495057;
-      font-weight: 500;
-    }
-
-    /* --- CLEAN PRODUCT CARD STYLE --- */
+    /* Product Card Styling */
     .clean-product-card {
         border: 1px solid #eee;
         border-radius: 15px;
@@ -262,17 +265,10 @@ try {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
     }
-    .product-img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
 
-    /* Range Slider Thumb Color */
     .form-range::-webkit-slider-thumb { background: var(--primary) !important; }
     .form-range::-moz-range-thumb { background: var(--primary) !important; }
     
-    /* Buttons */
     .btn-primary {
         background-color: var(--primary) !important;
         border-color: var(--primary) !important;
@@ -284,7 +280,6 @@ try {
         transform: translateY(-2px);
     }
 
-    /* Controls */
     .shop-controls {
       background: white;
       border-radius: 12px;
@@ -317,7 +312,7 @@ try {
     }
 
     .toast {
-      background-color: var(--success);
+      background-color: #28a745;
       color: white;
       border-radius: 8px;
       padding: 10px 20px;
@@ -379,10 +374,10 @@ try {
         <div class="d-flex justify-content-between align-items-center">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="index.php"><i class="bi bi-house"></i> Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Beauty & Jewelry</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="bi bi-gem"></i> Beauty & Jewelry</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="beauty-products.php">Makeup</a></li>
                         <li><a class="dropdown-item" href="skincare.php">Skincare</a></li>
@@ -390,14 +385,14 @@ try {
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Stationery & Gifts</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="bi bi-heart"></i> Stationery & Gifts</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="gifts.php">Handmade Crafts</a></li>
                         <li><a class="dropdown-item" href="stationary.php">School Supplies</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Electronics</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="bi bi-pencil"></i> Electronics</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./electronics.php">Mobile Phones</a></li>
                         <li><a class="dropdown-item" href="./laptops.php">Laptops</a></li>
@@ -405,12 +400,15 @@ try {
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Fashion</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="bi bi-person"></i> Fashion</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="mens-wear.php">Men's Clothing</a></li>
                         <li><a class="dropdown-item" href="women-wear.php">Women's Clothing</a></li>
                         <li><a class="dropdown-item" href="kids-wear.php">Kids' Clothing</a></li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="deals.php "><i class="bi bi-tag"></i> Deals</a>
                 </li>
             </ul>
             <a href="tel:+01234567890" class="nav-link phone-btn text-dark d-none d-lg-block">+0123 456 7890</a>
@@ -508,24 +506,14 @@ try {
           <div class="form-check mb-2">
             <input class="form-check-input rating-filter" type="checkbox" id="rating5" value="5" checked>
             <label class="form-check-label text-warning" for="rating5">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
             </label>
-            <span class="filter-count text-dark">(15)</span>
           </div>
           <div class="form-check mb-2">
             <input class="form-check-input rating-filter" type="checkbox" id="rating4" value="4" checked>
             <label class="form-check-label text-warning" for="rating4">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i> & Up
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i> & Up
             </label>
-            <span class="filter-count text-dark">(20)</span>
           </div>
           
           <button class="btn btn-primary w-100 mt-4 rounded-pill" id="applyFilters">Apply Filters</button>
@@ -548,33 +536,15 @@ try {
           </div>
         </div>
         
-        <div class="row g-4" id="products-container">
-          </div>
-        
-        <nav aria-label="Product pagination" class="mt-5">
-          <ul class="pagination justify-content-center" id="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
+        <div class="row g-4" id="products-container"></div>
       </section>
     </div>
   </section>
 
-  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal fade" id="cartModal" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+        <div class="modal-header"><h5>Shopping Cart</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
         <div class="modal-body" id="cartItems"></div>
         <div class="modal-footer">
           <h5 class="mt-3 me-auto">Total: ₹<span id="modalCartTotal">0.00</span></h5>
@@ -584,22 +554,11 @@ try {
     </div>
   </div>
 
-  <div class="modal fade" id="favoritesModal" tabindex="-1" aria-labelledby="favoritesModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="favoritesModalLabel">Your Favorites</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="favoritesItems"></div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
+  <div class="modal fade" id="favoritesModal" tabindex="-1">
+    <div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5>Your Favorites</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body" id="favoritesItems"></div></div></div>
   </div>
 
-  <footer class="footer-section">
+ <footer class="footer-section">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 mb-4 mb-lg-0">
@@ -628,6 +587,7 @@ try {
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">Returns & Exchanges</a></li>
             <li><a href="#">Shipping & Delivery</a></li>
+            <li><a href="#">Product Support</a></li>
             <li><a href="#">FAQ</a></li>
           </ul>
         </div>
@@ -636,14 +596,14 @@ try {
           <p>Subscribe to get special offers, free giveaways, and new product alerts.</p>
           <form>
             <input type="email" class="form-control mb-3" placeholder="Your email address">
-            <button type="submit" class="btn btn-primary w-100 rounded-pill">Subscribe</button>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
           </form>
         </div>
       </div>
       <hr class="my-4 bg-light">
       <div class="row">
         <div class="col-md-6 mb-3 mb-md-0">
-          <p class="mb-0">&copy; 2025 StyleHub. All rights reserved.</p>
+          <p class="mb-0">&copy; 2023 StyleHub. All rights reserved.</p>
         </div>
         <div class="col-md-6 text-md-end">
           <div class="d-flex justify-content-md-end">
@@ -656,34 +616,24 @@ try {
     </div>
   </footer>
 
+  <div id="toastContainer" aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 9999"></div>
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Product data array mapped to 1000s IDs
     const products = [
-      { id: 1001, name: "Premium Men's Dress Series 7", image: "./ASSEST/img/Premium.jpg", badge: "Sale", price: 249.99, originalPrice: 299.99, rating: 4.5, ratingCount: 142, category: "mens", brand: "premium" },
-      { id: 1002, name: "Women Fashion Dress", image: "./ASSEST/img/women.jpg", badge: "New", price: 179.99, originalPrice: null, rating: 4.0, ratingCount: 87, category: "womens", brand: "modern" },
-      { id: 1003, name: "Luxury Smart Watch - Gold Edition", image: "./ASSEST/img/watch.jpg", badge: "", price: 349.99, originalPrice: 399.99, rating: 5.0, ratingCount: 215, category: "electronics", brand: "premium" },
-      { id: 1004, name: "Sports Smart Watch - Waterproof", image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?auto=format&fit=crop&w=870&q=80", badge: "Sale", price: 199.99, originalPrice: 249.99, rating: 4.5, ratingCount: 163, category: "electronics", brand: "modern" },
-      { id: 1005, name: "Stationery Kit", image: "https://img.freepik.com/free-photo/top-view-wooden-desk-with-notebook-office-supplies_24837-170.jpg?w=740&q=80", badge: "", price: 129.99, originalPrice: null, rating: 4.0, ratingCount: 94, category: "stationery", brand: "classic" },
-      { id: 1006, name: "Premium Brand - Makeup Kit", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkLV-qSVvs5Fr5UNrZ3nb6BrP0QF1k-u8akA&s", badge: "New", price: 159.99, originalPrice: 189.99, rating: 5.0, ratingCount: 201, category: "beauty", brand: "premium" },
-      { id: 1007, name: "Homemade Gift Basket", image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=870&q=80", badge: "", price: 89.99, originalPrice: null, rating: 4.2, ratingCount: 76, category: "homemade", brand: "artisan" },
-      { id: 1008, name: "Gold Plated Jewelry Set", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=870&q=80", badge: "Sale", price: 299.99, originalPrice: 349.99, rating: 4.8, ratingCount: 134, category: "jewelry", brand: "premium" },
-      { id: 1009, name: "Professional Makeup Brushes", image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=870&q=80", badge: "New", price: 79.99, originalPrice: null, rating: 4.6, ratingCount: 98, category: "beauty", brand: "classic" }
+      { id: 1001, name: "Premium Men's Dress Series 7", image: "./ASSEST/img/Premium.jpg", badge: "Sale", price: 249.99, rating: 4.5, ratingCount: 142, category: "mens", brand: "premium" },
+      { id: 1002, name: "Women Fashion Dress", image: "./ASSEST/img/women.jpg", badge: "New", price: 179.99, rating: 4.0, ratingCount: 87, category: "womens", brand: "modern" },
+      { id: 1003, name: "Luxury Smart Watch - Gold Edition", image: "./ASSEST/img/watch.jpg", price: 349.99, rating: 5.0, ratingCount: 215, category: "electronics", brand: "premium" },
+      { id: 1004, name: "Sports Smart Watch", image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?auto=format&fit=crop&w=870&q=80", price: 199.99, rating: 4.5, ratingCount: 163, category: "electronics", brand: "modern" },
+      { id: 1005, name: "Stationery Kit", image: "https://img.freepik.com/free-photo/top-view-wooden-desk-with-notebook-office-supplies_24837-170.jpg?w=740&q=80", price: 129.99, rating: 4.0, ratingCount: 94, category: "stationery", brand: "classic" },
+      { id: 1006, name: "Premium Brand - Makeup Kit", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkLV-qSVvs5Fr5UNrZ3nb6BrP0QF1k-u8akA&s", badge: "New", price: 159.99, rating: 5.0, ratingCount: 201, category: "beauty", brand: "premium" },
+      { id: 1007, name: "Homemade Gift Basket", image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=870&q=80", price: 89.99, rating: 4.2, ratingCount: 76, category: "homemade", brand: "artisan" },
+      { id: 1008, name: "Gold Plated Jewelry Set", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=870&q=80", price: 299.99, rating: 4.8, ratingCount: 134, category: "jewelry", brand: "premium" }
     ];
 
-    // Cart and favorites management
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-    // Filter configuration
-    const filters = {
-      categories: ['beauty', 'homemade', 'stationery', 'jewelry', 'mens', 'womens', 'electronics'],
-      maxPrice: 1000,
-      ratings: [4, 5],
-      brands: ['premium', 'artisan', 'classic', 'modern'],
-      searchTerm: '',
-      sortKey: 'default'
-    };
 
     function renderRatingStars(rating) {
       let stars = "";
@@ -696,243 +646,82 @@ try {
     }
 
     function showToast(message) {
-      const toastContainer = document.getElementById('toastContainer');
-      const toastId = 'toast-' + Date.now();
-      
+      const container = document.getElementById('toastContainer');
+      const id = 'toast-' + Date.now();
       const toast = document.createElement('div');
       toast.className = 'toast';
-      toast.id = toastId;
-      toast.innerHTML = `
-        <div class="toast-message">${message}</div>
-        <button class="toast-close" onclick="document.getElementById('${toastId}').remove()">&times;</button>
-      `;
-      
-      toastContainer.appendChild(toast);
-      setTimeout(() => { if (document.getElementById(toastId)) document.getElementById(toastId).remove(); }, 3000);
+      toast.id = id;
+      toast.innerHTML = `<div class="toast-message">${message}</div><button class="toast-close" onclick="document.getElementById('${id}').remove()">&times;</button>`;
+      container.appendChild(toast);
+      setTimeout(() => { if (document.getElementById(id)) document.getElementById(id).remove(); }, 3000);
     }
 
-    // --- CLEAN UI RENDER LOGIC ---
-    function renderProducts(productsToRender = products) {
+    function renderProducts(list = products) {
       const container = document.getElementById("products-container");
-      if (!container) return;
+      container.innerHTML = list.length === 0 ? '<div class="col-12 text-center py-5"><h4>No products found</h4></div>' : "";
       
-      container.innerHTML = "";
-
-      if (productsToRender.length === 0) {
-        container.innerHTML = '<div class="col-12 text-center py-5"><h4>No products found matching your filters.</h4></div>';
-        document.getElementById('showing-count').textContent = '0';
-        document.getElementById('total-count').textContent = '0';
-        return;
-      }
-
-      productsToRender.forEach(product => {
-        const badgeHtml = product.badge ? `<span class="badge bg-${product.badge === 'Sale' ? 'danger' : 'success'} position-absolute" style="top:10px; right:10px; z-index:2;">${product.badge}</span>` : '';
-        const originalPriceHtml = product.originalPrice ? `<span class="text-muted text-decoration-line-through small ms-2">₹${product.originalPrice.toFixed(2)}</span>` : '';
-
+      list.forEach(p => {
+        const badge = p.badge ? `<span class="badge bg-${p.badge === 'Sale' ? 'danger' : 'success'} position-absolute" style="top:10px; right:10px;">${p.badge}</span>` : '';
         container.innerHTML += `
-          <div class="col-md-6 col-xl-4" data-category="${product.category}">
+          <div class="col-md-6 col-xl-4">
             <div class="clean-product-card p-3 h-100 d-flex flex-column shadow-sm position-relative">
-              ${badgeHtml}
-              
-              <a href="product-details.php?id=${product.id}" class="text-decoration-none text-dark">
-                <img src="${product.image}" class="img-fluid rounded mb-3 w-100" alt="${product.name}" style="height:250px; object-fit:cover;" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
-                <h3 class="h6 fw-bold mb-1">${product.name}</h3>
+              ${badge}
+              <a href="product-details.php?id=${p.id}" class="text-decoration-none text-dark">
+                <img src="${p.image}" class="img-fluid rounded mb-3 w-100" style="height:250px; object-fit:cover;">
+                <h3 class="h6 fw-bold mb-1">${p.name}</h3>
               </a>
-              
-              <div class="mb-2">
-                <span class="rating small">${renderRatingStars(product.rating)}</span>
-                <span class="text-secondary ms-1" style="font-size: 0.8rem;">(${product.ratingCount} reviews)</span>
-              </div>
-              
-              <div class="mb-3">
-                <span class="product-price fs-5">₹${product.price.toFixed(2)}</span>
-                ${originalPriceHtml}
-              </div>
-              
-              <button class="btn btn-primary btn-sm w-100 rounded-pill mt-auto" onclick="addToCart(${product.id})">
-                Add to Cart
-              </button>
+              <div class="mb-2"><span class="rating small">${renderRatingStars(p.rating)}</span></div>
+              <div class="mb-3"><span class="product-price fs-5">₹${p.price.toFixed(2)}</span></div>
+              <button class="btn btn-primary btn-sm w-100 rounded-pill mt-auto" onclick="addToCart(${p.id})">Add to Cart</button>
             </div>
           </div>
         `;
       });
-
-      document.getElementById('showing-count').textContent = `1-${productsToRender.length}`;
+      document.getElementById('showing-count').textContent = `1-${list.length}`;
       document.getElementById('total-count').textContent = products.length;
     }
 
-    function addToCart(productId, quantity = 1) {
+    function addToCart(productId) {
       const product = products.find(p => p.id === productId);
-      if (!product) return;
-      
-      const existingItem = cart.find(item => item.id === productId);
-      
-      if (existingItem) {
-        existingItem.quantity += quantity;
-      } else {
-        cart.push({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          image: product.image,
-          quantity: quantity
-        });
-      }
-      
+      const existing = cart.find(item => item.id === productId);
+      if (existing) existing.quantity += 1;
+      else cart.push({...product, quantity: 1});
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartUI();
-      showToast(`${product.name} added to cart!`);
+      showToast(`${product.name} added!`);
     }
 
     function updateCartUI() {
-      const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
-      const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-      
-      const cartCountElement = document.getElementById('header-cart-count');
-      const totalElement = document.getElementById('header-total');
-      
-      if (cartCountElement) cartCountElement.textContent = itemCount;
-      if (totalElement) totalElement.textContent = totalPrice.toFixed(2);
-    }
-
-    function showCartModal() {
-      const modal = document.getElementById('cartModal');
-      const cartItems = document.getElementById('cartItems');
-      const modalCartTotal = document.getElementById('modalCartTotal');
-      
-      if (!modal || !cartItems || !modalCartTotal) return;
-      
-      if (cart.length === 0) {
-        cartItems.innerHTML = '<p class="text-center py-4">Your cart is empty</p>';
-      } else {
-        cartItems.innerHTML = cart.map(item => `
-          <div class="d-flex align-items-center mb-3 p-2 border-bottom">
-            <img src="${item.image}" alt="${item.name}" class="rounded me-3" width="60" height="60" 
-                 onerror="this.src='https://via.placeholder.com/60x60?text=Product'">
-            <div class="flex-grow-1">
-              <h6 class="mb-0">${item.name}</h6>
-              <p class="mb-0 text-muted">₹${item.price.toFixed(2)} x ${item.quantity}</p>
-            </div>
-            <div>
-              <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})">
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-          </div>
-        `).join('');
-      }
-      
-      const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-      modalCartTotal.textContent = totalPrice.toFixed(2);
-      
-      new bootstrap.Modal(modal).show();
-    }
-
-    function removeFromCart(productId) {
-      cart = cart.filter(item => item.id !== productId);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCartUI();
-      showCartModal(); // Refresh modal
-    }
-
-    function buyNow() {
-  if (cart.length === 0) {
-    alert('Your cart is empty!');
-    return;
-  }
-  // Redirect directly to the checkout page
-  window.location.href = 'checkout.php';
-}
-
-    function updateFavoritesCount() {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      const favCountElement = document.getElementById('favCount');
-      if (favCountElement) {
-        favCountElement.textContent = favorites.length;
-      }
+      const count = cart.reduce((t, i) => t + i.quantity, 0);
+      const total = cart.reduce((t, i) => t + (i.price * i.quantity), 0);
+      document.getElementById('header-cart-count').textContent = count;
+      document.getElementById('header-total').textContent = total.toFixed(2);
     }
 
     function applyFilters() {
-      filters.searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
-      filters.maxPrice = parseFloat(document.getElementById('priceRange').value);
-      filters.categories = Array.from(document.querySelectorAll('.category-filter-check:checked')).map(cb => cb.value);
-      
-      const ratingCheckboxes = document.querySelectorAll('.rating-filter:checked');
-      if (ratingCheckboxes.length > 0) {
-        const ratings = Array.from(ratingCheckboxes).map(cb => parseInt(cb.value));
-        filters.minRating = Math.min(...ratings);
-      } else {
-        filters.minRating = 0;
-      }
-      
-      filters.brands = Array.from(document.querySelectorAll('.brand-filter:checked')).map(cb => cb.value);
+      const search = document.getElementById('searchInput').value.trim().toLowerCase();
+      const maxPrice = parseFloat(document.getElementById('priceRange').value);
+      const selCats = Array.from(document.querySelectorAll('.category-filter-check:checked')).map(cb => cb.value);
 
-      let currentFilteredProducts = products.filter(p => {
-        const matchKeyword = filters.searchTerm === '' || p.name.toLowerCase().includes(filters.searchTerm);
-        const matchPrice = p.price <= filters.maxPrice;
-        const matchCategory = filters.categories.length === 0 || filters.categories.includes(p.category);
-        const matchRating = filters.minRating === 0 || p.rating >= filters.minRating;
-        const matchBrand = filters.brands.length === 0 || filters.brands.includes(p.brand);
-        
-        return matchKeyword && matchPrice && matchCategory && matchRating && matchBrand;
+      const filtered = products.filter(p => {
+        const matchSearch = search === '' || p.name.toLowerCase().includes(search);
+        const matchPrice = p.price <= maxPrice;
+        const matchCat = selCats.length === 0 || selCats.includes(p.category);
+        return matchSearch && matchPrice && matchCat;
       });
-      
-      const sortValue = document.getElementById('sortSelect').value;
-      if (sortValue === 'price-low') {
-        currentFilteredProducts.sort((a, b) => a.price - b.price);
-      } else if (sortValue === 'price-high') {
-        currentFilteredProducts.sort((a, b) => b.price - a.price);
-      } else if (sortValue === 'rating') {
-        currentFilteredProducts.sort((a, b) => b.rating - a.rating);
-      } else if (sortValue === 'newest') {
-        currentFilteredProducts.sort((a, b) => b.id - a.id);
-      }
-
-      renderProducts(currentFilteredProducts);
+      renderProducts(filtered);
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', () => {
       renderProducts();
       updateCartUI();
-      updateFavoritesCount();
-
-      document.querySelectorAll('.category-filter-check, .rating-filter, .brand-filter').forEach(cb => {
-        cb.addEventListener('change', applyFilters);
-      });
-
-      const priceRange = document.getElementById('priceRange');
-      const priceRangeValue = document.getElementById('priceRangeValue');
-      priceRange.addEventListener('input', e => {
-        priceRangeValue.textContent = '₹' + e.target.value;
+      document.getElementById('priceRange').addEventListener('input', e => {
+        document.getElementById('priceRangeValue').textContent = '₹' + e.target.value;
         applyFilters();
       });
-
-      const searchInput = document.getElementById('searchInput');
-      searchInput.addEventListener('input', applyFilters);
-
-      const sortSelect = document.getElementById('sortSelect');
-      sortSelect.addEventListener('change', applyFilters);
-
-      const resetBtn = document.getElementById('resetFilters');
-      resetBtn.addEventListener('click', () => {
-        document.querySelectorAll('.category-filter-check, .brand-filter').forEach(cb => cb.checked = true);
-        document.querySelectorAll('.rating-filter').forEach(cb => cb.checked = true);
-        priceRange.value = 1000;
-        priceRangeValue.textContent = '₹1000';
-        searchInput.value = '';
-        sortSelect.value = 'default';
-        applyFilters();
-      });
-
+      document.getElementById('searchInput').addEventListener('input', applyFilters);
       document.getElementById('applyFilters').addEventListener('click', applyFilters);
-      
-      const searchForm = document.getElementById('searchForm');
-      if (searchForm) {
-        searchForm.addEventListener('submit', function(event) {
-          event.preventDefault();
-          applyFilters();
-        });
-      }
+      document.getElementById('resetFilters').addEventListener('click', () => location.reload());
     });
   </script>
 </body>

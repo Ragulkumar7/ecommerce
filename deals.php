@@ -29,8 +29,8 @@ try {
   <style>
     /* --- THEME COLORS UPDATED --- */
     :root {
-        --primary: #d16d08f2; /* Your Requested Color */
-        --primary-dark: #b35900;
+        --primary: #6F4AA2; /* Your Requested Color */
+        --primary-dark: #5a3a80;
         --secondary: #ff6b6b;
         --dark: #1e1e2c;
         --light: #f8f9fa;
@@ -74,7 +74,7 @@ try {
 
     /* Navigation - UPDATED COLOR */
     .main-navbar {
-        background: var(--primary) !important; /* Applied #d16d08f2 here */
+        background: var(--primary) !important; /* Applied #6F4AA2 here */
         padding: 0.5rem 0;
     }
     .nav-link {
@@ -126,6 +126,71 @@ try {
         border-radius: 50px; padding: 0.5rem 1rem; width: 100%; transition: 0.3s;
     }
     .add-to-cart-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    /* Footer Styles */
+    .main-footer {
+        background: var(--dark);
+        color: white;
+        border-top: 5px solid var(--primary);
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent);
+        padding-left: 5px;
+    }
+
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .social-links a:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+    }
+
+    .newsletter-form .form-control {
+        border-radius: 10px 0 0 10px;
+        border: none;
+        padding: 12px;
+    }
+
+    .btn-accent {
+        background-color: var(--accent);
+        color: var(--dark);
+        font-weight: 600;
+        border-radius: 0 10px 10px 0;
+        padding: 0 20px;
+    }
+
+    .btn-accent:hover {
+        background-color: #ffc107;
+    }
+
+    .footer-bottom {
+        background: rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
   </style>
 </head>
 <body>
@@ -209,6 +274,75 @@ try {
   </div>
 </main>
 
+<footer class="main-footer mt-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="brand-icon"><i class="bi bi-shop"></i></span>
+                    <span class="brand-logo text-white">StyleHub</span>
+                </div>
+                <p class="text-white-50">Your one-stop destination for the latest in fashion, electronics, and lifestyle essentials. Quality products delivered to your doorstep.</p>
+                <div class="social-links mt-4">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Quick Links</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="electronics.php">Electronics</a></li>
+                    <li><a href="beauty-products.php">Beauty</a></li>
+                    <li><a href="mens-wear.php">Fashion</a></li>
+                    <li><a href="#">Deals</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Support</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Subscribe to Newsletter</h5>
+                <p class="text-white-50">Get updates on new arrivals and exclusive offers.</p>
+                <form class="newsletter-form mt-3">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                        <button class="btn btn-accent" type="button">Subscribe</button>
+                    </div>
+                </form>
+                <div class="mt-4">
+                    <img src="https://i.imgur.com/768Y59S.png" alt="Payment Methods" class="img-fluid" style="max-height: 30px; opacity: 0.8;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white-50">&copy; 2026 StyleHub. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <p class="mb-0 text-white-50">Designed with <i class="bi bi-heart-fill text-danger"></i> for Style.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script>
   const products = [
     { id: 1, name: "Gaming Laptop Pro", price: 65000, old_price: 85000, category: "Electronics", image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" },
@@ -246,7 +380,8 @@ try {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   function updateHeaderCart() {
-      document.getElementById('header-cart-count').textContent = cart.length;
+      const countEl = document.getElementById('header-cart-count');
+      if (countEl) countEl.textContent = cart.length;
   }
 
   document.getElementById('priceRange').addEventListener('input', function() {

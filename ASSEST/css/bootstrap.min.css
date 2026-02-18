@@ -19,7 +19,8 @@
     --bs-white: #fff;
     --bs-gray: #6c757d;
     --bs-gray-dark: #343a40;
-    --bs-primary: #d16d08f2;
+    --bs-primary: #6F4AA2
+;
     --bs-secondary: #F92400;
     --bs-success: #198754;
     --bs-info: #0dcaf0;
@@ -235,12 +236,12 @@ sup {
 }
 
 a {
-    color: #D19C97;
+    color: #6F4AA2;
     text-decoration: none
 }
 
 a:hover {
-    color: rgb(193.6, 111.2, 0)
+    color: #5a3a80
 }
 
 a:not([href]):not([class]),
@@ -277,7 +278,7 @@ pre code {
 
 code {
     font-size: 0.875em;
-    color: #d63384;
+    color: #6F4AA2;
     word-wrap: break-word
 }
 
@@ -631,7 +632,7 @@ progress {
 
 .figure-caption {
     font-size: 0.875em;
-    color: #6c757d
+    color: #6F4AA2
 }
 
 .container,
@@ -2077,7 +2078,7 @@ progress {
 }
 
 .table-secondary {
-    --bs-table-bg: rgb(253.8, 211.2, 204);
+    --bs-table-bg:#6F4AA2;
     --bs-table-striped-bg: rgb(241.11, 200.64, 193.8);
     --bs-table-striped-color: #000;
     --bs-table-active-bg: rgb(228.42, 190.08, 183.6);
@@ -2550,8 +2551,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input:checked {
-    background-color: #D19C97;
-    border-color: #D19C97
+    background-color: #6F4AA2;
+    border-color: #6F4AA2
 }
 
 .form-check-input:checked[type=checkbox] {
@@ -2563,8 +2564,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input[type=checkbox]:indeterminate {
-    background-color: #D19C97;
-    border-color: #D19C97;
+    background-color: #6F4AA2;
+    border-color: #6F4AA2;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e")
 }
 
@@ -2655,7 +2656,7 @@ textarea.form-control-lg {
     width: 1rem;
     height: 1rem;
     margin-top: -0.25rem;
-    background-color: #D19C97;
+    background-color: #6F4AA2;
     border: 0;
     border-radius: 1rem;
     -webkit-transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -2688,7 +2689,7 @@ textarea.form-control-lg {
 .form-range::-moz-range-thumb {
     width: 1rem;
     height: 1rem;
-    background-color: #D19C97;
+    background-color: #6F4AA2;
     border: 0;
     border-radius: 1rem;
     -moz-transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -2895,7 +2896,7 @@ textarea.form-control-lg {
     width: 100%;
     margin-top: .25rem;
     font-size: 0.875em;
-    color: #198754
+    color: #6F4AA2
 }
 
 .valid-tooltip {
@@ -2908,7 +2909,7 @@ textarea.form-control-lg {
     margin-top: .1rem;
     font-size: 0.875rem;
     color: #fff;
-    background-color: rgba(25, 135, 84, .9);
+    background-color: rgba(111, 74, 162, .9);
     border-radius: 10px
 }
 
@@ -2921,9 +2922,9 @@ textarea.form-control-lg {
 
 .was-validated .form-control:valid,
 .form-control.is-valid {
-    border-color: #198754;
+    border-color: #6F4AA2;
     padding-right: calc(1.5em + 0.75rem);
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%236F4AA2' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right calc(0.375em + 0.1875rem) center;
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem)
@@ -2931,8 +2932,8 @@ textarea.form-control-lg {
 
 .was-validated .form-control:valid:focus,
 .form-control.is-valid:focus {
-    border-color: #198754;
-    box-shadow: 0 0 0 .25rem rgba(25, 135, 84, .25)
+    border-color: #6F4AA2;
+    box-shadow: 0 0 0 .25rem rgba(111, 74, 162, .25)
 }
 
 .was-validated textarea.form-control:valid,
@@ -2943,7 +2944,7 @@ textarea.form-control.is-valid {
 
 .was-validated .form-select:valid,
 .form-select.is-valid {
-    border-color: #198754
+    border-color: #6F4AA2
 }
 
 .was-validated .form-select:valid:not([multiple]):not([size]),
@@ -2958,28 +2959,28 @@ textarea.form-control.is-valid {
 
 .was-validated .form-select:valid:focus,
 .form-select.is-valid:focus {
-    border-color: #198754;
-    box-shadow: 0 0 0 .25rem rgba(25, 135, 84, .25)
+    border-color: #6F4AA2;
+    box-shadow: 0 0 0 .25rem rgba(111, 74, 162, .25)
 }
 
 .was-validated .form-check-input:valid,
 .form-check-input.is-valid {
-    border-color: #198754
+    border-color: #6F4AA2
 }
 
 .was-validated .form-check-input:valid:checked,
 .form-check-input.is-valid:checked {
-    background-color: #198754
+    background-color: #6F4AA2
 }
 
 .was-validated .form-check-input:valid:focus,
 .form-check-input.is-valid:focus {
-    box-shadow: 0 0 0 .25rem rgba(25, 135, 84, .25)
+    box-shadow: 0 0 0 .25rem rgba(111, 74, 162, .25)
 }
 
 .was-validated .form-check-input:valid~.form-check-label,
 .form-check-input.is-valid~.form-check-label {
-    color: #198754
+    color: #6F4AA2
 }
 
 .form-check-inline .form-check-input~.valid-feedback {
@@ -2998,7 +2999,7 @@ textarea.form-control.is-valid {
     width: 100%;
     margin-top: .25rem;
     font-size: 0.875em;
-    color: #dc3545
+    color: #6F4AA2
 }
 
 .invalid-tooltip {
@@ -3011,7 +3012,7 @@ textarea.form-control.is-valid {
     margin-top: .1rem;
     font-size: 0.875rem;
     color: #fff;
-    background-color: rgba(220, 53, 69, .9);
+    background-color: rgba(111, 74, 162, .9);
     border-radius: 10px
 }
 
@@ -3024,9 +3025,9 @@ textarea.form-control.is-valid {
 
 .was-validated .form-control:invalid,
 .form-control.is-invalid {
-    border-color: #dc3545;
+    border-color: #6F4AA2;
     padding-right: calc(1.5em + 0.75rem);
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%236F4AA2'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%236F4AA2' stroke='none'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right calc(0.375em + 0.1875rem) center;
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem)
@@ -3034,8 +3035,8 @@ textarea.form-control.is-valid {
 
 .was-validated .form-control:invalid:focus,
 .form-control.is-invalid:focus {
-    border-color: #dc3545;
-    box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25)
+    border-color: #6F4AA2;
+    box-shadow: 0 0 0 .25rem rgba(111, 74, 162, .25)
 }
 
 .was-validated textarea.form-control:invalid,
@@ -3046,7 +3047,7 @@ textarea.form-control.is-invalid {
 
 .was-validated .form-select:invalid,
 .form-select.is-invalid {
-    border-color: #dc3545
+    border-color: #6F4AA2
 }
 
 .was-validated .form-select:invalid:not([multiple]):not([size]),
@@ -3054,25 +3055,25 @@ textarea.form-control.is-invalid {
 .form-select.is-invalid:not([multiple]):not([size]),
 .form-select.is-invalid:not([multiple])[size="1"] {
     padding-right: 4.125rem;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%236F4AA2'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%236F4AA2' stroke='none'/%3e%3c/svg%3e");
     background-position: right .75rem center, center right 2.25rem;
     background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem)
 }
 
 .was-validated .form-select:invalid:focus,
 .form-select.is-invalid:focus {
-    border-color: #dc3545;
-    box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25)
+    border-color: #6F4AA2;
+    box-shadow: 0 0 0 .25rem rgba(111, 74, 162, .25)
 }
 
 .was-validated .form-check-input:invalid,
 .form-check-input.is-invalid {
-    border-color: #dc3545
+    border-color: #6F4AA2
 }
 
 .was-validated .form-check-input:invalid:checked,
 .form-check-input.is-invalid:checked {
-    background-color: #dc3545
+    background-color: #6F4AA2
 }
 
 .was-validated .form-check-input:invalid:focus,
@@ -3082,7 +3083,7 @@ textarea.form-control.is-invalid {
 
 .was-validated .form-check-input:invalid~.form-check-label,
 .form-check-input.is-invalid~.form-check-label {
-    color: #dc3545
+    color: #6F4AA2
 }
 
 .form-check-inline .form-check-input~.invalid-feedback {
@@ -3140,8 +3141,8 @@ fieldset:disabled .btn {
 
 .btn-primary {
     color: #000;
-    background-color: #D19C97;
-    border-color: #D19C97
+    background-color: #6F4AA2;
+    border-color: #6F4AA2
 }
 
 .btn-primary:hover {
@@ -3173,34 +3174,34 @@ fieldset:disabled .btn {
 .btn-primary:active:focus,
 .btn-primary.active:focus,
 .show>.btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 .25rem rgba(205.7, 118.15, 0, .5)
+    box-shadow: 0 0 0 .25rem rgba(111, 74, 162, .5)
 }
 
 .btn-primary:disabled,
 .btn-primary.disabled {
     color: #000;
-    background-color: #D19C97;
-    border-color: #D19C97
+    background-color: #6F4AA2;
+    border-color: #6F4AA2
 }
 
 .btn-secondary {
     color: #000;
-    background-color: #f92400;
-    border-color: #f92400
+    background-color: #6F4AA2;
+    border-color: #6F4AA2
 }
 
 .btn-secondary:hover {
     color: #000;
-    background-color: rgb(249.9, 68.85, 38.25);
-    border-color: rgb(249.6, 57.9, 25.5)
+    background-color: rgb(111.95, 74.85, 162.25);
+    border-color: rgb(111.3, 74.1, 162)
 }
 
 .btn-check:focus+.btn-secondary,
 .btn-secondary:focus {
     color: #000;
-    background-color: rgb(249.9, 68.85, 38.25);
-    border-color: rgb(249.6, 57.9, 25.5);
-    box-shadow: 0 0 0 .25rem rgba(211.65, 30.6, 0, .5)
+    background-color: rgb(111.95, 74.85, 162.25);
+    border-color: rgb(111.3, 74.1, 162);
+    box-shadow: 0 0 0 .25rem rgba(111, 74, 162, .5)
 }
 
 .btn-check:checked+.btn-secondary,
@@ -3209,8 +3210,8 @@ fieldset:disabled .btn {
 .btn-secondary.active,
 .show>.btn-secondary.dropdown-toggle {
     color: #000;
-    background-color: rgb(250.2, 79.8, 51);
-    border-color: rgb(249.6, 57.9, 25.5)
+    background-color: rgb(111.95, 74.85, 162.25);
+    border-color: rgb(111.3, 74.1, 162)
 }
 
 .btn-check:checked+.btn-secondary:focus,
@@ -3218,26 +3219,26 @@ fieldset:disabled .btn {
 .btn-secondary:active:focus,
 .btn-secondary.active:focus,
 .show>.btn-secondary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 .25rem rgba(211.65, 30.6, 0, .5)
+    box-shadow: 0 0 0 .25rem rgba(111, 74, 162, .5)
 }
 
 .btn-secondary:disabled,
 .btn-secondary.disabled {
     color: #000;
-    background-color: #f92400;
-    border-color: #f92400
+    background-color: #6F4AA2;
+    border-color: #6F4AA2
 }
 
 .btn-success {
     color: #fff;
-    background-color: #198754;
-    border-color: #198754
+    background-color: #6F4AA2;
+    border-color: #6F4AA2
 }
 
 .btn-success:hover {
     color: #fff;
-    background-color: rgb(21.25, 114.75, 71.4);
-    border-color: rgb(20, 108, 67.2)
+    background-color: rgb(111.95, 74.85, 162.25);
+    border-color: rgb(111.3, 74.1, 162)
 }
 
 .btn-check:focus+.btn-success,
@@ -4453,7 +4454,8 @@ fieldset:disabled .btn {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #d16d08f2
+    background-color: #6F4AA2
+
 }
 
 .nav-fill>.nav-link,
@@ -8414,7 +8416,8 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-    background-color: #d16d08f2
+    background-color: #6F4AA2
+
 }
 
 .bg-secondary {
