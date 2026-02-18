@@ -240,7 +240,7 @@ try {
                         <div class="navbar-nav ms-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="shop.php" class="nav-item nav-link">Shop</a>
-                            <a href="single.html" class="nav-item nav-link">Single Page</a>
+                            
                             <div class="nav-item dropdown">
                                 <a href="#!" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu m-0">
