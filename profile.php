@@ -15,36 +15,41 @@ $password = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
     
     $user_id = $_SESSION['id'];
 
-    // --- HANDLE FORM SUBMISSIONS ---
+    // --- HANDLE FORM SUBMISSIONS FIRST ---
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // 1. Update Personal Info
         if (isset($_POST['update_personal'])) {
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
+            $fname = $_POST['first_name'];
+            $lname = $_POST['last_name'];
             $gender = $_POST['gender'];
-            $stmt = $pdo->prepare("UPDATE users SET first_name = ?, last_name = ?, gender = ? WHERE id = ?");
-            $stmt->execute([$fname, $lname, $gender, $user_id]);
+            $stmt = $pdo->prepare("UPDATE profile SET first_name = ?, last_name = ?, gender = ? WHERE id = ?");
+            $stmt->execute([$first_name, $last_name, $gender, $user_id]);
             $_SESSION['name'] = $fname; 
         }
 
         // 2. Update Email
         if (isset($_POST['update_email'])) {
             $email = $_POST['email'];
-            $stmt = $pdo->prepare("UPDATE users SET email = ? WHERE id = ?");
+            $stmt = $pdo->prepare("UPDATE profile SET email = ? WHERE id = ?");
             $stmt->execute([$email, $user_id]);
         }
 
-        // 3. Add New Address (Supports multiple addresses with New UI fields)
+        // 3. Add New Address
         if (isset($_POST['add_address'])) {
             $addr_name = $_POST['address_name'];
             $addr_mobile = $_POST['address_mobile'];
-            // Concatenating the new UI fields into the address_line for your database
-            $full_address = $_POST['address_text'] . ", " . $_POST['locality'] . ", " . $_POST['city'] . ", " . $_POST['state'] . " - " . $_POST['pincode'];
+            $locality = $_POST['locality'] ?? '';
+            $city = $_POST['city'] ?? '';
+            $state = $_POST['state'] ?? '';
+            $pincode = $_POST['pincode'] ?? '';
+            $address_text = $_POST['address_text'] ?? '';
+
+            $full_address = $address_text . ", " . $locality . ", " . $city . ", " . $state . " - " . $pincode;
             
             $stmt = $pdo->prepare("INSERT INTO user_addresses (user_id, full_name, mobile_number, address_line) VALUES (?, ?, ?, ?)");
             $stmt->execute([$user_id, $addr_name, $addr_mobile, $full_address]);
@@ -57,12 +62,13 @@ try {
             $stmt->execute([$addr_id, $user_id]);
         }
         
-        header("Location: profile.php?tab=" . ($_GET['tab'] ?? 'profile'));
+        // REDIRECT AFTER SAVING: This ensures data is written to DB before the page reloads
+        header("Location: profile.php?tab=" . ($_GET['tab'] ?? 'profile') . "&success=1");
         exit;
     }
 
-    // --- FETCH DATA FOR UI ---
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+    // --- FETCH DATA FOR UI AFTER POTENTIAL UPDATES ---
+    $stmt = $pdo->prepare("SELECT * FROM profile WHERE id = ?");
     $stmt->execute([$user_id]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -71,7 +77,7 @@ try {
     $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    error_log("DB Error: " . $e->getMessage());
+    die("Database Error: " . $e->getMessage()); 
 }
 ?>
 <!DOCTYPE html>
@@ -105,7 +111,6 @@ try {
         .save-btn { background-color: var(--primary); color: white; border: none; padding: 10px 40px; border-radius: 5px; font-weight: 600; transition: 0.3s; }
         .save-btn:hover { background-color: var(--primary-dark); }
 
-        /* --- Manage Address Specific UI --- */
         .address-form-box { background: #f5faff; border: 1px solid #e0e0e0; padding: 25px; border-radius: 4px; }
         .ui-input { border-radius: 2px; padding: 12px; border: 1px solid #ccc; font-size: 14px; width: 100%; margin-bottom: 15px; background: #fff; }
         .ui-input:focus { border-color: var(--primary-blue); outline: none; }
@@ -254,33 +259,20 @@ try {
                         </div>
                     </form>
                 </div>
-                <?php if(empty($addresses)): ?>
-                    <div class="text-center py-5"><p class="text-muted">No addresses found.</p></div>
-                <?php else: ?>
-                    <?php foreach($addresses as $addr): ?>
-                        <div class="p-3 border rounded shadow-sm d-flex justify-content-between mb-3">
-                            <div>
-                                <h6 class="fw-bold mb-1"><?= htmlspecialchars($addr['full_name']) ?> <span class="ms-3 text-muted"><?= htmlspecialchars($addr['mobile_number']) ?></span></h6>
-                                <p class="text-muted small mb-0"><?= htmlspecialchars($addr['address_line']) ?></p>
-                            </div>
-                            <form method="POST" onsubmit="return confirm('Delete this address?');">
-                                <input type="hidden" name="address_id" value="<?= $addr['id'] ?>">
-                                <button type="submit" name="delete_address" class="btn btn-link text-danger p-0"><i class="bi bi-trash"></i></button>
-                            </form>
+                <?php foreach($addresses as $addr): ?>
+                    <div class="p-3 border rounded shadow-sm d-flex justify-content-between mb-3">
+                        <div>
+                            <h6 class="fw-bold mb-1"><?= htmlspecialchars($addr['full_name']) ?> <span class="ms-3 text-muted"><?= htmlspecialchars($addr['mobile_number']) ?></span></h6>
+                            <p class="text-muted small mb-0"><?= htmlspecialchars($addr['address_line']) ?></p>
                         </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
-
-            <?php elseif(in_array($tab, ['orders', 'returns', 'wishlist', 'reviews'])): ?>
-            <div class="content-card d-flex flex-column align-items-center justify-content-center text-center">
-                <i class="bi <?= ($tab == 'orders' ? 'bi-box-seam' : ($tab == 'returns' ? 'bi-arrow-left-right' : ($tab == 'wishlist' ? 'bi-heart' : 'bi-chat-left-text'))) ?> text-muted" style="font-size: 4rem;"></i>
-                <h5 class="fw-bold mt-3">No <?= ucfirst($tab) ?> found</h5>
-                <p class="text-muted">It looks like you haven't added any <?= $tab ?> yet.</p>
-                <a href="index.php" class="save-btn text-decoration-none mt-2">Start Shopping</a>
+                        <form method="POST" onsubmit="return confirm('Delete this address?');">
+                            <input type="hidden" name="address_id" value="<?= $addr['id'] ?>">
+                            <button type="submit" name="delete_address" class="btn btn-link text-danger p-0"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
             </div>
             <?php endif; ?>
-
         </div>
     </div>
 </div>
