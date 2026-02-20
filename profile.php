@@ -99,7 +99,8 @@ try {
         .profile-avatar { width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; margin-right: 15px; }
         .profile-link { display: flex; align-items: center; padding: 12px 20px; color: var(--text-dark); text-decoration: none; transition: 0.3s; }
         .profile-link:hover, .profile-link.active { background-color: #f0ecf7; color: var(--primary); font-weight: 600; }
-        .content-card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .nav-section-title { font-size: 0.75rem; color: #878787; text-transform: uppercase; font-weight: 700; padding: 15px 20px 5px; }
+        .content-card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 25px; min-height: 450px; }
         .custom-input { border-radius: 8px; padding: 12px; border: 1px solid #ddd; background-color: #f9f9f9; }
         .save-btn { background-color: var(--primary); color: white; border: none; padding: 10px 40px; border-radius: 5px; font-weight: 600; transition: 0.3s; }
         .save-btn:hover { background-color: var(--primary-dark); }
@@ -148,18 +149,39 @@ try {
                         <div class="fw-bold"><?= htmlspecialchars($user['first_name'] ?? 'User') ?></div>
                     </div>
                 </div>
+
+                <div class="nav-section-title">MY ORDERS</div>
+                <a href="?tab=orders" class="profile-link <?= (isset($_GET['tab']) && $_GET['tab'] == 'orders') ? 'active' : '' ?>">
+                    <i class="bi bi-box-seam me-2"></i> Orders
+                </a>
+                <a href="?tab=returns" class="profile-link <?= (isset($_GET['tab']) && $_GET['tab'] == 'returns') ? 'active' : '' ?>">
+                    <i class="bi bi-arrow-left-right me-2"></i> Returns
+                </a>
+
+                <div class="nav-section-title">ACCOUNT SETTINGS</div>
                 <a href="?tab=profile" class="profile-link <?= !isset($_GET['tab']) || $_GET['tab'] == 'profile' ? 'active' : '' ?>">
                     <i class="bi bi-person me-2"></i> Personal Information
                 </a>
                 <a href="?tab=addresses" class="profile-link <?= (isset($_GET['tab']) && $_GET['tab'] == 'addresses') ? 'active' : '' ?>">
                     <i class="bi bi-geo-alt me-2"></i> Manage Addresses
                 </a>
-                <a href="logout.php" class="profile-link text-danger border-top"><i class="bi bi-box-arrow-right me-2"></i> Logout</a>
+
+                <div class="nav-section-title">MY STUFF</div>
+                <a href="?tab=wishlist" class="profile-link <?= (isset($_GET['tab']) && $_GET['tab'] == 'wishlist') ? 'active' : '' ?>">
+                    <i class="bi bi-heart me-2"></i> Wishlist
+                </a>
+                <a href="?tab=reviews" class="profile-link <?= (isset($_GET['tab']) && $_GET['tab'] == 'reviews') ? 'active' : '' ?>">
+                    <i class="bi bi-chat-left-text me-2"></i> Reviews & Ratings
+                </a>
+
+                <a href="logout.php" class="profile-link text-danger border-top mt-2"><i class="bi bi-box-arrow-right me-2"></i> Logout</a>
             </div>
         </aside>
 
         <div class="col-lg-9">
-            <?php if(!isset($_GET['tab']) || $_GET['tab'] == 'profile'): ?>
+            <?php $tab = $_GET['tab'] ?? 'profile'; ?>
+
+            <?php if($tab == 'profile'): ?>
             <div class="content-card">
                 <h4 class="fw-bold mb-4">Personal Information</h4>
                 <form method="POST">
@@ -202,14 +224,12 @@ try {
                 </form>
             </div>
 
-            <?php elseif($_GET['tab'] == 'addresses'): ?>
+            <?php elseif($tab == 'addresses'): ?>
             <div class="content-card">
                 <h4 class="fw-bold mb-4">Manage Addresses</h4>
-                
                 <div class="address-form-box mb-4">
                     <p class="text-primary fw-bold small mb-3">ADD A NEW ADDRESS</p>
                     <button class="btn-location"><i class="bi bi-cursor-fill me-2"></i> Use my current location</button>
-                    
                     <form method="POST">
                         <div class="row g-3">
                             <div class="col-md-6"><input type="text" name="address_name" class="ui-input" placeholder="Name" required></div>
@@ -227,21 +247,6 @@ try {
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                 </select>
                             </div>
-                            <div class="col-md-6"><input type="text" class="ui-input" placeholder="Landmark (Optional)"></div>
-                            <div class="col-md-6"><input type="text" class="ui-input" placeholder="Alternate Phone (Optional)"></div>
-                            
-                            <div class="col-12">
-                                <span class="d-block small text-muted mb-2">Address Type</span>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="addr_type" id="home" value="Home" checked>
-                                    <label class="form-check-label" for="home">Home</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="addr_type" id="work" value="Work">
-                                    <label class="form-check-label" for="work">Work</label>
-                                </div>
-                            </div>
-                            
                             <div class="col-12 mt-4">
                                 <button type="submit" name="add_address" class="btn-save-addr">SAVE</button>
                                 <span class="btn-cancel-addr" data-bs-toggle="collapse" data-bs-target="#addrForm">CANCEL</span>
@@ -250,30 +255,32 @@ try {
                     </form>
                 </div>
                 <?php if(empty($addresses)): ?>
-                    <div class="text-center py-5">
-                        <i class="bi bi-geo-alt text-muted" style="font-size: 3rem;"></i>
-                        <p class="text-muted mt-2">No addresses found.</p>
-                    </div>
+                    <div class="text-center py-5"><p class="text-muted">No addresses found.</p></div>
                 <?php else: ?>
-                    <div class="row">
-                        <?php foreach($addresses as $addr): ?>
-                            <div class="col-12 mb-3">
-                                <div class="p-3 border rounded shadow-sm d-flex justify-content-between align-items-start bg-white">
-                                    <div>
-                                        <h6 class="fw-bold mb-1"><?= htmlspecialchars($addr['full_name']) ?> <span class="ms-3 text-muted"><?= htmlspecialchars($addr['mobile_number']) ?></span></h6>
-                                        <p class="text-muted small mb-0"><?= htmlspecialchars($addr['address_line']) ?></p>
-                                    </div>
-                                    <form method="POST" onsubmit="return confirm('Are you sure you want to delete this address?');">
-                                        <input type="hidden" name="address_id" value="<?= $addr['id'] ?>">
-                                        <button type="submit" name="delete_address" class="btn btn-link text-danger p-0"><i class="bi bi-trash"></i> Delete</button>
-                                    </form>
-                                </div>
+                    <?php foreach($addresses as $addr): ?>
+                        <div class="p-3 border rounded shadow-sm d-flex justify-content-between mb-3">
+                            <div>
+                                <h6 class="fw-bold mb-1"><?= htmlspecialchars($addr['full_name']) ?> <span class="ms-3 text-muted"><?= htmlspecialchars($addr['mobile_number']) ?></span></h6>
+                                <p class="text-muted small mb-0"><?= htmlspecialchars($addr['address_line']) ?></p>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
+                            <form method="POST" onsubmit="return confirm('Delete this address?');">
+                                <input type="hidden" name="address_id" value="<?= $addr['id'] ?>">
+                                <button type="submit" name="delete_address" class="btn btn-link text-danger p-0"><i class="bi bi-trash"></i></button>
+                            </form>
+                        </div>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </div>
+
+            <?php elseif(in_array($tab, ['orders', 'returns', 'wishlist', 'reviews'])): ?>
+            <div class="content-card d-flex flex-column align-items-center justify-content-center text-center">
+                <i class="bi <?= ($tab == 'orders' ? 'bi-box-seam' : ($tab == 'returns' ? 'bi-arrow-left-right' : ($tab == 'wishlist' ? 'bi-heart' : 'bi-chat-left-text'))) ?> text-muted" style="font-size: 4rem;"></i>
+                <h5 class="fw-bold mt-3">No <?= ucfirst($tab) ?> found</h5>
+                <p class="text-muted">It looks like you haven't added any <?= $tab ?> yet.</p>
+                <a href="index.php" class="save-btn text-decoration-none mt-2">Start Shopping</a>
+            </div>
             <?php endif; ?>
+
         </div>
     </div>
 </div>
