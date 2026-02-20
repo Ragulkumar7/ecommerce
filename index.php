@@ -2267,17 +2267,7 @@ try {
             <li><i class="bi bi-chevron-right"></i>Contact Us</li>
           </ul>
         </div>
-        <div class="col-lg-2 col-md-6 footer-links">
-          <h5>Quick Links</h5>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i>Home</li>
-            <li><i class="bi bi-chevron-right"></i>Our Shop</li>
-            <li><i class="bi bi-chevron-right"></i>Shop Detail</li>
-            <li><i class="bi bi-chevron-right"></i>Shopping Cart</li>
-            <li><i class="bi bi-chevron-right"></i>Checkout</li>
-            <li><i class="bi bi-chevron-right"></i>Contact Us</li>
-          </ul>
-        </div>
+        
         <div class="col-lg-4 col-md-6 footer-newsletter">
           <h5>Newsletter</h5>
           <form>

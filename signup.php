@@ -3,7 +3,7 @@ session_start();
 
 // database connection
 $host = 'localhost';
-$dbname = 'electro_store';
+$dbname = 'ecommerce';
 $username = 'root';
 $password = '';
 

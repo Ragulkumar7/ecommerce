@@ -3,7 +3,7 @@ session_start();
 
 // Database connection
 $host = 'localhost';
-$dbname = 'electro_store';
+$dbname = 'ecommerce';
 $username = 'root';
 $password = '';
 
@@ -24,8 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($user && password_verify($pass, $user['password'])) {
             // Password is correct, start session
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_name'] = $user['first_name'];
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['name'] = $user['first_name'];
             header("Location: profile.php");
             exit;
         } else {
