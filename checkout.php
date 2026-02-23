@@ -29,8 +29,8 @@ try {
 
     <style>
         :root {
-            --primary-accent: #d16d08f2;
-            --primary-dark: #a35506;
+            --primary-accent: #6F4AA2;
+            --primary-dark: #5a3a80;
             --soft-bg: #f8f9fa;
         }
 
@@ -84,7 +84,7 @@ try {
         }
         .form-control:focus, .form-select:focus {
             border-color: var(--primary-accent);
-            box-shadow: 0 0 0 0.25rem rgba(209, 109, 8, 0.15);
+            box-shadow: 0 0 0 0.25rem rgba(111, 74, 162, 0.15);
         }
         .form-label {
             font-weight: 600;
@@ -168,12 +168,12 @@ try {
             font-weight: 800;
             font-size: 1.1rem;
             margin-top: 15px;
-            box-shadow: 0 8px 15px rgba(209, 109, 8, 0.2);
+            box-shadow: 0 8px 15px rgba(111, 74, 162, 0.2);
             transition: all 0.3s;
         }
         .btn-place-order:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 20px rgba(209, 109, 8, 0.3);
+            box-shadow: 0 12px 20px rgba(111, 74, 162, 0.3);
             background-color: var(--primary-dark);
             color: white;
         }
@@ -181,7 +181,7 @@ try {
             background-color: var(--primary-dark) !important;
             color: white !important;
             outline: none !important;
-            box-shadow: 0 5px 15px rgba(209, 109, 8, 0.3) !important;
+            box-shadow: 0 5px 15px rgba(111, 74, 162, 0.3) !important;
         }
 
         .back-to-cart {

@@ -29,9 +29,17 @@ try {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/electronics.css" />
   <style>
+    /* Global Variables */
+    :root {
+        --primary: #6F4AA2;
+        --primary-dark: #5a3a80;
+        --dark: #1e1e2c;
+        --accent: #ffd166;
+    }
+
     /* Navbar Styling */
     .main-navbar {
-        background-color: #cd7d73 !important;
+        background-color: #6F4AA2 !important;
         padding: 0;
     }
 
@@ -63,32 +71,32 @@ try {
         background: white;
     }
 
-    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#6F4AA2) --- */
     .apply-btn, .btn-primary {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: #6F4AA2 !important;
+        border-color: #6F4AA2 !important;
         color: white !important;
         transition: all 0.3s ease;
     }
 
     .apply-btn:hover, .btn-primary:hover {
-        background-color: #a35506 !important; /* Darker shade for hover */
-        border-color: #a35506 !important;
+        background-color: #5a3a80 !important; 
+        border-color: #5a3a80 !important;
         transform: translateY(-2px);
         color: white !important;
     }
 
     /* Price Range Slider Thumb */
     .form-range::-webkit-slider-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
     .form-range::-moz-range-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
 
     /* Product card price text color */
     .text-primary {
-        color: #d16d08f2 !important;
+        color: #6F4AA2 !important;
     }
 
     /* Clean Product Card */
@@ -102,6 +110,71 @@ try {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
     }
+
+    /* Footer Styles */
+    .main-footer {
+        background: var(--dark);
+        color: white;
+        border-top: 5px solid var(--primary);
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent);
+        padding-left: 5px;
+    }
+
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .social-links a:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+    }
+
+    .newsletter-form .form-control {
+        border-radius: 10px 0 0 10px;
+        border: none;
+        padding: 12px;
+    }
+
+    .btn-accent {
+        background-color: var(--accent);
+        color: var(--dark);
+        font-weight: 600;
+        border-radius: 0 10px 10px 0;
+        padding: 0 20px;
+    }
+
+    .btn-accent:hover {
+        background-color: #ffc107;
+    }
+
+    .footer-bottom {
+        background: rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
   </style>
 </head>
 <body>
@@ -111,8 +184,8 @@ try {
         <div class="row align-items-center">
             <div class="col-lg-3 col-md-4 col-6">
                 <div class="d-flex align-items-center">
-                    <span class="brand-icon"><i class="bi bi-shop"></i></span>
-                    <span class="brand-logo">StyleHub</span>
+                    <span class="brand-icon" style="color: #6F4AA2;"><i class="bi bi-shop fs-3"></i></span>
+                    <span class="brand-logo fw-bold fs-3 ms-2">StyleHub</span>
                 </div>
             </div>
             
@@ -188,6 +261,9 @@ try {
                         <li><a class="dropdown-item" href="women-wear.php">Women's Clothing</a></li>
                     </ul>
                 </li>
+                <li class="nav-item">
+            <a class="nav-link" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a>
+          </li>
             </ul>
         </div>
     </div>
@@ -226,11 +302,79 @@ try {
   </div>
 </main>
 
+<footer class="main-footer mt-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="brand-icon"><i class="bi bi-shop"></i></span>
+                    <span class="brand-logo text-white ms-2 fs-3">StyleHub</span>
+                </div>
+                <p class="text-white-50">Your one-stop destination for the latest in fashion, electronics, and lifestyle essentials. Quality products delivered to your doorstep.</p>
+                <div class="social-links mt-4">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Quick Links</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="electronics.php">Electronics</a></li>
+                    <li><a href="beauty-products.php">Beauty</a></li>
+                    <li><a href="mens-wear.php">Fashion</a></li>
+                    <li><a href="#">Deals</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Support</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Subscribe to Newsletter</h5>
+                <p class="text-white-50">Get updates on new arrivals and exclusive offers.</p>
+                <form class="newsletter-form mt-3">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                        <button class="btn btn-accent" type="button">Subscribe</button>
+                    </div>
+                </form>
+                <div class="mt-4">
+                    <img src="https://i.imgur.com/768Y59S.png" alt="Payment Methods" class="img-fluid" style="max-height: 30px; opacity: 0.8;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white-50">&copy; 2026 StyleHub. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <p class="mb-0 text-white-50">Designed with <i class="bi bi-heart-fill text-danger"></i> for Style.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   
-  // Updated IDs to 800s to avoid conflict in product-details.php
   const laptops = [
     { id: 801, name: "Premium Business Laptop", price: 85000, category: "Laptops", rating: 4.8, reviews: 120, image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500", brand: "BrandX" },
     { id: 802, name: "Ultra Gaming Pro", price: 125000, category: "Laptops", rating: 4.9, reviews: 230, image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500", brand: "BrandY" },

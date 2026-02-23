@@ -27,6 +27,16 @@ try {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/mens-wear.css" />
   <style>
+    /* --- NAVIGATION VISIBILITY FIX --- */
+    .main-navbar .nav-link {
+        color: white !important; /* Forces the text to be white */
+        font-weight: 500;
+    }
+
+    .main-navbar .nav-link:hover {
+        color: rgba(255, 255, 255, 0.8) !important; /* Slight fade on hover for better UX */
+    }
+
     /* Clean Product Card Style matching your other pages */
     .clean-product-card {
         border: 1px solid #eee;
@@ -41,18 +51,18 @@ try {
 
     /* Target Add to Cart button color */
     .clean-product-card .btn-primary {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: #6F4AA2 !important;
+        border-color: #6F4AA2 !important;
     }
     
     .clean-product-card .btn-primary:hover {
-        background-color: #b35d07 !important; /* Slightly darker for hover effect */
-        border-color: #b35d07 !important;
+        background-color: #5a3a80 !important; 
+        border-color: #5a3a80 !important;
     }
 
     /* Target Price Text color to match */
     .text-primary {
-        color: #d16d08f2 !important;
+        color: #6F4AA2 !important;
     }
   </style>
 </head>
@@ -62,8 +72,8 @@ try {
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
           <div class="d-flex align-items-center">
-            <span class="brand-icon"><i class="bi bi-shop"></i></span>
-            <span class="brand-logo">StyleHub</span>
+            <span class="brand-icon" style="color: #6F4AA2;"><i class="bi bi-shop fs-3"></i></span>
+            <span class="brand-logo fw-bold fs-3 ms-2">StyleHub</span>
           </div>
         </div>
         <div class="col-lg-6 col-md-5 d-none d-md-block">
@@ -74,10 +84,10 @@ try {
         </div>
         <div class="col-lg-3 col-md-3 col-6">
           <div class="d-flex align-items-center justify-content-end header-actions">
-            <a href="#" class="action-icon me-3 position-relative"><i class="bi bi-arrow-repeat"></i></a>
-            <a href="#" class="action-icon me-3 position-relative" onclick="showFavorites()">
-              <i class="bi bi-heart"></i>
-              <span class="cart-badge" id="favCount">0</span>
+            <a href="#" class="action-icon me-3 position-relative text-dark"><i class="bi bi-arrow-repeat fs-4"></i></a>
+            <a href="#" class="action-icon me-3 position-relative text-dark" onclick="showFavorites()">
+              <i class="bi bi-heart fs-4"></i>
+              <span class="cart-badge badge rounded-pill position-absolute top-0 start-100 translate-middle bg-danger" id="favCount">0</span>
             </a>
             <a href="./cart.php" class="action-icon position-relative">
               <i class="bi bi-cart3"></i>
@@ -95,7 +105,7 @@ try {
       <div class="d-flex justify-content-between align-items-center">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link active" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
+            <a class="nav-link" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -129,7 +139,7 @@ try {
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person me-1"></i> Fashion
+              <i class="bi bi-person me-1 active"></i> Fashion
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="mens-wear.php">Men's Clothing</a></li>
@@ -138,7 +148,7 @@ try {
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
+            <a class="nav-link" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a>
           </li>
         </ul>
       </div>
@@ -179,7 +189,7 @@ try {
           <div class="form-check"><input type="checkbox" class="form-check-input" id="star4" onchange="filterProducts()"><label class="form-check-label" for="star4">4 stars & above</label></div>
         </div>
         <div class="filter-buttons mt-3">
-          <button id="applyBtn" type="button" class="btn btn-primary w-100 rounded-pill mb-2" aria-label="Apply filters" style="background-color: #d16d08f2; border: none;">Apply Filters</button>
+          <button id="applyBtn" type="button" class="btn btn-primary w-100 rounded-pill mb-2" aria-label="Apply filters" style="background-color: #6F4AA2; border: none;">Apply Filters</button>
           <button id="resetBtn" type="button" class="btn btn-light border w-100 rounded-pill" aria-label="Reset filters">Reset Filters</button>
         </div>
       </div>
@@ -254,7 +264,7 @@ try {
           <h5 class="mb-3">Newsletter</h5>
           <form>
             <input type="email" class="form-control mb-3" placeholder="Your email address">
-            <button type="submit" class="btn btn-primary" style="background-color: #d16d08f2; border: none;">Subscribe</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #6F4AA2; border: none;">Subscribe</button>
           </form>
         </div>
       </div>

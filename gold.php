@@ -44,24 +44,24 @@ try {
     
     /* Apply Filter and Add to Cart Buttons */
     #applyBtn, .btn-primary, .btn-sm {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: #6F4AA2 !important;
+        border-color: #6F4AA2 !important;
         color: white !important;
         transition: all 0.3s ease;
     }
 
     #applyBtn:hover, .btn-primary:hover {
-        background-color: #a35506 !important; /* Slightly darker shade for hover */
-        border-color: #a35506 !important;
+        background-color: #5a3a80 !important; /* Slightly darker shade for hover */
+        border-color: #5a3a80 !important;
         transform: translateY(-2px);
     }
 
     /* Price Range Slider Thumb */
     .form-range::-webkit-slider-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
     .form-range::-moz-range-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
   </style>
 </head>
@@ -71,14 +71,14 @@ try {
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
           <div class="d-flex align-items-center">
-            <span class="brand-icon"><i class="bi bi-shop"></i></span>
-            <span class="brand-logo">StyleHub</span>
+            <span class="brand-icon" style="color: #6F4AA2;"><i class="bi bi-shop fs-3"></i></span>
+            <span class="brand-logo fw-bold fs-3 ms-2">StyleHub</span>
           </div>
         </div>
         <div class="col-lg-6 col-md-5 d-none d-md-block">
           <form class="search-form" onsubmit="handleSearch(event)">
-            <input class="form-control search-input" type="search" id="searchInput" placeholder="Search for products..." aria-label="Search">
-            <button class="search-btn" type="submit"><i class="bi bi-search"></i></button>
+            <input class="form-control search-input rounded-start-pill px-4" type="search" id="searchInput" placeholder="Search for products..." aria-label="Search">
+            <button class="btn btn-primary rounded-end-pill px-3" type="submit"><i class="bi bi-search"></i></button>
           </form>
         </div>
         <div class="col-lg-3 col-md-3 col-6">
@@ -100,7 +100,7 @@ try {
       <div class="d-flex justify-content-between align-items-center">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link active" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
+            <a class="nav-link" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -109,7 +109,7 @@ try {
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="beauty-products.php">Makeup</a></li>
               <li><a class="dropdown-item" href="beauty-products.php">Skincare</a></li>
-              <li><a class="dropdown-item" href="gold.php">Gold Jewelry</a></li>
+              <li><a class="dropdown-item active" href="gold.php">Gold Jewelry</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -143,7 +143,7 @@ try {
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
+            <a class="nav-link" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a>
           </li>
         </ul>
       </div>

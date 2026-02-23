@@ -28,17 +28,17 @@ try {
   <link rel="stylesheet" href="./assest/css/beauty-products.css" />
   <style>
     /* Styling for the clay-red navbar */
-    .main-navbar { background-color: #cd7d73 !important; padding: 10px 0; }
+    .main-navbar { background-color: var(--primary) !important; padding: 10px 0; }
     .main-navbar .nav-link { color: white !important; font-weight: 500; border-bottom: 3px solid transparent; }
     .main-navbar .nav-link.active { border-bottom: 3px solid #ffcc66; }
 
     /* Product Detail UI specific styles */
     .detail-card { background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.08); }
     .product-img-main { width: 100%; border-radius: 15px; max-height: 500px; object-fit: contain; background: #f9f9f9; }
-    .price-large { font-size: 2.2rem; color: #cd7d73; font-weight: 800; }
-    .btn-buy-now { background-color: #0d6efd; color: white; padding: 12px 30px; border-radius: 50px; font-weight: 600; width: 100%; border: none; }
-    .btn-buy-now:hover { background-color: #0b5ed7; color: white; }
-    .breadcrumb-item a { color: #cd7d73; text-decoration: none; }
+    .price-large { font-size: 2.2rem; color: var(--primary); font-weight: 800; }
+    .btn-buy-now { background-color: var(--primary); color: white; padding: 12px 30px; border-radius: 50px; font-weight: 600; width: 100%; border: none; }
+    .btn-buy-now:hover { background-color: var(--primary-dark); color: white; }
+    .breadcrumb-item a { color: var(--primary); text-decoration: none; }
   </style>
 </head>
 <body>

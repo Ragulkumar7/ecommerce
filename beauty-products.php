@@ -29,9 +29,9 @@ try {
   <link rel="stylesheet" href="./assest/css/beauty-products.css" />
   <style>
     /* Styling for the clay-red navbar */
-    .main-navbar { background-color: #cd7d73 !important; padding: 10px 0; }
+    .main-navbar { background-color: var(--primary) !important; padding: 10px 0; }
     .main-navbar .nav-link { color: white !important; font-weight: 500; border-bottom: 3px solid transparent; }
-    .main-navbar .nav-link.active { border-bottom: 3px solid #ffcc66; }
+    
     
     /* Product Card Styling */
     .sidebar shadow-box { border: 1px solid #e0e0e0; border-radius: 20px; padding: 25px; background: white; }
@@ -42,27 +42,27 @@ try {
     
     /* Buttons: Apply Filters and Add to Cart */
     #applyBtn, .btn-primary, .btn-add-to-cart {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: var(--primary) !important;
+        border-color: var(--primary) !important;
         color: white !important;
         transition: all 0.3s ease;
     }
 
     #applyBtn:hover, .btn-primary:hover, .btn-add-to-cart:hover {
-        background-color: #a35506 !important; /* Slightly darker shade for hover */
-        border-color: #a35506 !important;
+        background-color: var(--primary-dark) !important; /* Slightly darker shade for hover */
+        border-color: var(--primary-dark) !important;
         transform: translateY(-2px);
     }
 
     /* Price Range Slider Thumb */
     .form-range::-webkit-slider-thumb {
-        background: #d16d08f2 !important;
+        background: var(--primary) !important;
     }
     .form-range::-moz-range-thumb {
-        background: #d16d08f2 !important;
+        background: var(--primary) !important;
     }
     .form-range::-ms-thumb {
-        background: #d16d08f2 !important;
+        background: var(--primary) !important;
     }
   </style>
 </head>
@@ -148,7 +148,7 @@ try {
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
+            <a class="nav-link" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a>
           </li>
         </ul>
       </div>

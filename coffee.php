@@ -41,29 +41,29 @@ try {
 
     /* --- UPDATED THEME COLORS (#d16d08f2) --- */
     #applyBtn, .btn-primary {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: #6F4AA2 !important;
+        border-color: #5a3a80 !important;
         color: white !important;
         transition: all 0.3s ease;
     }
 
     #applyBtn:hover, .btn-primary:hover {
-        background-color: #a35506 !important; /* Slightly darker hover */
-        border-color: #a35506 !important;
+        background-color: #5a3a80 !important; /* Slightly darker hover */
+        border-color: #5a3a80 !important;
         transform: translateY(-2px);
     }
 
     /* Price Range Slider Thumb */
     .form-range::-webkit-slider-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
     .form-range::-moz-range-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
 
     /* Price Text Color in Cards */
     .text-primary {
-        color: #d16d08f2 !important;
+        color: #6F4AA2 !important;
     }
   </style>
 </head>
@@ -143,7 +143,7 @@ try {
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
+            <a class="nav-link" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a>
           </li>
         </ul>
       </div>

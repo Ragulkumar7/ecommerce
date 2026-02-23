@@ -28,34 +28,39 @@ try {
   <link rel="stylesheet" href="./assest/css/kids-wear.css" />
   <style>
     /* Styling for the navbar */
-    .main-navbar { background-color: #cd7d73 !important; padding: 10px 0; }
+    .main-navbar { background-color: #6F4AA2 !important; padding: 10px 0; }
     .main-navbar .nav-link { color: white !important; font-weight: 500; border-bottom: 3px solid transparent; }
-    .main-navbar .nav-link.active { border-bottom: 3px solid #ffcc66; }
+    
 
-    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (##6F4AA2
+) --- */
     #applyBtn, .btn-primary {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: #6F4AA2 !important;
+        border-color: #6F4AA2 !important;
         color: white !important;
         transition: all 0.3s ease;
     }
 
     #applyBtn:hover, .btn-primary:hover {
-        background-color: #a35506 !important; 
-        border-color: #a35506 !important;
+        background-color: #5a3a80 !important; /* Slightly darker shade for hover */
+        border-color: #5a3a80 !important;
         transform: translateY(-2px);
     }
 
-    .form-range::-webkit-slider-thumb { background: #d16d08f2 !important; }
-    .form-range::-moz-range-thumb { background: #d16d08f2 !important; }
+    .form-range::-webkit-slider-thumb { background: #6F4AA2 !important; }
+ !important; }
+    .form-range::-moz-range-thumb { background: ##6F4AA2
+ !important; }
 
     .product-price {
-        color: #d16d08f2 !important;
+        color: ##6F4AA2
+ !important;
         font-weight: bold;
         font-size: 1.1rem;
     }
 
-    .bi-star-fill, .bi-star-half { color: #d16d08f2 !important; }
+    .bi-star-fill, .bi-star-half { color: ##6F4AA2
+ !important; }
 
     /* Clean Product Card Style */
     .clean-product-card {
@@ -83,7 +88,8 @@ try {
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
           <div class="d-flex align-items-center">
-            <span class="brand-icon" style="color: #d16d08f2;"><i class="bi bi-shop fs-3"></i></span>
+            <span class="brand-icon" style="color: ##6F4AA2
+;"><i class="bi bi-shop fs-3"></i></span>
             <span class="brand-logo fw-bold fs-3 ms-2">StyleHub</span>
           </div>
         </div>
@@ -150,7 +156,7 @@ try {
               <li><a class="dropdown-item" href="kids-wear.php">Kids' Clothing</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="#">Deals</a></li>
+          <li class="nav-item"><a class="nav-link" href="deals.php">Deals</a></li>
         </ul>
       </div>
     </div>

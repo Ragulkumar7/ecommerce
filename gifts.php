@@ -28,44 +28,44 @@ try {
   <link rel="stylesheet" href="./assest/css/gifts.css" />
   <style>
     /* Styling for the clay-red navbar */
-    .main-navbar { background-color: #d16d08f2 !important; padding: 10px 0; }
+    .main-navbar { background-color: #6F4AA2 !important; padding: 10px 0; }
     .main-navbar .nav-link { color: white !important; font-weight: 500; border-bottom: 3px solid transparent; }
     .main-navbar .nav-link.active { border-bottom: 3px solid #ffcc66; }
 
-    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#6F4AA2) --- */
     
     /* Main Buttons (Apply Filters, Add to Cart) */
     #applyBtn, .btn-primary {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: #6F4AA2 !important;
+        border-color: #6F4AA2 !important;
         color: white !important;
         transition: all 0.3s ease;
     }
 
     #applyBtn:hover, .btn-primary:hover {
-        background-color: #a35506 !important; 
-        border-color: #a35506 !important;
+        background-color: #5a3a80 !important; 
+        border-color: #5a3a80 !important;
         transform: translateY(-2px);
     }
 
     /* Range Slider Thumb Color */
     .form-range::-webkit-slider-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
     .form-range::-moz-range-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
 
     /* Price Text Color */
     .product-price {
-        color: #d16d08f2 !important;
+        color: #6F4AA2 !important;
         font-weight: bold;
         font-size: 1.1rem;
     }
 
     /* Rating Star Color */
     .bi-star-fill, .bi-star-half {
-        color: #d16d08f2 !important;
+        color: #6F4AA2 !important;
     }
 
     /* Clean Product Card Style matching other pages */
@@ -85,6 +85,45 @@ try {
         height: 250px;
         object-fit: cover;
     }
+
+    /* --- FOOTER STYLES --- */
+    .main-footer {
+        background: #1e1e2c;
+        color: white;
+        border-top: 5px solid #6F4AA2;
+    }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+    }
+    .footer-links a:hover { color: #ffd166; padding-left: 5px; }
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 50%;
+        margin-right: 10px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    .social-links a:hover { background: #6F4AA2; transform: translateY(-3px); }
+    .footer-bottom {
+        background: rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .btn-accent {
+        background-color: #ffd166;
+        color: #1e1e2c;
+        font-weight: 600;
+        border-radius: 0 10px 10px 0;
+    }
   </style>
 </head>
 <body>
@@ -94,7 +133,7 @@ try {
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-6">
           <div class="d-flex align-items-center">
-            <span class="brand-icon" style="color: #d16d08f2;"><i class="bi bi-shop fs-3"></i></span>
+            <span class="brand-icon" style="color: #6F4AA2;"><i class="bi bi-shop fs-3"></i></span>
             <span class="brand-logo fw-bold fs-3 ms-2">StyleHub</span>
           </div>
         </div>
@@ -159,7 +198,11 @@ try {
               <li><a class="dropdown-item" href="women-wear.php">Women's Clothing</a></li>
           </ul>
         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a>
+          </li>
       </ul>
+
     </div>
 </nav>
 
@@ -210,6 +253,58 @@ try {
     </section>
   </section>
 </main>
+
+<footer class="main-footer mt-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="brand-icon text-white"><i class="bi bi-shop fs-3"></i></span>
+                    <span class="brand-logo text-white fw-bold fs-3 ms-2">StyleHub</span>
+                </div>
+                <p class="text-white-50">Your one-stop destination for the latest in fashion, electronics, and handmade gifts. Quality products delivered to your doorstep.</p>
+                <div class="social-links mt-4">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Quick Links</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="electronics.php">Electronics</a></li>
+                    <li><a href="gifts.php">Gifts</a></li>
+                    <li><a href="mens-wear.php">Fashion</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Support</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-white fw-bold mb-4">Newsletter</h5>
+                <p class="text-white-50">Get updates on new arrivals and offers.</p>
+                <form class="mt-3">
+                    <div class="input-group">
+                        <input type="email" class="form-control border-0" placeholder="Email Address">
+                        <button class="btn btn-accent" type="button">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom py-3 text-center">
+        <div class="container">
+            <p class="mb-0 text-white-50">&copy; 2026 StyleHub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>

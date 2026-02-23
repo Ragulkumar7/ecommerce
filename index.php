@@ -27,37 +27,50 @@ try {
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
 
-    <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
-    <!-- Customized Bootstrap Stylesheet -->
     <link href="./assest/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
     <link href="./assest/css/style.css" rel="stylesheet">
+
+    <style>
+        /* Login Button Styling */
+        .btn-login {
+            background-color: transparent;
+            color: #6F4AA2;
+            border: 1px solid #6F4AA2;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 5px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #6F4AA2;
+            color: white !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(111, 74, 162, 0.2);
+        }
+    </style>
 </head>
 
 <body>
 
     
-    <!-- Custom cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <!-- Topbar Start -->
     <div class="container-fluid px-5 d-none border-bottom d-lg-block">
         <div class="row gx-0 align-items-center">
             <div class="col-lg-4 text-center text-lg-start mb-lg-0">
@@ -110,8 +123,7 @@ try {
                     <a href="" class="navbar-brand p-0">
                         <h1 class="display-5 text-primary m-0"><i
                                 class="fas fa-shopping-bag text-secondary me-2"></i>E-Commerce</h1>
-                        <!-- <img src="img/logo.png" alt="Logo"> -->
-                    </a>
+                        </a>
                 </div>
             </div>
             <div class="col-md-4 col-lg-6 text-center">
@@ -131,33 +143,36 @@ try {
                     </div>
                 </div>
             </div>
+            
            <div class="col-md-4 col-lg-3 text-center text-lg-end">
   <div class="d-inline-flex align-items-center">
-    <!-- Compare -->
+    
+    <div class="me-3">
+        <a href="login.php" class="btn btn-login rounded-pill">
+            <i class="fas fa-user-lock me-1"></i> Login
+        </a>
+    </div>
+
     <a href="#!" class="text-muted d-flex align-items-center justify-content-center me-3">
       <span class="rounded-circle btn-md-square border">
         <i class="fas fa-random"></i>
       </span>
     </a>
 
-    <!-- Wishlist -->
     <a href="#!" class="text-muted d-flex align-items-center justify-content-center me-3">
       <span class="rounded-circle btn-md-square border">
         <i class="fas fa-heart"></i>
       </span>
     </a>
 
-    <!-- Cart -->
     <a href="./cart.php" class="text-muted d-flex align-items-center justify-content-center">
       <span class="rounded-circle btn-md-square border position-relative">
         <i class="fas fa-shopping-cart"></i>
-        <!-- Badge for number of items -->
         <span id="header-cart-count" 
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
           0
         </span>
       </span>
-      <!-- Total -->
       <span class="text-dark ms-2" id="header-total">₹0.00</span>
     </a>
   </div>
@@ -165,9 +180,6 @@ try {
 
         </div>
     </div>
-    <!-- Topbar End -->
-
-    <!-- Navbar & Hero Start -->
     <div class="container-fluid nav-bar p-0">
         <div class="row gx-0 bg-primary px-5 align-items-center">
             <div class="col-lg-3 d-none d-lg-block">
@@ -219,8 +231,7 @@ try {
                     <a href="" class="navbar-brand d-block d-lg-none">
                         <h1 class="display-5 text-secondary m-0"><i
                                 class="fas fa-shopping-bag text-white me-2"></i>E-Commerce</h1>
-                        <!-- <img src="img/logo.png" alt="Logo"> -->
-                    </a>
+                        </a>
                     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
                         data-bs-target="#!navbarCollapse">
                         <span class="fa fa-bars fa-1x"></span>
@@ -229,7 +240,7 @@ try {
                         <div class="navbar-nav ms-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="shop.php" class="nav-item nav-link">Shop</a>
-                            <a href="single.html" class="nav-item nav-link">Single Page</a>
+                            
                             <div class="nav-item dropdown">
                                 <a href="#!" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu m-0">
@@ -239,7 +250,7 @@ try {
                                     <a href="electronics.php" class="dropdown-item">Electronics</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link me-2">Contact</a>
+                            <a href="profile.php" class="nav-item nav-link me-2">Profile</a>
                             <div class="nav-item dropdown d-block d-lg-none mb-3">
                                 <a href="#!" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">All Category</a>
                                 <div class="dropdown-menu m-0">
@@ -285,9 +296,6 @@ try {
             </div>
         </div>
     </div>
-    <!-- Navbar & Hero End -->
-
-    <!-- Carousel Start -->
     <div class="container-fluid carousel bg-light px-0">
         <div class="row g-0 justify-content-end">
             <div class="col-12 col-lg-7 col-xl-9">
@@ -428,9 +436,6 @@ try {
             </div>
         </div>
     </div>
-    <!-- Carousel End -->
-
-    <!-- Searvices Start -->
     <div class="container-fluid px-0">
         <div class="row g-0">
             <div class="col-6 col-md-4 col-lg-2 border-start border-end wow fadeInUp" data-wow-delay="0.1s">
@@ -501,8 +506,6 @@ try {
             </div>
         </div>
     </div>
-    <!-- Searvices End -->
-    <!-- Categories Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-4 col-md-6 pb-1">
@@ -561,9 +564,6 @@ try {
             </div>
         </div>
     </div>
-    <!-- Categories End -->
-
-    <!-- Products Offer Start -->
     <div class="container-fluid bg-light py-5">
         <div class="container">
             <div class="row g-4">
@@ -592,10 +592,6 @@ try {
             </div>
         </div>
     </div>
-    <!-- Products Offer End -->
-
-
-    <!-- Our Products Start -->
     <div class="container-fluid product py-5">
         <div class="container py-5">
             <div class="tab-class">
@@ -1534,9 +1530,6 @@ try {
             </div>
         </div>
     </div>
-    <!-- Our Products End -->
-
-    <!-- Product Banner Start -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="row g-4">
@@ -1571,10 +1564,7 @@ try {
             </div>
         </div>
     </div>
-    <!-- Product Banner End -->
-
-    <!-- Product List Start -->
-<div class="container-fluid products productList overflow-hidden">
+    <div class="container-fluid products productList overflow-hidden">
     <div class="container products-mini py-5">
         <div class="mx-auto text-center mb-5" style="max-width: 900px;">
             <h4 class="text-primary border-bottom border-primary border-2 d-inline-block p-2 title-border-radius wow fadeInUp"
@@ -1582,7 +1572,6 @@ try {
             <h1 class="mb-0 display-3 wow fadeInUp" data-wow-delay="0.3s">All Product Items</h1>
         </div>
         <div class="productList-carousel owl-carousel pt-4 wow fadeInUp" data-wow-delay="0.3s">
-            <!-- Coffee Products -->
             <div class="productImg-carousel owl-carousel productList-item">
                 <div class="productImg-item products-mini-item border">
                     <div class="row g-0">
@@ -1718,7 +1707,6 @@ try {
                 </div>
             </div>
             
-            <!-- Photography Products -->
             <div class="productImg-carousel owl-carousel productList-item">
                 <div class="productImg-item products-mini-item border">
                     <div class="row g-0">
@@ -1854,7 +1842,6 @@ try {
                 </div>
             </div>
             
-            <!-- Silent Parrot Products -->
             <div class="productImg-carousel owl-carousel productList-item">
                 <div class="productImg-item products-mini-item border">
                     <div class="row g-0">
@@ -1990,7 +1977,6 @@ try {
                 </div>
             </div>
             
-            <!-- Gold Coins -->
             <div class="productImg-carousel owl-carousel productList-item">
                 <div class="productImg-item products-mini-item border">
                     <div class="row g-0">
@@ -2128,9 +2114,6 @@ try {
         </div>
     </div>
 </div>
-<!-- Product List End -->
-
-    <!-- Bestseller Products Start -->
 <div class="container-fluid products pb-5">
     <div class="container products-mini py-5">
         <div class="mx-auto text-center mb-5" style="max-width: 700px;">
@@ -2247,18 +2230,15 @@ try {
                     </div>
                 </div>
             </div>
-            <!-- Repeat your other cards if needed, updating only product names as above -->
-        </div>
+            </div>
     </div>
 </div>
 
 
 
-    <!-- Footer & Newsletter Section -->
-  <section class="footer-section">
+    <section class="footer-section">
     <div class="container">
       <div class="row g-4">
-        <!-- Brand and Info -->
         <div class="col-lg-4 col-md-6 footer-brand">
           <div class="d-flex align-items-center mb-3">
             <div class="bg-white border rounded p-2 me-2">
@@ -2276,7 +2256,6 @@ try {
             <li><i class="bi bi-telephone"></i>+012 345 67890</li>
           </ul>
         </div>
-        <!-- Quick Links #1 -->
         <div class="col-lg-2 col-md-6 footer-links">
           <h5>Quick Links</h5>
           <ul>
@@ -2288,19 +2267,7 @@ try {
             <li><i class="bi bi-chevron-right"></i>Contact Us</li>
           </ul>
         </div>
-        <!-- Quick Links #2 -->
-        <div class="col-lg-2 col-md-6 footer-links">
-          <h5>Quick Links</h5>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i>Home</li>
-            <li><i class="bi bi-chevron-right"></i>Our Shop</li>
-            <li><i class="bi bi-chevron-right"></i>Shop Detail</li>
-            <li><i class="bi bi-chevron-right"></i>Shopping Cart</li>
-            <li><i class="bi bi-chevron-right"></i>Checkout</li>
-            <li><i class="bi bi-chevron-right"></i>Contact Us</li>
-          </ul>
-        </div>
-        <!-- Newsletter Form -->
+        
         <div class="col-lg-4 col-md-6 footer-newsletter">
           <h5>Newsletter</h5>
           <form>
@@ -2314,7 +2281,6 @@ try {
   </section>
 
 
-    <!-- Copyright Start -->
     <div class="container-fluid copyright py-4">
         <div class="container">
             <div class="row g-4 align-items-center">
@@ -2325,9 +2291,6 @@ try {
                 </div>
                 <div class="col-md-6 text-center text-md-end text-white">
 
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
                     Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>.
                     Distributed By <a class="border-bottom text-white" href="https://themewagon.com"
                         target="_blank">ThemeWagon</a>
@@ -2335,21 +2298,15 @@ try {
             </div>
         </div>
     </div>
-    <!-- Copyright End -->
-
-
-    <!-- Back to Top -->
     <a href="#!" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
 
-    <!-- Template Javascript -->
     <script src="./assest/js/main.js"></script>
       <Script>
   document.addEventListener("DOMContentLoaded", function () {

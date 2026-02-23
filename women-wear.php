@@ -27,12 +27,25 @@ try {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="./assest/css/women-wear.css">
   <style>
-    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
+    /* --- UPDATED COLORS FOR NAVIGATION --- */
     
-    /* Apply Filters, Add to Cart, and Buy Now Buttons */
+    /* Forces Navbar links to be white */
+    .main-navbar .nav-link {
+        color: white !important;
+        opacity: 1 !important;
+    }
+
+    /* Ensures the dropdown arrow and text stay white on hover */
+    .main-navbar .nav-link:hover, 
+    .main-navbar .nav-link:focus,
+    .main-navbar .dropdown-toggle.show {
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    /* --- UPDATED COLORS FOR BUTTONS & SLIDERS (#d16d08f2) --- */
     #applyBtn, .btn-primary, .btn-buy {
-        background-color: #d16d08f2 !important;
-        border-color: #d16d08f2 !important;
+        background-color: #6F4AA2 !important;
+        border-color: #6F4AA2 !important;
         color: white !important;
         transition: all 0.3s ease;
         padding: 10px;
@@ -41,31 +54,27 @@ try {
     }
 
     #applyBtn:hover, .btn-primary:hover, .btn-buy:hover {
-        background-color: #a35506 !important; /* Slightly darker shade for hover effect */
-        border-color: #a35506 !important;
+        background-color: #5a3a80 !important;
+        border-color: #5a3a80 !important;
         transform: translateY(-2px);
     }
 
-    /* Range Slider Thumb Color */
     .form-range::-webkit-slider-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
     .form-range::-moz-range-thumb {
-        background: #d16d08f2 !important;
+        background: #6F4AA2 !important;
     }
 
-    /* Price Text Color in Cards */
     .product-price {
-        color: #d16d08f2 !important;
+        color: #6F4AA2 !important;
         font-weight: bold;
     }
 
-    /* Star Rating Color */
     .bi-star-fill, .bi-star-half {
-        color: #d16d08f2 !important;
+        color: #6F4AA2 !important;
     }
 
-    /* Preserve Sidebar Structure */
     .sidebar { border: 1px solid #e0e0e0; border-radius: 20px; background: white; overflow: hidden; }
   </style>
 </head>
@@ -105,7 +114,7 @@ try {
       <div class="d-flex justify-content-between align-items-center">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link active" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
+            <a class="nav-link" href="index.php"><i class="bi bi-house me-1"></i> Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -139,7 +148,7 @@ try {
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person me-1"></i> Fashion
+              <i class="bi bi-person me-1 active"></i> Fashion
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="mens-wear.php">Men's Clothing</a></li>
@@ -148,7 +157,7 @@ try {
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-tag me-1"></i> Deals</a>
+            <a class="nav-link" href="deals.php"><i class="bi bi-tag me-1"></i> Deals</a>
           </li>
         </ul>
       </div>
@@ -361,13 +370,6 @@ try {
 
     let cart = [];
 
-    let filterState = {
-      keyword: '',
-      priceLimit: 5000,
-      sizes: [],
-      minRating: 0
-    };
-
     function displayProducts(productList) {
       const container = document.getElementById('productContainer');
       container.innerHTML = '';
@@ -419,7 +421,6 @@ try {
     function addToCart(productId) {
       const product = products.find(p => p.id === productId);
       const existingItem = cart.find(item => item.id === productId);
-      
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
@@ -431,7 +432,6 @@ try {
           quantity: 1
         });
       }
-      
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartUI();
       showToast(`${product.name} added to cart!`);
@@ -440,7 +440,6 @@ try {
     function updateCartUI() {
       const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
       const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-      
       document.getElementById('header-cart-count').textContent = itemCount;
       document.getElementById('header-total').textContent = totalPrice.toFixed(2);
     }
@@ -449,7 +448,6 @@ try {
       const modal = document.getElementById('cartModal');
       const cartItems = document.getElementById('cartItems');
       const modalCartTotal = document.getElementById('modalCartTotal');
-      
       if (cart.length === 0) {
         cartItems.innerHTML = '<p class="text-center">Your cart is empty</p>';
       } else {
@@ -469,10 +467,8 @@ try {
           </div>
         `).join('');
       }
-      
       const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
       modalCartTotal.textContent = totalPrice.toFixed(2);
-      
       new bootstrap.Modal(modal).show();
     }
 
@@ -503,61 +499,35 @@ try {
         toast.id = 'toast';
         toast.className = 'toast align-items-center text-white bg-primary border-0 position-fixed bottom-0 end-0 m-3';
         toast.setAttribute('role', 'alert');
-        toast.setAttribute('aria-live', 'assertive');
-        toast.setAttribute('aria-atomic', 'true');
         toast.innerHTML = `
           <div class="d-flex">
             <div class="toast-body">${message}</div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
           </div>
         `;
         document.body.appendChild(toast);
       } else {
         toast.querySelector('.toast-body').textContent = message;
       }
-      const bsToast = new bootstrap.Toast(toast);
-      bsToast.show();
+      new bootstrap.Toast(toast).show();
     }
 
     document.getElementById('priceRange').addEventListener('input', function () {
       document.getElementById('priceValue').innerText = '₹' + this.value;
     });
 
-    document.querySelectorAll('.size-filter').forEach(el => el.addEventListener('change', applyFilters));
-    document.querySelectorAll('.rating-filter').forEach(el => el.addEventListener('change', applyFilters));
-    document.getElementById('priceRange').addEventListener('change', applyFilters);
-
-    document.getElementById('applyBtn').addEventListener('click', applyFilters);
-
-    document.getElementById('resetBtn').addEventListener('click', () => {
-      document.getElementById('searchInput').value = '';
-      document.getElementById('priceRange').value = 5000;
-      document.getElementById('priceValue').innerText = '₹5000';
-      document.querySelectorAll('.size-filter').forEach(cb => cb.checked = false);
-      document.querySelectorAll('.rating-filter').forEach(cb => cb.checked = false);
-
-      filterState = {
-        keyword: '',
-        priceLimit: 5000,
-        sizes: [],
-        minRating: 0
-      };
-
-      displayProducts(products);
-    });
-
     function applyFilters() {
-      filterState.keyword = document.getElementById('searchInput').value.trim().toLowerCase();
-      filterState.priceLimit = parseFloat(document.getElementById('priceRange').value);
-      filterState.sizes = Array.from(document.querySelectorAll('.size-filter:checked')).map(cb => cb.value);
+      const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+      const priceLimit = parseFloat(document.getElementById('priceRange').value);
+      const sizes = Array.from(document.querySelectorAll('.size-filter:checked')).map(cb => cb.value);
       const ratingChecks = Array.from(document.querySelectorAll('.rating-filter:checked')).map(cb => parseInt(cb.value));
-      filterState.minRating = ratingChecks.length > 0 ? Math.min(...ratingChecks) : 0;
+      const minRating = ratingChecks.length > 0 ? Math.min(...ratingChecks) : 0;
 
       let filtered = products.filter(p => {
-        let matchesKeyword = p.name.toLowerCase().includes(filterState.keyword);
-        let matchesPrice = p.price <= filterState.priceLimit;
-        let matchesSize = filterState.sizes.length === 0 || p.size.some(sz => filterState.sizes.includes(sz));
-        let matchesRating = filterState.minRating === 0 || p.rating >= filterState.minRating;
+        let matchesKeyword = p.name.toLowerCase().includes(keyword);
+        let matchesPrice = p.price <= priceLimit;
+        let matchesSize = sizes.length === 0 || p.size.some(sz => sizes.includes(sz));
+        let matchesRating = minRating === 0 || p.rating >= minRating;
         return matchesKeyword && matchesPrice && matchesSize && matchesRating;
       });
 
@@ -565,9 +535,10 @@ try {
     }
 
     function sortProducts(sortValue) {
-        if(sortValue === 'lowToHigh') products.sort((a,b) => a.price - b.price);
-        if(sortValue === 'highToLow') products.sort((a,b) => b.price - a.price);
-        displayProducts(products);
+        let sorted = [...products];
+        if(sortValue === 'lowToHigh') sorted.sort((a,b) => a.price - b.price);
+        if(sortValue === 'highToLow') sorted.sort((a,b) => b.price - a.price);
+        displayProducts(sorted);
     }
 
     window.onload = () => {
