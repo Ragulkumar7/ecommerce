@@ -413,7 +413,7 @@ try {
 
         // Configuration Options for Razorpay
         var options = {
-            "key": "rzp_test_YOUR_KEY_ID", // TODO: Replace with your actual Razorpay Test Key ID
+            "key": "rzp_test_SFaTJo6zGjYdPp", // TODO: Replace with your actual Razorpay Test Key ID
             "amount": amountInPaise, 
             "currency": "INR",
             "name": "StyleHub",
